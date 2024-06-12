@@ -11,7 +11,7 @@ public class Ex07 {
         System.out.println("numero?");
         num1 = input.nextDouble();
 
-        if (num1/2==0){
+        if (num1%2==0){
 
             System.out.println("PAR");
         }else{
