@@ -31,6 +31,5 @@ public class Ex03 {
         // apresentar
         System.out.println("Area: " +area);
         System.out.println("Perimetro: " +per);
-
     }
 }

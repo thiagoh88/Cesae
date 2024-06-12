@@ -16,6 +16,7 @@ public class Ex06 {
         num2 = input.nextInt();
 
         valor2 = num1;
+
         valor1 = num2;
 
         System.out.println("Valor 1: " +num2);

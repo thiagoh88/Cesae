@@ -6,8 +6,8 @@ public class Ex08 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int min1, min2, min3, min4, min5, seg1, seg2, seg3, seg4, seg5, total, totalm, totals;
-
+        int min1, min2, min3, min4, min5, seg1, seg2, seg3, seg4, seg5;
+        int segsoma, segfinal, minsoma, min, hora, segtotal;
         //MUSICA 1
         System.out.println("Introduza minutos da musica 1:\n");
         min1 = input.nextInt();
@@ -43,7 +43,21 @@ public class Ex08 {
         System.out.println("Introduza segundos da musica 5:\n");
         seg5 = input.nextInt();
 
-        totalm = min1 + min2 + min3 + min4 + min5;
+        segsoma = (seg1 + seg2 + seg3 + seg4 + seg5);
+        minsoma = (min1 + min2 + min3 + min4 + min5) * 60;
+        segtotal = (segsoma + minsoma);
+
+        hora = segtotal / 3600;
+        segtotal = segtotal % 3600;
+        min = segtotal / 60;
+        segfinal = segtotal % 60;
+
+        System.out.println("Horas: " +hora);
+        System.out.println("Minutos: " +min);
+        System.out.println("Segundos: " +segfinal);
+
+
+
 
     }
 }

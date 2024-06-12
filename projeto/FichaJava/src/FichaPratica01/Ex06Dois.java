@@ -13,9 +13,13 @@ public class Ex06Dois {
         System.out.println("Insira o valor 2:\n");
         valor2 = input.nextInt();
 
-        valor1 = valor2;
-        System.out.println("Valor 1: " +valor1);
+        valor1 = valor1 + valor2;
+        valor2 = valor1 - valor2;
+        valor1 = valor1 - valor2;
 
+
+
+        System.out.println("Valor 1: " +valor1);
         System.out.println("Valor 2: " +valor2);
     }
 }
