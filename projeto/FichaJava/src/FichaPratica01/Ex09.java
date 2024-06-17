@@ -9,23 +9,31 @@ public class Ex09 {
 
         Scanner input = new Scanner(System.in);
 
-        Double cod, dias, vencimentoI, alimentacao, irs, seg1, seg2;
+        double codigoFuncionario, dias,iliquido, alimentacao, irs, segurancaF,segurancaE, liquido;
 
         System.out.println("Introduzir codigo do funcionario:");
-        cod = input.nextDouble();
+        codigoFuncionario = input.nextDouble();
         System.out.println("Introduzir numero de dias trabalhado:");
         dias = input.nextDouble();
 
-        vencimentoI = dias * 40;
-        alimentacao = dias *5;
-        irs = vencimentoI * 0.1;
 
+        System.out.println("Funcionario: " + codigoFuncionario);
 
-        System.out.println("Funcionario: " + cod);
+        iliquido=dias*40;
+        System.out.println("Vencimento iliquido: €" +iliquido);
 
-        System.out.println("Vencimento iliquido: €" +vencimentoI);
+        alimentacao=dias*5;
         System.out.println("Total Sub. alimentacao: €" +alimentacao);
+
+        irs=iliquido*0.1;
         System.out.println("Valor IRS: €" +irs);
+
+        segurancaF=iliquido*0.11;
+        segurancaE=iliquido*0.2375;
+        System.out.println("Seguranca social Funcionario: " +segurancaF+ "\tEmpresa:" +segurancaE);
+
+        liquido=iliquido-irs-segurancaE+alimentacao;
+        System.out.println("total liquido:" +liquido);
 
 
 
