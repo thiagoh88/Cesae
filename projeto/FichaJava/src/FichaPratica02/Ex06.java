@@ -13,9 +13,9 @@ public class Ex06 {
         num2 = input.nextInt();
 
         if (num1 < num2){
-            System.out.println(num2+"\n"+num1);
+            System.out.println(num2+"\t"+num1);
         }else{
-            System.out.println(num1+"\n"+num2);
+            System.out.println(num1+"\t"+num2);
 
         }
     }

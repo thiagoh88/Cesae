@@ -15,12 +15,15 @@ public class Ex11 {
         mov = input.nextDouble();
 
         valor = saldo+mov;
-        if (valor <= -1){
-            System.out.println("Operação invalida\n");
-            System.out.println("Saldo: "+saldo);
+
+        if (valor>=0){
+
+            saldo=valor;
+
         }else{
 
-            System.out.println("Saldo artual: "+valor);
+            System.out.println("operacao invalida");
         }
+        System.out.println("saldo"+saldo);
     }
 }

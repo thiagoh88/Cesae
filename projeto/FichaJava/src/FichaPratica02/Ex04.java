@@ -29,6 +29,8 @@ public class Ex04 {
                 break;
             default:
                 System.out.println("sem pontos");
+
+
         }
     }
 }

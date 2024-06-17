@@ -1,9 +1,8 @@
 package FichaPratica02;
 
 import java.util.Scanner;
-import java.util.function.BinaryOperator;
 
-public class Ex15 {
+public class Ex14e15 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
