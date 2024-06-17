@@ -8,7 +8,7 @@ public class Ex17 {
 
 double saldoMedio;
 
-        System.out.println("Insirao saldo medio:");
+        System.out.println("Insira o saldo medio:");
         saldoMedio= input.nextDouble();
 
         if (saldoMedio<=0||saldoMedio<=2000){
