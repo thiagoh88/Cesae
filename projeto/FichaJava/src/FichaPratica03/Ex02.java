@@ -1,17 +1,19 @@
 package FichaPratica03;
 
-import java.util.Scanner;
-
-public class Ex01 {
+public class Ex02 {
     public static void main(String[] args) {
 
-        int x=1;
+        int x=0;
 
-        while (x<=250){
+        while (x<=400){
             System.out.println(+x);
-            x=x+1;
+            x=x+2;
         }
 
 
     }
 }
+
+
+
+
