@@ -7,64 +7,57 @@
 </head>
 <body>
     <form action="" method="get">
-    
         <fieldset>
-            <legend>Formulario</legend>
-            <label for="Form-nome">Name:<table></table></label>
-            <input type="text"name="form-nome" id="form-nome" placeholder="nome" required>
-            <div></div>
-            <label for="form-email">E-mail:<table></table></label>
-            <input type="Email:" name="form-email" id="form-email" value="@cesae.pt">
-            <div></div>
-            <label for="form-pass">Password: <table></table></label>
-            <input type="password" name="form-pass" id="form-pass">
-            <div></div>
-            <label for="form-age">Age: <table></table></label>
-            <input type="number" name="form-age" id="form-age">
-            <div></div>
-            <label for="form-data">Data: <table></table></label>
-            <input type="date" name="form-datal" id="form-data">
-            <div></div>
-            <label for="">Sexo:</label>
+            <legend>Formulário do CESAE</legend>
+            <div>
+                <label for="form-nome">Nome:</label>
+                <input type="text" name="form-nome" id="form-nome" placeholder="Insira o seu nome" required>
+            </div>
+            <div>
+                <label for="form-email">Email:</label>
+                <input type="email" name="form-email" id="form-email" value="@cesae.pt">
+            </div>
+            <div>
+                <label for="form-password">Password:</label>
+                <input type="password" name="form-password" id="form-password">
+            </div>
+            <div>
+                <label for="form-cor">Cor favorita</label>
+                <br>
+                <input type="radio" name="form-cor" id="form-cor-branco"><label for="form-cor-branco">Branco</label>     <br>
+                <input type="radio" name="form-cor" id="form-cor-preto"><label for="form-cor-preto">Preto</label>       <br>
+                <input type="radio" name="form-cor" id="form-cor-amarelo"><label for="form-cor-amarelo">Amarelo</label>   <br>
+                <input type="radio" name="form-cor" id="form-cor-roxo"><label for="form-cor-roxo">Roxo</label>         <br>
+                <input type="radio" name="form-cor" id="form-cor-castanho"><label for="form-cor-castanho">Castanho</label> <br>
+            </div>
             <br>
-            <input type="radio" name="form-cor-r" id="form-cor-r" ><label for="form-cor-r">Man</label> <br>
-            <input type="radio" name="form-cor-r" id="form-cor-g" ><label for="form-cor-g">Woman</label> <br>
-            <input type="radio" name="form-cor-r" id="form-cor-b" ><label for="form-cor-b">Outros</label> <br>
-            <div></div>
-<br>
-    <label for="">Cursos</label>   
-    <br>     
-<select name="" id="">
-<option value="form-soft">Software Develop</option>
-<option value="form-aws">AWS</option>
-</select>
-<br><br>
-<div>
-    </div>
-<label for="">Mensagem</label><br>
-<textarea name="" id=""></textarea>
-
-<div></div>
-<br>
-<input type="reset" value="limpar">
-<input type="submit" value="Enviar">
-
-
-
-
-
-
-
-
-        </fieldset> 
-
-
-
-
+            <div>
+                <label for="form-curso">Curso a frequentar</label>
+                <br>
+                <select name="form-curso" id="form-curso">
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="form-curso-sd">Software Developer</option>
+                    <option value="form-curso-fe">Front-end Developer</option>
+                    <option value="form-curso-da">Data Analyst</option>
+                    <option value="form-curso-aws">AWS Re/start</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label for="">Dias da semana com formação</label>
+                <br>
+                <input type="checkbox" name="" id=""><label for="">Segunda-feira</label><br>
+                <input type="checkbox" name="" id=""><label for="">Terça-feira</label><br>
+            </div>
+            <div>
+                <label for="">Mensagem:</label><br>
+                <textarea name="" id="" cols="10" rows="5"></textarea>
+            </div>
+            <div>
+                <input type="reset" value="Limpar">
+                <input type="submit" value="Enviar">
+            </div>
+        </fieldset>
     </form>
-
-
-
-
 </body>
 </html>

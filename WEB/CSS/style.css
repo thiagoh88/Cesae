@@ -1,0 +1,32 @@
+header{text-align: center;}
+
+header>img {width: 600px;}
+
+nav img{height: 50px;}
+
+body{background-color: bisque;}
+
+footer{text-align: center;}
+footer{background-color: grey;}
+ nav.nav1{background-color: grey; color:white;}
+ nav.nav1 a {color: white;}
+p {text-align: justify; }
+
+
+
+/*
+span.texto1{background-color: red}
+span.texto2{background-color: blue;}
+.texto3 {background-color: green;}
+
+comentario
+
+{background-color: brown;}
+
+h1{
+    border-width:  10px ;
+    border-style:  double ;
+    border-color: rgb(222, 17, 230);
+    margin-inline :  95px;
+    background-color: rgba(207, 160, 150);
+}*/
