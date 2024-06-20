@@ -5,16 +5,14 @@ import java.util.Scanner;
 public class Ex07 {
     public static void main(String[] args) {
 
-        int x = 1, soma;
+        int x = 1, soma = 0;
 
-        while (x <= 100)
-        {
-            System.out.println(x++);
+        while (x <= 100) {
+            System.out.println(x);
+            soma = soma + x;
+            x = x + 1;
         }
-        soma = x;
-        System.out.println("Total: " + soma);
-
-
+        System.out.println(+soma);
 
     }
 }
