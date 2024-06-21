@@ -8,14 +8,15 @@ public class Ex06 {
 
         int inicio, fim;
 
-        System.out.println("introduzir numero 1: ");
+        System.out.println("introduzir inicio: ");
         inicio = input.nextInt();
-        System.out.println("introduzir numero 2: ");
+        System.out.println("introduzir fim: ");
         fim = input.nextInt();
 
-        while (inicio >= inicio && inicio <= fim) {
+        while (inicio <= fim) {
             System.out.println(+inicio);
-            inicio = inicio + 1;
+            //inicio=inicio+1
+            inicio++;
 
 
         }

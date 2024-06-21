@@ -7,12 +7,14 @@ public class Ex07 {
 
         int x = 1, soma = 0;
 
-        while (x <= 100) {
-            System.out.println(x);
+        while (x <= 100)
+        {
+            System.out.println(+x);
             soma = soma + x;
-            x = x + 1;
+            //x=x+1
+            x++;
         }
-        System.out.println(+soma);
 
+        System.out.println("Total: " + soma);
     }
 }

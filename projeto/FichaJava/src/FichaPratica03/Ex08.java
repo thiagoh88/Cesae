@@ -17,14 +17,16 @@ public class Ex08 {
         {
             System.out.println(+limite2);
            //faz a leitura depois ( começa no zero )
-            limite2 = limite2 + 1;
+            //limite2 = limite2 + 1;
+            limite2++;
         }
 
         limite1 = numero + 5;
         while (numero < limite1)
         {
             //faz a leitura primeiro
-            numero = numero + 1;
+            //numero = numero + 1;
+            numero++;
             System.out.println(+numero);
         }
 

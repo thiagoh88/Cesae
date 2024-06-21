@@ -4,26 +4,21 @@ import java.util.Scanner;
 
 public class Ex09 {
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
 
-        double num, soma = 0, contador = 0, media;
+        int num = 0, somatorio = 1, contador = -1, media;
 
-        System.out.println("advinha o numero (-1)");
 
-        while (true) {
-            num = input.nextDouble();
+        while (num != -1) {
+            System.out.println("advinha o numero (-1)");
+            num = input.nextInt();
 
-            if (num == -1) {
-                break;
-            }
-            //soma+=num
-            soma = soma + num;
+            somatorio = somatorio + num;
             contador++;
         }
+        media = somatorio / contador;
+        System.out.println("Media: " + media);
 
-        if (contador > 0) {
-            media = soma / contador;
-            System.out.println("media: " + media);
-        }
     }
 }
