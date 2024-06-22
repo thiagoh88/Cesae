@@ -1,3 +1,5 @@
+package ficha1;
+
 import java.util.Scanner;
 
 public class ex7 {
@@ -16,7 +18,7 @@ public class ex7 {
         desc=(prod1+prod2+prod3)*0.1;
         prod1=(prod1+prod2+prod3)-desc;
 
-        System.out.println("total: " + prod1);
+        System.out.println("total com 10% de desconto: " + prod1);
 
 
     }

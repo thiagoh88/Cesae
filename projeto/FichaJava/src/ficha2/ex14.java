@@ -1,29 +1,27 @@
-package FichaPratica02;
+package ficha2;
 
 import java.util.Scanner;
 
-public class Ex14e15 {
+public class ex14 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // verificar se num1 é o menor
         int num1, num2, num3, menor, medio, maior;
 
-        System.out.println("insira o primeiro numero: ");
+        System.out.println("inserir numero 1");
         num1 = input.nextInt();
-        System.out.println("insira o segundo numero: ");
+
+        System.out.println("inserir numero 2");
         num2 = input.nextInt();
-        System.out.println("insira o terceiro numero: ");
+
+        System.out.println("inserir numero ");
         num3 = input.nextInt();
-
-
-        System.out.println("Selecionar a opção desejada:\n c. Crescente\n d. Decrescente");
+        System.out.println("c.crescente\nd.decrescente");
         String op;
         op = input.next();
         switch (op) {
 
             case "c":
-                // verificar se num1 é o menor
                 if (num1 <= num2 && num1 <= num3) {
                     menor = num1;
                     if (num2 <= num3) {
@@ -33,6 +31,7 @@ public class Ex14e15 {
                         medio = num3;
                         maior = num2;
                     }
+
                 }
                 if (num2 <= num1 && num2 <= num3) {
                     menor = num2;
@@ -43,6 +42,7 @@ public class Ex14e15 {
                         medio = num3;
                         maior = num1;
                     }
+
                 }
                 if (num3 <= num2 && num3 <= num1) {
                     menor = num3;
@@ -57,13 +57,11 @@ public class Ex14e15 {
                         System.out.println(+medio);
                         System.out.println(+maior);
                         break;
+
                     }
                 }
 
             case "d":
-                // codigo crescente:
-
-                // verificar se num1 é o menor
                 if (num1 <= num2 && num1 <= num3) {
                     menor = num1;
                     if (num2 <= num3) {
@@ -83,6 +81,7 @@ public class Ex14e15 {
                         medio = num3;
                         maior = num1;
                     }
+
                 }
                 if (num3 <= num2 && num3 <= num1) {
                     menor = num3;
@@ -97,17 +96,10 @@ public class Ex14e15 {
                         System.out.println(+medio);
                         System.out.println(+menor);
                         break;
-
                     }
-
                 }
             default:
-                System.out.println("Opcao errada");
+                System.out.println("opcao errada");
         }
-
-
     }
 }
-
-
-
