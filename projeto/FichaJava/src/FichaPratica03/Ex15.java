@@ -13,7 +13,9 @@ public class Ex15 {
 
         while (num > 0)
         {
+            //fatorial=fatorial*num
             fatorial *= num;
+            //num=num-1
             num--;
         }
         System.out.println("fatorial: " + fatorial);

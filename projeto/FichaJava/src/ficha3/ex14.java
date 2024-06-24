@@ -1,27 +1,22 @@
-package FichaPratica03;
+package ficha3;
 
 import java.util.Scanner;
 
-public class Ex14 {
+public class ex14 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-
-        //variaveis
-        int quantidade, count = 1, numAnterior, numAtual;
-        //atenção
+        int numAnterior, numAtual, quantidade, count = 1;
         boolean crescente = true;
-
-        System.out.print("quantos numeros? ");
+        System.out.println("quantos numero?");
         quantidade = input.nextInt();
 
-        System.out.print("insira um numero: ");
+        System.out.println("insira um numero");
         numAnterior = input.nextInt();
-
 
         while (count < quantidade)
         {
-            System.out.print("insira um numero: ");
+            System.out.println("insira um numero");
             numAtual = input.nextInt();
 
             if (numAnterior >= numAtual)
@@ -31,13 +26,12 @@ public class Ex14 {
             numAnterior = numAtual;
             count++;
         }
-        if (crescente) //crescente==true
+        if (crescente)
         {
-            System.out.print("crescente");
-        }
-        else
+            System.out.println("crescente");
+        } else
         {
-            System.out.print("Nao crescente");
+            System.out.println("não crescente");
         }
     }
 }
