@@ -6,7 +6,7 @@ public class ex13 {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
 
-        int inicio,fim;
+        int inicio=1,fim=100;
 
         System.out.println("inicio");
         inicio= input.nextInt();
@@ -15,7 +15,7 @@ public class ex13 {
 
         while (inicio<fim){
 
-            if (inicio%5==0){
+            if (inicio%3==0){
                 System.out.println(inicio);
             }
             inicio++;
