@@ -6,22 +6,39 @@ public class Ex04 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int num;
 
-        do {
-            System.out.println("insira um numero");
-            num = input.nextInt();
 
-            if ()
+       int numero, divisor=0;
+
+        System.out.print("insira um numero: ");
+        numero=input.nextInt();
+
+        if (numero < 1)
+        {
+            System.out.println("não primo");
+        }
+        else
+        {
+            for (int i = 2; i < numero; i++)
             {
-                    System.out.println("");
-                }else
+                if (numero % i == 0)
                 {
-                    System.out.println("" );
+                    divisor++;
+                    break;
                 }
-            }while ();
+            }
 
-
-
+            if (divisor == 0)
+            {
+                System.out.println("primo.");
+            }
+            else
+            {
+                System.out.println("não primo");
+            }
+        }
     }
 }
+
+
+
