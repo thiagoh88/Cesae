@@ -7,14 +7,15 @@ public class Ex02 {
         Scanner input = new Scanner(System.in);
         int op;
         do {
-            System.out.println("Selecionar uma opção:\n");
+            System.out.println("\nSelecionar uma opção:\n");
             System.out.printf("1.Criar\n");
             System.out.printf("2.Atualizar\n");
             System.out.printf("3.Eliminar\n");
             System.out.printf("4.Sair\n");
             op = input.nextInt();
 
-            switch (op) {
+            switch (op)
+            {
                 case 1:
                     System.out.printf("\nescolheu Criar");
                     break;
@@ -30,5 +31,7 @@ public class Ex02 {
                 default:
                     System.out.println("\ninvalido");
             }
-        }while (op!=4);
-    }}
+        }
+        while (op!=4);
+    }
+}

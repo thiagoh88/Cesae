@@ -2,14 +2,14 @@ package FichaPratica04;
 
 import java.util.Scanner;
 
-import static jdk.internal.org.jline.utils.Colors.s;
+
 
 public class Ex01 {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
 
-        int num1,num2,s=1,n=0;
-        String op,resp;
+        int num1,num2,s=1,n=0,resp;
+        String op;
 
         System.out.printf("insira num1: ");
         num1= input.nextInt();
@@ -34,10 +34,10 @@ public class Ex01 {
                 default: System.out.println("\ninvalido");
             }
 
-            System.out.println("\nrepetir a operação? s/n");
-            resp=input.next();
+            System.out.println("\nrepetir a operação? 1.Sim / 0.Não");
+            resp=input.nextInt();
 
-        } while (s==resp);
+        } while (resp==s);
 
 
     }
