@@ -6,25 +6,22 @@ public class Ex04Dois {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-
         int num;
         boolean primo = true;
         System.out.println("insira um numero");
         num = input.nextInt();
 
-        if (num<=1){
-            primo=false;
+        if (num < 1) {
+            primo = false;
         }
-
         for (int divisor = 2; divisor < num; divisor++) {
             if (num % divisor == 0) {
                 primo = false;
             }
-
         }
-        if (primo){
+        if (primo) {
             System.out.println("primo");
-        }else {
+        } else {
             System.out.println("nao primo");
         }
     }
