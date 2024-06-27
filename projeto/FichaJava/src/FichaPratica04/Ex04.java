@@ -8,7 +8,7 @@ public class Ex04 {
 
 
 
-       int numero, divisor=0;
+        int numero, divisor=0;
 
         System.out.print("insira um numero: ");
         numero=input.nextInt();
@@ -39,6 +39,4 @@ public class Ex04 {
         }
     }
 }
-
-
 

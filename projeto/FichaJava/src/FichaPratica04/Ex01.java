@@ -8,36 +8,47 @@ public class Ex01 {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
 
-        int num1,num2,s=1,n=0,resp;
-        String op;
-
-        System.out.printf("insira num1: ");
-        num1= input.nextInt();
-        System.out.printf("insira num2: ");
-        num2= input.nextInt();
+        double num1,num2,resultado;
+        String op,continuar;
 
         do {
-            System.out.println("Selecionar uma operação:\n");
-            System.out.printf("+ soma\n");
-            System.out.printf("- subtração\n");
-            System.out.printf("* multiplicação\n");
-            System.out.printf("/ divisão\n");
+
+        System.out.print("insira num1: ");
+        num1= input.nextDouble();
+        System.out.print("insira num2: ");
+        num2= input.nextDouble();
+
+
+            System.out.print("Selecionar uma operação:\n");
+            System.out.print("+ soma\n");
+            System.out.print("- subtração\n");
+            System.out.print("* multiplicação\n");
+            System.out.print("/ divisão\n");
 
             op= input.next();
 
             switch (op)
             {
-                case "+": System.out.printf("\nescolheu soma");break;
-                case "-": System.out.printf("\nescolheu subtração");break;
-                case "*": System.out.printf("\nescolheu multiplicação");break;
-                case "/": System.out.printf("\nescolheu divisão");break;
-                default: System.out.println("\ninvalido");
+
+                case "+": resultado=num1+num2;
+                System.out.println("\nescolheu soma: "+resultado);
+                break;
+                case "-": resultado=num1-num2;
+                System.out.println("\nescolheu subtração: "+resultado);
+                break;
+                case "*": resultado=num1*num2;
+                System.out.println("\nescolheu multiplicação: "+resultado);
+                break;
+                case "/": resultado=num1/num2;
+                System.out.println("\nescolheu divisão: "+resultado);
+                break;
+                default: System.out.println("\ninvalido: "+op);
             }
 
-            System.out.println("\nrepetir a operação? 1.Sim / 0.Não");
-            resp=input.nextInt();
-
-        } while (resp==s);
+            System.out.print("\nrepetir a operação? 1.Sim / 0.Não");
+            continuar=input.next();
+                  //string usa .equals (.equalsIgnoreCase
+        } while (continuar.equals("s"));
 
 
     }

@@ -32,6 +32,6 @@ public class Ex02 {
                     System.out.println("\ninvalido");
             }
         }
-        while (op!=4);
+        while (op != 4);
     }
 }
