@@ -1,31 +1,23 @@
-package FichaPratica05;
+package ficha5;
 
 import java.util.Scanner;
 
-public class Ex03 {
+public class ex2 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int[] vetor = new int[10];
-        int maior;
-
+        int[] vetor = new int[3];
+        int soma = 0;
         for (int i = 0; i < vetor.length; i++) {
-            System.out.print("insira no Vetor[" + i + "]: ");
+            System.out.print("comissão [" + i + "]: ");
             vetor[i] = input.nextInt();
         }
-
-        maior = vetor[0];
-
         System.out.println("\n---------------------\n");
 
         for (int i = 0; i < vetor.length; i++)
         {
-            if (vetor[i] > maior)
-            {
-                maior = vetor[i];
-            }
-        }
+            soma = soma + vetor[i];
 
-        System.out.println("Maior: " + maior);
+        }System.out.println("soma: " +soma);
     }
 }
