@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6444bad1-1c35-4204-a4c0-6fb50d26eec1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Algoritimos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF/05 - Ficha Prática 01 - Algoritmia e Programação.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF/07 - Ficha Prática 02 - Algoritmia e Programação.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDF/09 - Ficha Prática 03 - Algoritmia e Programação.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/audio/y2mate.com - Coldplay  A Sky Full Of Stars Official Video.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/ex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/formulario.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/img/CESAE LOGO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/img/coldplay.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/multi2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/multimedia.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WEB/video/y2mate.com - Coldplay  A Sky Full Of Stars Official Video_480p.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/FichaPratica01/.idea/workspace.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2i1R9nWFBgT8r4vR2ypYHAmm6Si" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Ex09.executor": "Run",
+    "Application.Ex17.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/thiag/Documents/CESAE/Algoritimos/projeto/FichaJava/src"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Ex09">
+    <configuration name="Ex09" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FichaPratica01.Ex09" />
+      <module name="Algoritimos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FichaPratica01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Ex17" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FichaPratica02.Ex17" />
+      <module name="Algoritimos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FichaPratica02.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Ex09" />
+        <item itemvalue="Application.Ex17" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6444bad1-1c35-4204-a4c0-6fb50d26eec1" name="Changes" comment="" />
+      <created>1718655948518</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718655948518</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
