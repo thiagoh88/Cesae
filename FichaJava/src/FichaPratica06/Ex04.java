@@ -44,9 +44,9 @@ public class Ex04 {
                     break;
 
                 case 3:
-                    if (primo(numero)){
+                    if (primo(numero)) {
                         System.out.println("primo");
-                    }else {
+                    } else {
                         System.out.println("nao primo");
                     }
                     break;
@@ -67,7 +67,11 @@ public class Ex04 {
 
                     break;
 
+                default:
+                    System.out.println("opcao invalida");
             }
-        }
+        }while (numero==1);
+
+
     }
 }
