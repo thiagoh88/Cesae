@@ -16,23 +16,20 @@ public class Ex07 {
             vetor[i] = input.nextInt();
         }
 
-        maior = vetor[0];
+        maior = 1;
 
         System.out.println("\n---------------------\n");
 
         for (int i = 0; i < vetor.length; i++)
         {
-
-            // Numero atual é par
+            // VERIFICA SE É PAR
             if (vetor[i] % 2 == 0)
             {
-
-                // O maior ainda impar
+                // Maior=1 ainda impar passa para vetor atual
                 if (maior % 2 != 0)
                 {
                     maior = vetor[i];
                 }
-                // O maior já não impar
                 else
                 {
                     if (vetor[i] > maior)

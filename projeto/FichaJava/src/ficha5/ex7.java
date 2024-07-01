@@ -24,11 +24,13 @@ public class ex7 {
                 }
                 par=true;
             }
-
         }
-        if (par) {
+        if (par)
+        {
             System.out.println(maior);
-        } else {
+        }
+        else
+        {
             System.out.println("não");
         }
     }
