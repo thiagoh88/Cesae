@@ -4,6 +4,7 @@ public class Ex03 {
 
     /**
      * Método que retorna se um número é par ou impar
+     *
      * @param num Número inteiro
      * @return true se é par || false se é impar
      */
@@ -17,6 +18,7 @@ public class Ex03 {
 
     /**
      * Método que retorna se um número é positivo ou negativo
+     *
      * @param num Número inteiro
      * @return true se positivo || false se negativo
      */
@@ -30,6 +32,7 @@ public class Ex03 {
 
     /**
      * Método que retorna se um número é ou não primo
+     *
      * @param num Número inteiro
      * @return true se primo || false não primo
      */
@@ -42,11 +45,24 @@ public class Ex03 {
         return false;
     }
 
+    public static boolean perfeito(int num) {
+        if (num == 1) {
+            return false;
+        }
+        for (int i = 1; i < num-1; i++) {
+            if (num % i == 0) {
+                int soma = 0;
+                soma = soma + i;
+                if (soma == num) {
+                    return true;
+                }
 
-
-
-
+            }
+        }
+        return false;
+    }
 
 }
+
 
 

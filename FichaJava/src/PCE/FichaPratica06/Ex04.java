@@ -52,6 +52,11 @@ public class Ex04 {
                     break;
 
                 case 4:
+                    if (perfeito(numero)){
+                        System.out.println("perfeito");
+                    }else {
+                        System.out.println("nao perfeito");
+                    }
 
                     break;
 
