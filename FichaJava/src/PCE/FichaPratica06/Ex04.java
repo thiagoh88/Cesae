@@ -10,73 +10,96 @@ public class Ex04 {
         Scanner input = new Scanner(System.in);
 
         int numero, opcao;
+        boolean op = true;
 
         System.out.print("insira um numero: ");
         numero = input.nextInt();
 
-        do {
-            System.out.println("\n\nAnalise de um numero");
-            System.out.println("1. par ou impar");
-            System.out.println("2. positivo ou negativo");
-            System.out.println("3. primo ou nao primo");
-            System.out.println("4. perfeito ou nao perfeito");
-            System.out.println("5. triangular ou nao triangular");
-            System.out.println("6. trocar de numero");
-            System.out.println("7. sair");
-            System.out.println("\n escolha a opcao");
+        do
+        {
+            System.out.println("\n*** Analise de um numero ***");
+            System.out.println(" **** escolha uma opcao *****");
+            System.out.println("     1. par ou impar");
+            System.out.println("     2. positivo ou negativo");
+            System.out.println("     3. primo ou nao primo");
+            System.out.println("     4. perfeito ou nao perfeito");
+            System.out.println("     5. triangular ou nao triangular");
+            System.out.println("     6. trocar de numero");
+            System.out.println("     7. sair");
+
             opcao = input.nextInt();
 
-            switch (opcao) {
+            switch (opcao)
+            {
                 case 1:
-                    if (parImpar(numero)) {
+                    if (parImpar(numero))
+                    {
                         System.out.println("par");
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("impar");
                     }
                     break;
 
                 case 2:
-                    if (positivoNegativo(numero)) {
+                    if (positivoNegativo(numero))
+                    {
                         System.out.println("positivo");
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("negativo");
                     }
                     break;
 
                 case 3:
-                    if (primo(numero)) {
+                    if (primo(numero))
+                    {
                         System.out.println("primo");
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("nao primo");
                     }
                     break;
 
                 case 4:
-                    if (perfeito(numero)){
+                    if (perfeito(numero))
+                    {
                         System.out.println("perfeito");
-                    }else {
+                    }
+                    else
+                    {
                         System.out.println("nao perfeito");
                     }
-
                     break;
 
                 case 5:
-
+                    if (triangular(numero))
+                    {
+                        System.out.println("triangular");
+                    }
+                    else
+                    {
+                        System.out.println("nao");
+                    }
                     break;
 
                 case 6:
-
-                    break;
+                    System.out.println("insira um novo numero: ");
+                    numero = input.nextInt();
+                    continue;
 
                 case 7:
-
+                    System.out.println("Saindo...");
+                    op = false;
                     break;
 
                 default:
                     System.out.println("opcao invalida");
+
             }
-        }while (numero==1);
-
-
+        } while (op);
     }
 }

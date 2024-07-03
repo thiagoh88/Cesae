@@ -6,8 +6,6 @@ public class Ex04 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-
-
         int numero, divisor=0;
 
         System.out.print("insira um numero: ");

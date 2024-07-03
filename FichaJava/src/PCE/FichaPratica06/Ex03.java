@@ -1,5 +1,7 @@
 package PCE.FichaPratica06;
 
+import java.util.Scanner;
+
 public class Ex03 {
 
     /**
@@ -45,22 +47,49 @@ public class Ex03 {
         return false;
     }
 
+    /**
+     * Método que verifica se o numero é perfeito
+     *
+     * @param num
+     * @return numero
+     */
     public static boolean perfeito(int num) {
-        if (num == 1) {
+        if (num <= 1) {
             return false;
         }
-        for (int i = 1; i < num-1; i++) {
+        int soma = 0;
+        for (int i = 1; i < num; i++) {
             if (num % i == 0) {
-                int soma = 0;
-                soma = soma + i;
-                if (soma == num) {
-                    return true;
-                }
-
+                soma += i;
             }
+        }
+        return soma == num;
+    }
+
+    /**
+     * Método que verifica se o numero é triangular
+     * @param num
+     * @return
+     */
+    public static boolean triangular(int num) {
+
+        if (num < 1) {
+            return false;
+        }
+        int soma = 0, n = 1;
+        while (soma < num) {
+            soma += n;
+            if (soma == num) {
+                return true;
+            }
+            n++;
         }
         return false;
     }
+
+
+
+
 
 }
 
