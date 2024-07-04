@@ -1,44 +1,51 @@
-body :hover {background-color: bisque;font-family: "Playwrite NZ", cursive;
-    text-indent: 50px;
-line-height: 1.5;
-text-shadow: 10px 0px 10px rgb(135, 3, 135);
-
-
+body{
+    background-color: bisque;
+    margin: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-header{text-align: center;}
+header {
+    text-align: center;
+}
 
-header>img {width:100%; /*max-width: 800px;min-width: 700px;*/}
+header>img {
+    width: 50%;
+}
 
-nav img{height: 50px;}
+nav{
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+   
+}
+nav a {
+    color: white;
+}
 
+nav img {
+    height: 50px;
+}
+main p{
+    text-align: justify;
+}
+/* comentário em css */
+#texto1 {
+    background-color: red; 
+    color: white;
+}
 
+.texto2 {
+    background-color: blue; 
+    color: white;
+}
 
-footer{text-align: center;}
-footer{background-color: grey;padding: 5px;margin: 10px;}
-
-
- nav.nav1{background-color: grey; color:white;}
- nav.nav1 a {color: white;}
-
-/*main p*/ 
-p {text-align: justify; }
-
-
-
+footer{
+    text-align: center;
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+}
 /*
-span.texto1{background-color: red}
-span.texto2{background-color: blue;}
-.texto3 {background-color: green;}
-
-comentario
-
-{background-color: brown;}
-
-h1{
-    border-width:  10px ;
-    border-style:  double ;
-    border-color: rgb(222, 17, 230);
-    margin-inline :  95px;
-    background-color: rgba(207, 160, 150);
+footer p{
+    text-align: center;
 }*/

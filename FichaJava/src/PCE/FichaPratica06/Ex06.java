@@ -6,7 +6,6 @@ import static PCE.FichaPratica06.Ex05.*;
 
 public class Ex06 {
     public static void main(String[] args) {
-
         Scanner input = new Scanner(System.in);
 
         int tamanhoVetor;
@@ -17,15 +16,10 @@ public class Ex06 {
 
         int opcao;
 
-        boolean op = true;
-
         for (int i = 0; i < tamanhoVetor; i++) {
-
             System.out.print("insira no Vetor[" + i + "]: ");
             vetor[i] = input.nextInt();
         }
-
-
         do {
             System.out.println("\n *** Analise de um Vetor ***");
             System.out.println(" **** escolha uma opcao *****");
@@ -39,22 +33,25 @@ public class Ex06 {
             switch (opcao) {
 
                 case 1:
-                    System.out.print("\nMaior vetor: "+maior(vetor));
+                    System.out.print("\nMaior vetor: " + maior(vetor));
                     break;
                 case 2:
-                    System.out.print("\nMenor vetor: "+menor(vetor));
+                    System.out.print("\nMenor vetor: " + menor(vetor));
                     break;
                 case 3:
-                    System.out.println(crescente(vetor));
+                    if (crescente(vetor)) {
+                        System.out.print("Crescente");
+                    } else {
+                        System.out.print("Não crescente");
+                    }
                     break;
                 case 4:
-                    System.out.println("\nSaindo...");
-                    op = false;
+                    System.out.print("\nSaindo...");
                     break;
                 default:
-                    System.out.println("\nopcao invalida\n");
+                    System.out.print("\nopcao invalida\n");
             }
-        } while (op);
+        } while (opcao != 4);
 
     }
 }

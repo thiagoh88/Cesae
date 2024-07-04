@@ -16,8 +16,8 @@ public class Ex04 {
         numero = input.nextInt();
 
         do
-        {
-            System.out.println("\n*** Analise de um numero ***");
+         {
+            System.out.println("\n*** Analise do numero: "+numero+" ***");
             System.out.println(" **** escolha uma opcao *****");
             System.out.println("     1. par ou impar");
             System.out.println("     2. positivo ou negativo");
