@@ -37,12 +37,21 @@ public class Ex03 {
      * @return true se primo || false não primo
      */
     public static boolean primo(int num) {
+        int divisor = 0;
+
+        if (num <= 1) {
+            return false;
+        }
         for (int i = 2; i < num; i++) {
             if (num % i == 0) {
-                return true;
+                divisor++;
             }
         }
-        return false;
+        if (divisor == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -72,8 +81,7 @@ public class Ex03 {
      * @param num
      * @return
      */
-    public static boolean triangular(int num)
-    {
+    public static boolean triangular(int num) {
         int triangulares = 0;
         for (int i = 1; triangulares < num; i++)
         {

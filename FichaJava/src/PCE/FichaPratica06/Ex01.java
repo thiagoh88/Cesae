@@ -3,6 +3,7 @@ package PCE.FichaPratica06;
 import java.util.Scanner;
 
 public class Ex01 {
+
     public static void fazerBarulho(String animal) {
 
         animal = animal.toLowerCase();

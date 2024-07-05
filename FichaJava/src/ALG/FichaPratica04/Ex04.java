@@ -11,7 +11,7 @@ public class Ex04 {
         System.out.print("insira um numero: ");
         numero=input.nextInt();
 
-        if (numero < 1)
+        if (numero <= 1)
         {
             System.out.println("não primo");
         }

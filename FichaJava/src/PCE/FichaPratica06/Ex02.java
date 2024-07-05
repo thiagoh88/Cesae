@@ -3,6 +3,7 @@ package PCE.FichaPratica06;
 import java.util.Scanner;
 
 public class Ex02 {
+
     /**
      * Metodo para ler numero Positivo Inteiro
      * @return para numero positivo inteiro
