@@ -1,6 +1,6 @@
 package PCE.FichaPratica06;
 
-public class Ex07 {
+public class Ex07_quadrado {
 
     public static void imprimirMoldura(String caracter, int linha, int coluna) {
 

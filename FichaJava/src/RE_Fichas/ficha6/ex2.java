@@ -37,8 +37,12 @@ public class ex2 {
     public static void main(String[] args) {
 
         int num=lerpositivo();
+
+        asterisco(10);
+
         asterisco(num);
 
+        asterisco(10);
 
     }
 

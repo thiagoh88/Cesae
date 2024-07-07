@@ -1,6 +1,6 @@
 package PCE.FichaPratica06;
 
-public class Ex03 {
+public class Ex03_metodos {
 
     /**
      * Método que retorna se um número é par ou impar

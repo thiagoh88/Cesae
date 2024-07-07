@@ -1,8 +1,6 @@
 package PCE.FichaPratica06;
 
-import java.util.Scanner;
-
-public class Ex05 {
+public class Ex05_metodoVetor {
 
     /**
      * Método para encontrar o maior vetor

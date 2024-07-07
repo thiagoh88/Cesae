@@ -2,7 +2,7 @@ package PCE.FichaPratica06;
 
 import java.util.Scanner;
 
-public class Ex08 {
+public class Ex08_somarMatriz {
 
     /**
      * Método que imprime uma matriz resultante da soma das duas matrizes enviadas por parâmetro

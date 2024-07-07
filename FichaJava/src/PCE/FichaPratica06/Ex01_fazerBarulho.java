@@ -2,7 +2,7 @@ package PCE.FichaPratica06;
 
 import java.util.Scanner;
 
-public class Ex01 {
+public class Ex01_fazerBarulho {
 
     public static void fazerBarulho(String animal) {
 

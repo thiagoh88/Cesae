@@ -2,7 +2,7 @@ package PCE.FichaPratica06;
 
 import java.util.Scanner;
 
-public class Ex02 {
+public class Ex02_asteriscos {
 
     /**
      * Metodo para ler numero Positivo Inteiro
@@ -40,5 +40,6 @@ public class Ex02 {
         int numeroUser = lerPositivoInteiro();
         linhaAsteriscos(numeroUser);
         linhaAsteriscos(30);
+
     }
 }

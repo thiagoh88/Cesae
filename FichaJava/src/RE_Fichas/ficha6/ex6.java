@@ -1,37 +1,35 @@
-package PCE.FichaPratica06;
+package RE_Fichas.ficha6;
 
 import java.util.Scanner;
 
-import static PCE.FichaPratica06.Ex05.*;
+import static PCE.FichaPratica06.Ex05_metodoVetor.*;
 
-public class Ex06 {
+public class ex6 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int tamanhoVetor;
         System.out.println("qual o tamanho do vetor?");
-        tamanhoVetor = input.nextInt();
-
+        int tamanhoVetor = input.nextInt();
+        int opcao;
         int[] vetor = new int[tamanhoVetor];
 
-        int opcao;
-
-        for (int i = 0; i < tamanhoVetor; i++) {
+        for (int i = 0; i < tamanhoVetor; i++)
+        {
             System.out.print("insira no Vetor[" + i + "]: ");
             vetor[i] = input.nextInt();
         }
-        do {
+        do
+        {
             System.out.println("\n *** Analise de um Vetor ***");
             System.out.println(" **** escolha uma opcao *****");
             System.out.println("     1. maior elemento");
             System.out.println("     2. menor elemento");
             System.out.println("     3. crescente ou nao");
             System.out.println("     4. sair\n");
-
             opcao = input.nextInt();
 
-            switch (opcao) {
-
+            switch (opcao)
+            {
                 case 1:
                     System.out.print("\nMaior vetor: " + maior(vetor));
                     break;
@@ -51,7 +49,7 @@ public class Ex06 {
                 default:
                     System.out.print("\nopcao invalida\n");
             }
-        } while (opcao != 4);
 
+        }while (opcao!=4);
     }
 }

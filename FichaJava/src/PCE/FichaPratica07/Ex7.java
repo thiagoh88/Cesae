@@ -16,7 +16,7 @@ public class Ex7 {
         {
 
             palavras += scannerFicheiro.next();
-            soma=palavras++
+
         }
         System.out.println(palavras);
     }

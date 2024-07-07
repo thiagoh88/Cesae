@@ -2,9 +2,9 @@ package PCE.FichaPratica06;
 
 import java.util.Scanner;
 
-import static PCE.FichaPratica06.Ex03.*;
+import static PCE.FichaPratica06.Ex03_metodos.*;
 
-public class Ex04 {
+public class Ex04_analise {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
