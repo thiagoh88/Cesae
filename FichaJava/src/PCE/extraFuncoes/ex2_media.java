@@ -1,4 +1,4 @@
-package RE_Fichas.extraFuncoes;
+package PCE.extraFuncoes;
 
 import java.util.Scanner;
 
