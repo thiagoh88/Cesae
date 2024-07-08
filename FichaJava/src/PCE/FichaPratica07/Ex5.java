@@ -10,7 +10,7 @@ public class Ex5 {
 
         Scanner numero = new Scanner(new File(path));
 
-        int num, somatorio = 0;
+        int somatorio = 0;
 
         while (numero.hasNextInt()) {
             somatorio += numero.nextInt();

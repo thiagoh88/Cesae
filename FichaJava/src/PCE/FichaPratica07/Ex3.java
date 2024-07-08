@@ -1,30 +1,17 @@
 package PCE.FichaPratica07;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 public class Ex3 {
 
-    public static String lerFicheiro() throws FileNotFoundException
-    {
-        Scanner leitura = new Scanner(new File("Files07/exercicio_01_Alternativa01.txt"));
-        String ficheiro = leitura.nextLine();
+    public static String copiarFicheiro(String pathOrigem,String pathDestino) throws IOException {
+        Scanner scannerOrigem = new Scanner(new File(pathOrigem));
+        FileWriter maquinaEscreverDestino = new FileWriter(new File(pathDestino));
 
-        while (leitura.hasNextLine())
-        {
-            ficheiro += leitura.nextLine();
+        while (scannerOrigem.hasNextLine()) {
+
         }
-        leitura.close();
 
-        return ficheiro;
-    }
-
-    public static void main(String[] args) throws FileNotFoundException
-    {
-        File file = new File("Files07/meuficheiro.txt");
-        PrintWriter printWriter = new PrintWriter(file);
-        printWriter.println(lerFicheiro());
-
-        printWriter.close();
+return pathDestino;
     }
 }
+

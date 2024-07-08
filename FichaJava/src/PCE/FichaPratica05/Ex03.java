@@ -6,7 +6,7 @@ public class Ex03 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int[] vetor = new int[10];
+        int[] vetor = new int[3];
         int maior;
 
         for (int i = 0; i < vetor.length; i++) {
