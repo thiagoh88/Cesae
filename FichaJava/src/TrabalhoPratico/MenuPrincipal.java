@@ -19,22 +19,24 @@ public class MenuPrincipal {
         System.out.println("              1.Admin");
         System.out.println("              2.Cliente");
         System.out.println("              3.Sair");
+
         int opcao = input.nextInt();
-        System.out.println("Opção selecionada: "+opcao);
+        System.out.println("Opção selecionada: " + opcao);
         switch (opcao) {
 
             case 1:
-                System.out.println("user");
+                System.out.println("\uD83D\uDEE0\uFE0F ADMIN LOGIN \uD83D\uDEE0\uFE0F");
+                System.out.println("  Insira o USER: ");
                 String user = input.next();
-                System.out.println("pass");
+                System.out.println("Insira a PASSWORD: ");
                 String password = input.next();
 
-                if( loginAdmin(user, password, matrizLogins)){
+                if (loginAdmin(user, password, matrizLogins)) {
+                    System.out.println("Bem-vindo: " + user);
                     MenuAdmin.adminMenu(opcao);
-                }else{
+                } else {
                     System.out.println("Acesso errado");
                 }
-
                 break;
             case 2:
                 MenuCliente.clienteMenu(opcao);
