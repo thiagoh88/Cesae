@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Ex7 {
+public class Ex7_contarLinhasPalavras {
 
     public static int contarLinhasFicheiro(String path) throws FileNotFoundException {
 
@@ -12,13 +12,14 @@ public class Ex7 {
 
         int numeroLinhas = 0;
 
-        while (scannerFicheiro.hasNextLine()) {
+        while (scannerFicheiro.hasNextLine()){
             numeroLinhas++;
             scannerFicheiro.nextLine();
         }
-        return numeroLinhas;
 
+        return numeroLinhas;
     }
+
 
     public static int contarPalavrasFicheiro(String path) throws FileNotFoundException {
 
@@ -30,15 +31,14 @@ public class Ex7 {
             numeroPalavras++;
             scannerFicheiro.next();
         }
-return numeroPalavras;
+
+        return numeroPalavras;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        System.out.println(contarLinhasFicheiro("Files07/exercicio_07.txt"));
-        System.out.println(contarPalavrasFicheiro("Files07/exercicio_07.txt"));
+        System.out.println("Numero Linhas: "+contarLinhasFicheiro("FicheirosFicha07/exercicio_07.txt"));
+        System.out.println("Numero Palavras: "+contarPalavrasFicheiro("FicheirosFicha07/exercicio_07.txt"));
     }
 
 }
-
-

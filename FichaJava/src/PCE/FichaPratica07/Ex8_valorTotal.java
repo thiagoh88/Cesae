@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Ex8 {
+public class Ex8_valorTotal {
 
     public static double valorTotalVendido(String path) throws FileNotFoundException {
 
@@ -20,12 +20,13 @@ public class Ex8 {
             String[] linhaDividida = linha.split(",");
 
             totalVendido += Double.parseDouble(linhaDividida[2]) * Double.parseDouble(linhaDividida[3]);
+
         }
+
         return totalVendido;
     }
 
-    public static void main(String[] args) {
-        System.out.println();
+    public static void main(String[] args) throws FileNotFoundException {
+        System.out.println("Total Vendido: " + valorTotalVendido("FicheirosFicha07/exercicio_08.csv") + " €");
     }
-
 }

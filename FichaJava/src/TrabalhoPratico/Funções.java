@@ -1,11 +1,49 @@
 package TrabalhoPratico;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Funções {
 
+
+    /**
+     * Método para contar as colunas da matriz
+     *
+     * @param path
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static int contarColunasFicheiro(String path) throws FileNotFoundException {
+        Scanner scannerFicheiro = new Scanner(new File(path));
+
+        if (scannerFicheiro.hasNextLine()) {
+            String primeiraLinha = scannerFicheiro.nextLine();
+            String[] colunas = primeiraLinha.split(",");
+            return colunas.length;
+        }
+        return 0;
+    }
+
+    /**
+     * Método para contar as linhas da matriz
+     *
+     * @param path
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static int contarLinhasFicheiro(String path) throws FileNotFoundException {
+
+        Scanner scannerFicheiro = new Scanner(new File(path));
+
+        int numeroLinhas = 0;
+
+        while (scannerFicheiro.hasNextLine()) {
+            numeroLinhas++;
+            scannerFicheiro.nextLine();
+        }
+
+        return numeroLinhas;
+    }
 
     /**
      * Método de leitura e "transformação" do ficheiro em matriz
@@ -15,6 +53,33 @@ public class Funções {
      * @throws FileNotFoundException
      */
     public static String[][] lerCsvParaMatriz(String path) throws FileNotFoundException {
+
+        String[][] matrizCompleta = new String[contarLinhasFicheiro(path)][contarColunasFicheiro(path)];
+        Scanner scannerFicheiro = new Scanner(new File(path));
+
+
+        int contadorLinhaMatriz = 0;
+
+        while (scannerFicheiro.hasNextLine()) {
+            String linha = scannerFicheiro.nextLine();
+            String[] linhaDividida = linha.split(";");
+
+            for (int coluna = 0; coluna < matrizCompleta[0].length; coluna++) {
+                matrizCompleta[contadorLinhaMatriz][coluna] = linhaDividida[coluna];
+            }
+            contadorLinhaMatriz++;
+        }
+        return matrizCompleta;
+    }
+
+    /**
+     * Método especifico para o login do admin
+     *
+     * @param path
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static String[][] lerCsvParaMatrizLogin(String path) throws FileNotFoundException {
 
         String[][] matrizCompleta = new String[4][2];
         Scanner scannerFicheiro = new Scanner(new File(path));
@@ -35,7 +100,7 @@ public class Funções {
     }
 
     /**
-     * Método para dar acesso unicamendo ao admin
+     * Método para dar acesso ao admin
      *
      * @param user
      * @param password
@@ -67,7 +132,15 @@ public class Funções {
 
         while (scannerFicheiro.hasNext()) {
             String linhaAtual = scannerFicheiro.nextLine();
-            System.out.println(linhaAtual);
+            for (char trocarEspaco : linhaAtual.toCharArray()) {
+
+                if (trocarEspaco == ';') {
+                    System.out.print(' ');
+                } else {
+                    System.out.print(trocarEspaco);
+                }
+            }
+            System.out.println();
         }
     }
 
@@ -75,10 +148,9 @@ public class Funções {
      * Método para somar as vendas
      *
      * @param path
-     * @return
      * @throws FileNotFoundException
      */
-    public static Double valorTotalVendido(String path) throws FileNotFoundException {
+    public static void valorTotalVendido(String path) throws FileNotFoundException {
 
         Scanner scannerFicheiro = new Scanner(new File(path));
 
@@ -94,56 +166,75 @@ public class Funções {
 
 
         }
-        System.out.println("Total de vendas: " + "€" + somatorio);
-        return somatorio;
+
+        System.out.println("\nTotal de vendas: " + String.format("€%.2f", somatorio));
     }
 
-
-    public static Double totalLucro(String[][] matrizVendas, String[][] matrizCategoria) throws FileNotFoundException {
-        Scanner scannerFicheiro = new Scanner(System.in);
-
-        double lucro = 0;
-        String linhaAtual = scannerFicheiro.nextLine();
-        for (int linhasVendas = 0; linhasVendas < matrizVendas.length; linhasVendas++) {
-            for (int linhasCategoria = 0; linhasCategoria < matrizCategoria.length; linhasCategoria++) {
-
-                if (matrizVendas[linhasVendas][5].equals(matrizCategoria[linhasCategoria][1])) {
-                    lucro += Double.parseDouble(matrizVendas[linhasVendas][1]) * Double.parseDouble(matrizCategoria[linhasCategoria][1]) / 100;
-                }
-            }
-        }
-        System.out.println(lucro);
-        return lucro;
-    }
-
-    public static String[][] lerCsvParaMatriz2(String path) throws FileNotFoundException {
-
-        String[][] matrizCompleta = new String[176][2];
+    /**
+     * Método para pesquisar cliente
+     *
+     * @param path
+     * @param clienteId
+     * @throws FileNotFoundException
+     */
+    public static void pesquisaCliente(String path, int clienteId) throws FileNotFoundException {
         Scanner scannerFicheiro = new Scanner(new File(path));
 
-
-        int contadorLinhaMatriz = 0;
+        String primeiraLinha = scannerFicheiro.nextLine();
 
         while (scannerFicheiro.hasNextLine()) {
-            String linha = scannerFicheiro.nextLine();
+            String linhaAtual = scannerFicheiro.nextLine();
+            String[] colunas = linhaAtual.split(";");
+
+            if (colunas.length > 0 && Integer.parseInt(colunas[0]) == clienteId) {
+                System.out.println(primeiraLinha);
+                System.out.println(linhaAtual);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Método para verificar o jogo mais caro
+     *
+     * @param path
+     * @throws FileNotFoundException
+     */
+    public static void jogoCaro(String path) throws FileNotFoundException {
+        Scanner scannerFicheiro = new Scanner(new File(path));
+
+        double jogoMaisCaro = 0;
+        String nomeJogo = "";
+        String linha = scannerFicheiro.nextLine();
+
+        while (scannerFicheiro.hasNextLine()) {
+            linha = scannerFicheiro.nextLine();
             String[] linhaDividida = linha.split(";");
 
-            for (int coluna = 0; coluna < matrizCompleta[0].length; coluna++) {
-                matrizCompleta[contadorLinhaMatriz][coluna] = linhaDividida[coluna];
+            if (Double.parseDouble(linhaDividida[5]) > jogoMaisCaro) {
+                jogoMaisCaro = Double.parseDouble(linhaDividida[5]);
+                nomeJogo = linhaDividida[4];
             }
-            contadorLinhaMatriz++;
         }
-        return matrizCompleta;
+        System.out.println("\nJogo mais caro:  " + nomeJogo + " €" + jogoMaisCaro);
+    }
+
+    /**
+     * Método para gravar as informações do cliente (add Bufferedwriter)
+     * @param path
+     * @param
+     * @throws FileNotFoundException
+     */
+    public static void gravarCliente(String path, String nome,int contacto,String email) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path, true));
+        writer.write(nome+" | "+contacto+" | "+email);
+        writer.newLine();
+        writer.close();
 
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        String[][] matrizVendas = lerCsvParaMatriz2("src/TrabalhoPratico/Ficheiros/GameStart_Vendas.csv");
-        String[][] matrizCategorias = lerCsvParaMatriz2("src/TrabalhoPratico/Ficheiros/GameStart_Categorias.csv");
-        totalLucro(matrizCategorias,matrizVendas);
-    }
+
+
 }
-
-
 
 
