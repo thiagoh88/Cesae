@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Funções {
 
-
     /**
      * Método para contar as colunas da matriz
      *
@@ -16,12 +15,14 @@ public class Funções {
     public static int contarColunasFicheiro(String path) throws FileNotFoundException {
         Scanner scannerFicheiro = new Scanner(new File(path));
 
-        if (scannerFicheiro.hasNextLine()) {
+        int numeroColuna = 0;
+
+        while (scannerFicheiro.hasNextLine()) {
             String primeiraLinha = scannerFicheiro.nextLine();
-            String[] colunas = primeiraLinha.split(",");
-            return colunas.length;
+            String[] colunas = primeiraLinha.split(";");
+            numeroColuna = colunas.length;
         }
-        return 0;
+        return numeroColuna;
     }
 
     /**
@@ -32,7 +33,6 @@ public class Funções {
      * @throws FileNotFoundException
      */
     public static int contarLinhasFicheiro(String path) throws FileNotFoundException {
-
         Scanner scannerFicheiro = new Scanner(new File(path));
 
         int numeroLinhas = 0;
@@ -132,6 +132,8 @@ public class Funções {
 
         while (scannerFicheiro.hasNext()) {
             String linhaAtual = scannerFicheiro.nextLine();
+
+            //Para embelezar o print trocando ; por espaço//
             for (char trocarEspaco : linhaAtual.toCharArray()) {
 
                 if (trocarEspaco == ';') {
@@ -155,19 +157,18 @@ public class Funções {
         Scanner scannerFicheiro = new Scanner(new File(path));
 
         double somatorio = 0;
-
+        int contador = 0;
         String linhaAtual = scannerFicheiro.nextLine();
 
         while (scannerFicheiro.hasNext()) {
             linhaAtual = scannerFicheiro.nextLine();
             String[] linhaDividida = linhaAtual.split(";");
-
             somatorio += Double.parseDouble(linhaDividida[5]);
-
+            contador++;
 
         }
-
-        System.out.println("\nTotal de vendas: " + String.format("€%.2f", somatorio));
+        System.out.println("\nTotal de vendas: " + contador);
+        System.out.println("\nValor total de vendas: " + String.format("€%.2f", somatorio));
     }
 
     /**
@@ -187,11 +188,12 @@ public class Funções {
             String[] colunas = linhaAtual.split(";");
 
             if (Integer.parseInt(colunas[0]) == clienteId) {
+
                 System.out.println(primeiraLinha);
                 System.out.println(linhaAtual);
-                return;
             }
         }
+        System.out.println("\nID INCORRETA");
     }
 
     /**
@@ -296,32 +298,38 @@ public class Funções {
                 }
             }
         }
-        System.out.println(lucroTotal);
+        System.out.println(String.format("\nTotal de lucro das vendas: " + "€%.2f", lucroTotal));
     }
 
     public static void melhorCliente(String pathClientes, String pathVendas) throws FileNotFoundException {
-
         Scanner scannerFicheiro = new Scanner(new File(pathVendas));
 
-        int melhorCliente = 0;
+        double valorTotalCliente;
+        double melhorCliente = 0;
+
         String nomeJogo = "";
+
         String linha = scannerFicheiro.nextLine();
 
         //encontrar o melhor cliente -------------------------------------
         while (scannerFicheiro.hasNextLine()) {
+
             linha = scannerFicheiro.nextLine();
+
             String[] linhaDivididaVendas = linha.split(";");
 
+            melhorCliente = Integer.parseInt(linhaDivididaVendas[1]);
 
-
+            valorTotalCliente = Double.parseDouble(linhaDivididaVendas[5]);
 
             if (valorTotalCliente > melhorCliente) {
-
                 melhorCliente = valorTotalCliente;
-                idClienteMelhor = idClienteAtual;
+                //idClientemelhor = idClienteAtual;
             }
+
+
         }
-        System.out.println(melhorCliente);
+        System.out.println();
     }
 }
 

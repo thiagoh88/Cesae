@@ -48,7 +48,9 @@ public class MenuPrincipal {
                     MenuCliente.clienteMenu(opcao);
                     break;
                 case 3:
-                    System.out.println("\nAté à próxima \uD83D\uDE4B\uD83C\uDFFB\u200D♂\uFE0F");
+                    System.out.println();
+                    Funções.imprimirFicheiro("src/TrabalhoPratico/Ficheiros/bypereira.txt");
+                    System.out.println("//                              by Thiago Pereira\n");
                     break;
                 default:
                     System.out.println("\n8Opção invalida");
