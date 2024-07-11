@@ -186,7 +186,7 @@ public class Funções {
             String linhaAtual = scannerFicheiro.nextLine();
             String[] colunas = linhaAtual.split(";");
 
-            if (colunas.length > 0 && Integer.parseInt(colunas[0]) == clienteId) {
+            if (Integer.parseInt(colunas[0]) == clienteId) {
                 System.out.println(primeiraLinha);
                 System.out.println(linhaAtual);
                 return;
@@ -195,46 +195,133 @@ public class Funções {
     }
 
     /**
-     * Método para verificar o jogo mais caro
+     * Método para verificar o jogo mais caro e imprimir os clientes que o compraram
      *
-     * @param path
+     * @param pathVendas
      * @throws FileNotFoundException
      */
-    public static void jogoCaro(String path) throws FileNotFoundException {
-        Scanner scannerFicheiro = new Scanner(new File(path));
+    public static void jogoCaro(String pathVendas, String pathClientes) throws FileNotFoundException {
+        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
 
         double jogoMaisCaro = 0;
         String nomeJogo = "";
+        String clienteJogoCaro = "";
         String linha = scannerFicheiro.nextLine();
 
+        //encontrar o jogo mais caro _______________________________________
         while (scannerFicheiro.hasNextLine()) {
             linha = scannerFicheiro.nextLine();
             String[] linhaDividida = linha.split(";");
 
             if (Double.parseDouble(linhaDividida[5]) > jogoMaisCaro) {
+
                 jogoMaisCaro = Double.parseDouble(linhaDividida[5]);
                 nomeJogo = linhaDividida[4];
+                clienteJogoCaro = linhaDividida[1];
             }
         }
-        System.out.println("\nJogo mais caro:  " + nomeJogo + " €" + jogoMaisCaro);
+
+        System.out.println("\nJogo mais caro.\n" + nomeJogo + " €" + jogoMaisCaro);
+        System.out.println("\nClientes que Compraram: ");
+
+        // ________________________________________________________________
+
+        Scanner scannerFicheiro2 = new Scanner(new File(pathVendas));
+        linha = scannerFicheiro2.nextLine();
+
+        // encontrar clientes que o compraram por ID
+        while (scannerFicheiro2.hasNextLine()) {
+            linha = scannerFicheiro2.nextLine();
+            String[] linhaDividida = linha.split(";");
+
+            if (jogoMaisCaro == Double.parseDouble(linhaDividida[5])) {
+
+                Scanner scannerFicheiro3 = new Scanner(new File(pathClientes));
+                linha = scannerFicheiro3.nextLine();
+
+                while (scannerFicheiro3.hasNextLine()) {
+                    linha = scannerFicheiro3.nextLine();
+                    String[] linhaDivididaClientes = linha.split(";");
+                    // procurar o cliente com aquele id
+                    if (linhaDividida[1].equals(linhaDivididaClientes[0])) {
+                        System.out.print("\n| Id: " + linhaDivididaClientes[0]);
+                        System.out.println(" | Nome: " + linhaDivididaClientes[1] + " |");
+                    }
+
+                }
+            }
+        }
     }
 
     /**
      * Método para gravar as informações do cliente (add Bufferedwriter)
+     *
      * @param path
      * @param
      * @throws FileNotFoundException
      */
-    public static void gravarCliente(String path, String nome,int contacto,String email) throws IOException {
+    public static void gravarCliente(String path, String nome, int contacto, String email) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path, true));
-        writer.write(nome+" | "+contacto+" | "+email);
+        writer.write(nome + " | " + contacto + " | " + email);
         writer.newLine();
         writer.close();
 
     }
 
+    /**
+     * Método para encontrar o lucro das vendas em base na categoria vs percentual
+     *
+     * @param pathVendas
+     * @param pathCategorias
+     * @throws FileNotFoundException
+     */
+    public static void totalLucro(String pathVendas, String pathCategorias) throws FileNotFoundException {
+        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
+        String linhaAtual = scannerFicheiro.nextLine();
+        double lucroTotal = 0;
+
+        while (scannerFicheiro.hasNext()) {
+            linhaAtual = scannerFicheiro.nextLine();
+            String[] linhaDivididaVendas = linhaAtual.split(";");
+
+            Scanner scannerFicheiro2 = new Scanner(new File(pathCategorias));
+            linhaAtual = scannerFicheiro2.nextLine();
+
+            while (scannerFicheiro2.hasNext()) {
+                linhaAtual = scannerFicheiro2.nextLine();
+                String[] linhaDivididaCategoria = linhaAtual.split(";");
+
+                if (linhaDivididaVendas[3].equals(linhaDivididaCategoria[0])) {
+                    lucroTotal += Double.parseDouble(linhaDivididaVendas[5]) * (Double.parseDouble(linhaDivididaCategoria[1]) / 100);
+                }
+            }
+        }
+        System.out.println(lucroTotal);
+    }
+
+    public static void melhorCliente(String pathClientes, String pathVendas) throws FileNotFoundException {
+
+        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
+
+        int melhorCliente = 0;
+        String nomeJogo = "";
+        String linha = scannerFicheiro.nextLine();
+
+        //encontrar o melhor cliente -------------------------------------
+        while (scannerFicheiro.hasNextLine()) {
+            linha = scannerFicheiro.nextLine();
+            String[] linhaDivididaVendas = linha.split(";");
 
 
+
+
+            if (valorTotalCliente > melhorCliente) {
+
+                melhorCliente = valorTotalCliente;
+                idClienteMelhor = idClienteAtual;
+            }
+        }
+        System.out.println(melhorCliente);
+    }
 }
-
 

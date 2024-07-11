@@ -24,7 +24,7 @@ public class MenuCliente {
             System.out.println("          5.Catálogo editora");
             System.out.println("          6.Catálogo categoria");
             System.out.println("          7.Jogo mais recente");
-            System.out.println("          8.Voltar");
+            System.out.println("          8.Menu principal");
 
             opcaoCliente = input.nextInt();
             System.out.println("Opção selecionada: " + opcaoCliente);
