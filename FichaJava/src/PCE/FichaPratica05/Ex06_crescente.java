@@ -2,7 +2,7 @@ package PCE.FichaPratica05;
 
 import java.util.Scanner;
 
-public class Ex06 {
+public class Ex06_crescente {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 

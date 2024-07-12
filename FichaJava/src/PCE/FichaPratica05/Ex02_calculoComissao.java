@@ -2,7 +2,7 @@ package PCE.FichaPratica05;
 
 import java.util.Scanner;
 
-public class Ex02 {
+public class Ex02_calculoComissao {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 

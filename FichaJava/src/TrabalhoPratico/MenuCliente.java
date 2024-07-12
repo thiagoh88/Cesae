@@ -11,7 +11,7 @@ public class MenuCliente {
         Scanner input = new Scanner(System.in);
 
         String[][] matrizLogins = lerCsvParaMatriz("src/TrabalhoPratico/Ficheiros/GameStart_Admins.csv");
-
+        String pathCatalogo = "src/TrabalhoPratico/Ficheiros/GameStart_Vendas.csv";
         do {
             System.out.println("\n\n⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
             System.out.println("\t\uD83D\uDD79\uFE0F  Game Start - CLIENTE  \uD83D\uDD79\uFE0F ");
@@ -31,14 +31,14 @@ public class MenuCliente {
             switch (opcaoCliente) {
                 case 1:
                     //Cria e grava dados do cliente em nextLine//
-                    System.out.println("Inserir Cliente");
+                    System.out.println("\n          Inserir Cliente");
                     input.nextLine();
-                    System.out.println("Nome Completo: ");
+                    System.out.println("\n          Nome Completo: ");
                     String nomeCompleto = input.nextLine();
-                    System.out.println("Contacto: ");
+                    System.out.println("          Contacto: ");
                     int contacto = input.nextInt();
                     input.nextLine();
-                    System.out.println("Email: ");
+                    System.out.println("          Email: ");
                     String email = input.nextLine();
                     String path = "src/TrabalhoPratico/Ficheiros/gravarCliente.txt";
                     Funções.gravarCliente("src/TrabalhoPratico/Ficheiros/gravarCliente.txt", nomeCompleto, contacto, email);
@@ -48,7 +48,7 @@ public class MenuCliente {
                     System.out.println("Estacionamento");
                     break;
                 case 3:
-                    System.out.println("Imprimir catálogo");
+
                     break;
                 case 4:
                     System.out.println("\n    \uD83D\uDC7EEscolha o jogo para imprimir\uD83D\uDC7E ");

@@ -2,31 +2,30 @@ package PCE.FichaPratica05;
 
 import java.util.Scanner;
 
-public class Ex04 {
+public class Ex03_maiorVetor {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         int[] vetor = new int[3];
-        int menor;
+        int maior;
 
-        for (int i = 0; i < vetor.length; i++)
-        {
+        for (int i = 0; i < vetor.length; i++) {
             System.out.print("insira no Vetor[" + i + "]: ");
             vetor[i] = input.nextInt();
         }
 
-        menor = vetor[0];
+        maior = vetor[0];
 
         System.out.println("\n---------------------\n");
 
-        for (int i = 1; i < vetor.length; i++)
+        for (int i = 0; i < vetor.length; i++)
         {
-            if (vetor[i] < menor)
+            if (vetor[i] > maior)
             {
-                menor = vetor[i];
+                maior = vetor[i];
             }
-
         }
-        System.out.println("Menor: "+menor);
+
+        System.out.println("Maior: " + maior);
     }
 }

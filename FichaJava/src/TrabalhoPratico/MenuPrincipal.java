@@ -8,7 +8,7 @@ public class MenuPrincipal {
 
     public static void main(String[] args) throws IOException
     {
-        Scanner input = new Scanner(System.in);
+           Scanner input = new Scanner(System.in);
 
         String[][] matrizLogins = lerCsvParaMatrizLogin("src/TrabalhoPratico/Ficheiros/GameStart_Admins.csv");
 

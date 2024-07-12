@@ -133,15 +133,6 @@ public class Funções {
         while (scannerFicheiro.hasNext()) {
             String linhaAtual = scannerFicheiro.nextLine();
 
-            //Para embelezar o print trocando ; por espaço//
-            for (char trocarEspaco : linhaAtual.toCharArray()) {
-
-                if (trocarEspaco == ';') {
-                    System.out.print(' ');
-                } else {
-                    System.out.print(trocarEspaco);
-                }
-            }
             System.out.println();
         }
     }
@@ -189,11 +180,13 @@ public class Funções {
 
             if (Integer.parseInt(colunas[0]) == clienteId) {
 
-                System.out.println(primeiraLinha);
-                System.out.println(linhaAtual);
+                String[] primeiraLinhaDividida = primeiraLinha.split(";");
+
+                for (int i = 0; i < colunas.length; i++) {
+                    System.out.println(primeiraLinhaDividida[i] + ": " + colunas[i]);
+                }
             }
         }
-        System.out.println("\nID INCORRETA");
     }
 
     /**
@@ -301,35 +294,111 @@ public class Funções {
         System.out.println(String.format("\nTotal de lucro das vendas: " + "€%.2f", lucroTotal));
     }
 
-    public static void melhorCliente(String pathClientes, String pathVendas) throws FileNotFoundException {
-        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
+    /**
+     * Método para encontrar o melhor cliente
+     *
+     * @param pathVendas
+     * @param
+     * @param
+     * @throws FileNotFoundException
+     */
+    public static void melhorCliente(String pathVendas, String pathClientes) throws FileNotFoundException {
 
-        double valorTotalCliente;
-        double melhorCliente = 0;
+        double valorTotalCliente = 0;
+        double valorMelhorCliente = 0;
+        int idMelhorCliente = 0;
 
-        String nomeJogo = "";
+        for (int idClienteAtual = 1; idClienteAtual < contarLinhasFicheiro(pathVendas); idClienteAtual++) {
 
+            valorTotalCliente = 0;
+
+            Scanner scannerFicheiro = new Scanner(new File(pathVendas));
+            String linha = scannerFicheiro.nextLine();
+
+            while (scannerFicheiro.hasNextLine()) {
+
+                linha = scannerFicheiro.nextLine();
+                String[] linhaDivididaVendas = linha.split(";");
+
+                if (Integer.parseInt(linhaDivididaVendas[1]) == idClienteAtual) {
+                    valorTotalCliente += Double.parseDouble(linhaDivididaVendas[5]);
+                }
+            }
+            if (valorTotalCliente > valorMelhorCliente) {
+                valorMelhorCliente = valorTotalCliente;
+                idMelhorCliente = idClienteAtual;
+            }
+        }
+        System.out.println("\n           Melhor Cliente");
+        System.out.println("\n          Gastou: " + valorMelhorCliente + "€\n");
+
+        Scanner scannerFicheiro = new Scanner(new File(pathClientes));
         String linha = scannerFicheiro.nextLine();
 
-        //encontrar o melhor cliente -------------------------------------
         while (scannerFicheiro.hasNextLine()) {
 
             linha = scannerFicheiro.nextLine();
+            String[] linhaDivididaClientes = linha.split(";");
 
-            String[] linhaDivididaVendas = linha.split(";");
-
-            melhorCliente = Integer.parseInt(linhaDivididaVendas[1]);
-
-            valorTotalCliente = Double.parseDouble(linhaDivididaVendas[5]);
-
-            if (valorTotalCliente > melhorCliente) {
-                melhorCliente = valorTotalCliente;
-                //idClientemelhor = idClienteAtual;
+            if (Integer.parseInt(linhaDivididaClientes[0]) == idMelhorCliente) {
+                System.out.println(linha);
             }
-
-
         }
-        System.out.println();
+        System.out.println("\nJogos comprados: ");
+        Scanner scannerFicheiro2 = new Scanner(new File(pathVendas));
+        String linha2 = scannerFicheiro2.nextLine();
+
+        while (scannerFicheiro2.hasNextLine()) {
+
+            linha2 = scannerFicheiro2.nextLine();
+            String[] linhaDivididaVendas = linha2.split(";");
+
+            if (Integer.parseInt(linhaDivididaVendas[1]) == idMelhorCliente) {
+                System.out.println(linhaDivididaVendas[4]);
+            }
+        }
     }
+
+    public static void pesquisaVendas(String pathVendas, String pathClientes, String nomeJogo) throws FileNotFoundException {
+
+        double valorTotalCliente = 0;
+        double valorMelhorCliente = 0;
+        int idMelhorCliente = 0;
+
+        for (int idClienteAtual = 1; idClienteAtual < contarLinhasFicheiro(pathVendas); idClienteAtual++) {
+
+            valorTotalCliente = 0;
+
+            Scanner scannerFicheiro = new Scanner(new File(pathVendas));
+            String linha = scannerFicheiro.nextLine();
+
+            while (scannerFicheiro.hasNextLine()) {
+
+                linha = scannerFicheiro.nextLine();
+                String[] linhaDivididaVendas = linha.split(";");
+
+                if (Integer.parseInt(linhaDivididaVendas[1]) == idClienteAtual) {
+                    valorTotalCliente += Double.parseDouble(linhaDivididaVendas[5]);
+                }
+            }
+            if (valorTotalCliente > valorMelhorCliente) {
+                valorMelhorCliente = valorTotalCliente;
+                idMelhorCliente = idClienteAtual;
+            }
+        }
+        System.out.println("\n           Melhor Cliente");
+        System.out.println("\n          Gastou: " + valorMelhorCliente + "€\n");
+
+
+    }
+
+
+
+
 }
+
+
+
+
+
 

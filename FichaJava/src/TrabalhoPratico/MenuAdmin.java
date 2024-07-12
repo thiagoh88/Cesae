@@ -27,7 +27,7 @@ public class MenuAdmin {
             System.out.println("        3.Total de Lucro✅");
             System.out.println("        4.Pesquisa de cliente✅");
             System.out.println("        5.Jogo mais caro✅");
-            System.out.println("        6.Melhores clientes");
+            System.out.println("        6.Melhor cliente✅");
             System.out.println("        7.Melhor categoria");
             System.out.println("        8.Pesquisa de vendas");
             System.out.println("        9.TOP 5 jogos");
@@ -63,7 +63,7 @@ public class MenuAdmin {
                     Funções.totalLucro(pathVendas, pathCategorias);
                     break;
                 case 4:
-                    System.out.println("Insira o iDcliente: ");
+                    System.out.println("\nInsira o iDcliente: ");
                     int clienteId = input.nextInt();
                     Funções.pesquisaCliente(pathClientes, clienteId);
                     break;
@@ -71,7 +71,7 @@ public class MenuAdmin {
                     Funções.jogoCaro(pathVendas, pathClientes);
                     break;
                 case 6:
-                    Funções.melhorCliente(pathClientes, pathVendas);
+                    Funções.melhorCliente(pathVendas, pathClientes);
                     break;
                 case 7:
 
