@@ -29,7 +29,7 @@ public class MenuAdmin {
             System.out.println("        5.Jogo mais caro✅");
             System.out.println("        6.Melhor cliente✅");
             System.out.println("        7.Melhor categoria");
-            System.out.println("        8.Pesquisa de vendas");
+            System.out.println("        8.Pesquisa de vendas✅");
             System.out.println("        9.TOP 5 jogos");
             System.out.println("        10.BOTTOM 5 jogos");
             System.out.println("        11.Menu principal");
@@ -77,7 +77,10 @@ public class MenuAdmin {
 
                     break;
                 case 8:
-
+                    input.nextLine();
+                    System.out.println("\n      Insira o nome do jogo: ");
+                    String nomeJogo = input.nextLine();
+                    Funções.pesquisaVendas(pathVendas,pathClientes, nomeJogo);
                     break;
                 case 9:
 

@@ -132,8 +132,7 @@ public class Funções {
 
         while (scannerFicheiro.hasNext()) {
             String linhaAtual = scannerFicheiro.nextLine();
-
-            System.out.println();
+            System.out.println(linhaAtual);
         }
     }
 
@@ -332,6 +331,9 @@ public class Funções {
         System.out.println("\n           Melhor Cliente");
         System.out.println("\n          Gastou: " + valorMelhorCliente + "€\n");
 
+
+        //Imprimir jogos comprados pelo melhor cliente
+
         Scanner scannerFicheiro = new Scanner(new File(pathClientes));
         String linha = scannerFicheiro.nextLine();
 
@@ -359,43 +361,70 @@ public class Funções {
         }
     }
 
+    /**
+     * Método para pesquisar uma venda com input do usuario
+     *
+     * @param pathVendas
+     * @param pathClientes
+     * @param nomeJogo
+     * @throws FileNotFoundException
+     */
     public static void pesquisaVendas(String pathVendas, String pathClientes, String nomeJogo) throws FileNotFoundException {
+        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
 
-        double valorTotalCliente = 0;
-        double valorMelhorCliente = 0;
-        int idMelhorCliente = 0;
+        //Encontrar os clientes que compraram o jogo do input
 
-        for (int idClienteAtual = 1; idClienteAtual < contarLinhasFicheiro(pathVendas); idClienteAtual++) {
+        String linhaAtual = scannerFicheiro.nextLine();
+        System.out.println("\n      Clientes que compraram o jogo:");
+        while (scannerFicheiro.hasNext()) {
+            linhaAtual = scannerFicheiro.nextLine();
+            String[] linhaDivididaVendas = linhaAtual.split(";");
 
-            valorTotalCliente = 0;
+            if (linhaDivididaVendas[4].equalsIgnoreCase(nomeJogo)) {
+                String idcliente = linhaDivididaVendas[1];
 
-            Scanner scannerFicheiro = new Scanner(new File(pathVendas));
-            String linha = scannerFicheiro.nextLine();
+                //imprimir os clientes
 
-            while (scannerFicheiro.hasNextLine()) {
+                Scanner scannerFicheiro2 = new Scanner(new File(pathClientes));
+                String linhaAtual2 = scannerFicheiro2.nextLine();
 
-                linha = scannerFicheiro.nextLine();
-                String[] linhaDivididaVendas = linha.split(";");
+                while (scannerFicheiro2.hasNext()) {
+                    linhaAtual2 = scannerFicheiro2.nextLine();
+                    String[] linhaDivididaCliente = linhaAtual2.split(";");
 
-                if (Integer.parseInt(linhaDivididaVendas[1]) == idClienteAtual) {
-                    valorTotalCliente += Double.parseDouble(linhaDivididaVendas[5]);
+                    if (linhaDivididaCliente[0].equalsIgnoreCase(idcliente)) {
+                        System.out.println(linhaAtual2);
+                    }
                 }
             }
-            if (valorTotalCliente > valorMelhorCliente) {
-                valorMelhorCliente = valorTotalCliente;
-                idMelhorCliente = idClienteAtual;
-            }
         }
-        System.out.println("\n           Melhor Cliente");
-        System.out.println("\n          Gastou: " + valorMelhorCliente + "€\n");
-
-
     }
 
+    public static void imprimirCatalogo(String pathVendas) throws FileNotFoundException {
+        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
 
+        String linhaAtual = scannerFicheiro.nextLine();
 
+        while (scannerFicheiro.hasNext()) {
+            linhaAtual = scannerFicheiro.nextLine();
+            String[] linhaDivididaVendas = linhaAtual.split(";");
+            String nomeJogo = linhaDivididaVendas[4];
 
+            System.out.println(nomeJogo);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

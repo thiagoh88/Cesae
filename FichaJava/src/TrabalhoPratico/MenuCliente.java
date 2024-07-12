@@ -12,6 +12,8 @@ public class MenuCliente {
 
         String[][] matrizLogins = lerCsvParaMatriz("src/TrabalhoPratico/Ficheiros/GameStart_Admins.csv");
         String pathCatalogo = "src/TrabalhoPratico/Ficheiros/GameStart_Vendas.csv";
+        String pathVendas = "src/TrabalhoPratico/Ficheiros/GameStart_Vendas.csv";
+
         do {
             System.out.println("\n\n⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
             System.out.println("\t\uD83D\uDD79\uFE0F  Game Start - CLIENTE  \uD83D\uDD79\uFE0F ");
@@ -48,7 +50,7 @@ public class MenuCliente {
                     System.out.println("Estacionamento");
                     break;
                 case 3:
-
+                    Funções.imprimirCatalogo(pathVendas);
                     break;
                 case 4:
                     System.out.println("\n    \uD83D\uDC7EEscolha o jogo para imprimir\uD83D\uDC7E ");
