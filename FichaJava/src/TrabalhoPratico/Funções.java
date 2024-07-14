@@ -9,7 +9,7 @@ public class Funções {
      * Método para contar as colunas da matriz
      *
      * @param path
-     * @return
+     * @return numeroColuna
      * @throws FileNotFoundException
      */
     public static int contarColunasFicheiro(String path) throws FileNotFoundException {
@@ -29,7 +29,7 @@ public class Funções {
      * Método para contar as linhas da matriz
      *
      * @param path
-     * @return
+     * @return numeroLinhas
      * @throws FileNotFoundException
      */
     public static int contarLinhasFicheiro(String path) throws FileNotFoundException {
@@ -49,7 +49,7 @@ public class Funções {
      * Método de leitura e "transformação" do ficheiro em matriz
      *
      * @param path
-     * @return
+     * @return matrizCompleta
      * @throws FileNotFoundException
      */
     public static String[][] lerCsvParaMatriz(String path) throws FileNotFoundException {
@@ -202,11 +202,11 @@ public class Funções {
         String clienteJogoCaro = "";
         String linha = scannerFicheiro.nextLine();
 
-        //encontrar o jogo mais caro _______________________________________
         while (scannerFicheiro.hasNextLine()) {
             linha = scannerFicheiro.nextLine();
             String[] linhaDividida = linha.split(";");
 
+            //encontrar o jogo mais caro
             if (Double.parseDouble(linhaDividida[5]) > jogoMaisCaro) {
 
                 jogoMaisCaro = Double.parseDouble(linhaDividida[5]);
@@ -215,7 +215,7 @@ public class Funções {
             }
         }
 
-        System.out.println("\nJogo mais caro.\n" + nomeJogo + " €" + jogoMaisCaro);
+        System.out.println("\nJogo mais caro:\n" + nomeJogo + " - €" + jogoMaisCaro);
         System.out.println("\nClientes que Compraram: ");
 
         // ________________________________________________________________
@@ -255,10 +255,12 @@ public class Funções {
      * @throws FileNotFoundException
      */
     public static void gravarCliente(String path, String nome, int contacto, String email) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path, true));
-        writer.write(nome + " | " + contacto + " | " + email);
-        writer.newLine();
-        writer.close();
+
+        BufferedWriter gravarCliente = new BufferedWriter(new FileWriter(path));
+
+        gravarCliente.write(nome + " | " + contacto + " | " + email);
+        gravarCliente.newLine();
+        gravarCliente.close();
 
     }
 
@@ -270,19 +272,20 @@ public class Funções {
      * @throws FileNotFoundException
      */
     public static void totalLucro(String pathVendas, String pathCategorias) throws FileNotFoundException {
-        Scanner scannerFicheiro = new Scanner(new File(pathVendas));
-        String linhaAtual = scannerFicheiro.nextLine();
+        Scanner scannerFicheiroVendas = new Scanner(new File(pathVendas));
+
+        String linhaAtual = scannerFicheiroVendas.nextLine();
         double lucroTotal = 0;
 
-        while (scannerFicheiro.hasNext()) {
-            linhaAtual = scannerFicheiro.nextLine();
+        while (scannerFicheiroVendas.hasNext()) {
+            linhaAtual = scannerFicheiroVendas.nextLine();
             String[] linhaDivididaVendas = linhaAtual.split(";");
 
-            Scanner scannerFicheiro2 = new Scanner(new File(pathCategorias));
-            linhaAtual = scannerFicheiro2.nextLine();
+            Scanner scannerFicheiroCategorias = new Scanner(new File(pathCategorias));
+            linhaAtual = scannerFicheiroCategorias.nextLine();
 
-            while (scannerFicheiro2.hasNext()) {
-                linhaAtual = scannerFicheiro2.nextLine();
+            while (scannerFicheiroCategorias.hasNext()) {
+                linhaAtual = scannerFicheiroCategorias.nextLine();
                 String[] linhaDivididaCategoria = linhaAtual.split(";");
 
                 if (linhaDivididaVendas[3].equals(linhaDivididaCategoria[0])) {
@@ -290,15 +293,14 @@ public class Funções {
                 }
             }
         }
-        System.out.println(String.format("\nTotal de lucro das vendas: " + "€%.2f", lucroTotal));
+        System.out.printf("\nTotal de lucro das vendas: " + "€%.2f%n", lucroTotal);
     }
 
     /**
      * Método para encontrar o melhor cliente
      *
      * @param pathVendas
-     * @param
-     * @param
+     * @param pathClientes
      * @throws FileNotFoundException
      */
     public static void melhorCliente(String pathVendas, String pathClientes) throws FileNotFoundException {
@@ -307,6 +309,8 @@ public class Funções {
         double valorMelhorCliente = 0;
         int idMelhorCliente = 0;
 
+
+        // buscar as compras do cliente atual para encontrar o melhor cliente
         for (int idClienteAtual = 1; idClienteAtual < contarLinhasFicheiro(pathVendas); idClienteAtual++) {
 
             valorTotalCliente = 0;
@@ -318,11 +322,12 @@ public class Funções {
 
                 linha = scannerFicheiro.nextLine();
                 String[] linhaDivididaVendas = linha.split(";");
-
+                //soma das compras
                 if (Integer.parseInt(linhaDivididaVendas[1]) == idClienteAtual) {
                     valorTotalCliente += Double.parseDouble(linhaDivididaVendas[5]);
                 }
             }
+            //melhor cliente
             if (valorTotalCliente > valorMelhorCliente) {
                 valorMelhorCliente = valorTotalCliente;
                 idMelhorCliente = idClienteAtual;
@@ -333,7 +338,6 @@ public class Funções {
 
 
         //Imprimir jogos comprados pelo melhor cliente
-
         Scanner scannerFicheiro = new Scanner(new File(pathClientes));
         String linha = scannerFicheiro.nextLine();
 
@@ -373,18 +377,17 @@ public class Funções {
         Scanner scannerFicheiro = new Scanner(new File(pathVendas));
 
         //Encontrar os clientes que compraram o jogo do input
-
         String linhaAtual = scannerFicheiro.nextLine();
         System.out.println("\n      Clientes que compraram o jogo:");
         while (scannerFicheiro.hasNext()) {
             linhaAtual = scannerFicheiro.nextLine();
             String[] linhaDivididaVendas = linhaAtual.split(";");
 
+            //verificar se jogo atual é igual
             if (linhaDivididaVendas[4].equalsIgnoreCase(nomeJogo)) {
                 String idcliente = linhaDivididaVendas[1];
 
                 //imprimir os clientes
-
                 Scanner scannerFicheiro2 = new Scanner(new File(pathClientes));
                 String linhaAtual2 = scannerFicheiro2.nextLine();
 
@@ -400,20 +403,61 @@ public class Funções {
         }
     }
 
+    /**
+     * Método para imprimir sem duplicados
+     *
+     * @param pathVendas
+     * @throws FileNotFoundException
+     */ //INCOMPLETO//
     public static void imprimirCatalogo(String pathVendas) throws FileNotFoundException {
         Scanner scannerFicheiro = new Scanner(new File(pathVendas));
 
+        String[] arraySemDuplos = new String[175];
         String linhaAtual = scannerFicheiro.nextLine();
+
+        int contador = 0;
 
         while (scannerFicheiro.hasNext()) {
             linhaAtual = scannerFicheiro.nextLine();
             String[] linhaDivididaVendas = linhaAtual.split(";");
+
             String nomeJogo = linhaDivididaVendas[4];
 
-            System.out.println(nomeJogo);
+            //grava o jogo no novo array sem duplos
+            for (int i = 0; i < contador; i++) {
+                if (!arraySemDuplos[i].equals(nomeJogo)) {
+                    arraySemDuplos[contador] = nomeJogo;
+                }
+            }
+
+            //remove null
+            for (int i = 0; i < contador; i++) {
+                if (!arraySemDuplos[i].equals(null)) {
+                    arraySemDuplos[i] = nomeJogo;
+                    System.out.println(arraySemDuplos[i]);
+                }
+            }
+        }
+    }
+
+    /**
+     * Método para calcular e imprimir números triangulares multiplos de 5 com max.121
+     */
+    public static void estacionamento() {
+
+        int maxVagas = 121;
+        int triangulares = 0;
+
+        for (int i = 1; triangulares < maxVagas; i++) {
+            triangulares += i;
+
+            if (triangulares <= maxVagas && triangulares % 5 == 0) {
+                System.out.println(triangulares);
+            }
         }
     }
 }
+
 
 
 

@@ -20,7 +20,7 @@ public class MenuCliente {
             System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
             System.out.println("\n     Selecionar a opção desejada:");
             System.out.println("          1.Novo registo✅");
-            System.out.println("          2.Estacionamento");
+            System.out.println("          2.Estacionamento✅");
             System.out.println("          3.Catálogos");
             System.out.println("          4.Catálogo gráfico✅");
             System.out.println("          5.Catálogo editora");
@@ -44,10 +44,10 @@ public class MenuCliente {
                     String email = input.nextLine();
                     String path = "src/TrabalhoPratico/Ficheiros/gravarCliente.txt";
                     Funções.gravarCliente("src/TrabalhoPratico/Ficheiros/gravarCliente.txt", nomeCompleto, contacto, email);
-                    System.out.println("Cliente inserido com sucesso: " + nomeCompleto + "|" + contacto + "|" + email + "|");
+                    System.out.println("\nCliente inserido com sucesso: " + nomeCompleto + "|" + contacto + "|" + email + "|");
                     break;
                 case 2:
-                    System.out.println("Estacionamento");
+                    Funções.estacionamento();
                     break;
                 case 3:
                     Funções.imprimirCatalogo(pathVendas);
