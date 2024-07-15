@@ -5,12 +5,9 @@
             <span></span>
         </div>
         <div class="col-12 my-auto text-center">
-            <a href="" target="_blank"><i class="bi bi-facebook"></i></a>
-            <a href="" target="_blank"><i class="bi bi-twitter-x"></i></a>
-            <a href="" target="_blank"><i class="bi bi-instagram"></i></a>
-            <a href="" target="_blank"><i class="bi bi-linkedin"></i></a>
-            <a href="" target="_blank"><i class="bi bi-twitch"></i></a>
-            <a href="" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="" target="_blank"><i class="bi bi-facebook"></i></a>           
+            <a href="https://www.instagram.com/nofilter_pt/" target="_blank"><i class="bi bi-instagram"></i></a>   
+            <a href="" target="_blank"><i class="bi bi-twitter-x"></i></a>     
         </div>
     </div>
 </footer>
