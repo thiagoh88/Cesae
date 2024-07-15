@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex10;
+package POO.Ex10;
 
 public class Main {
 }

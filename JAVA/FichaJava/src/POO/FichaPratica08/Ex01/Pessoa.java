@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex01;
+package POO.Ex01;
 
 public class Pessoa {
     private String nome;

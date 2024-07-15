@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex02;
+package POO.Ex02;
 
 public class Main {
     public static void main(String[] args) {

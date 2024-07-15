@@ -1,6 +1,4 @@
-package POO.FichaPratica08.Ex04;
-
-import javax.xml.transform.Source;
+package POO.Ex04;
 
 public class Main {
     public static void main(String[] args) {

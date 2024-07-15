@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex04;
+package POO.Ex04;
 
 public class Circulo {
     private  double raio;

@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex03;
+package POO.Ex03;
 
 public class Retangulo {
     private int largura;

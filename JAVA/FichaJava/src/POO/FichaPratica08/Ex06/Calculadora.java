@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex06;
+package POO.Ex06;
 
 public class Calculadora {
 

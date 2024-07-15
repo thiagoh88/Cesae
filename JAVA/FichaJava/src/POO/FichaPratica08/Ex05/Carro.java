@@ -1,4 +1,4 @@
-package POO.FichaPratica08.Ex05;
+package POO.Ex05;
 
 public class Carro {
     private Marcas marca;
