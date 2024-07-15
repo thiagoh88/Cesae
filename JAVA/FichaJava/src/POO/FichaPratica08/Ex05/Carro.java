@@ -1,11 +1,11 @@
-package POO.Ex05;
+package POO.FichaPratica08.Ex05;
 
 public class Carro {
     private Marcas marca;
     private Modelos modelo;
     private int anoFabrico;
 
-    public Carro(Marcas marca, Modelos modelo,int anoFabrico) {
+    public Carro(Marcas marca, Modelos modelo, int anoFabrico) {
         this.marca = marca;
         this.modelo = modelo;
         this.anoFabrico = anoFabrico;
