@@ -1,4 +1,4 @@
-<main class="container text-center p-3 shadow rounded">
+
   <div id="carouselExampleCaptions" class="carousel slide">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -9,31 +9,31 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img\logos\logo.png" class="d-block w-100" alt="...">
+        <img src="img\produtos\tshirt.png" class="d-block w-100 " alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>bag</h5>
-          <p>€19,99</p>
+          <h5>T-SHIRT</h5>
+          <p>20€</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img\logos\logo.png" class="d-block w-100" alt="...">
+        <img src="img\produtos\bag.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>bag</h5>
-          <p>€19,99</p>
+          <h5>TOTE BAG</h5>
+          <p>20€</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img\logos\logo.png" class="d-block w-100" alt="...">
+        <img src="img\produtos\tshirt.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>bag</h5>
-          <p>€19,99</p>
+          <h5>T-SHIRT</h5>
+          <p>20€</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img\logos\logo.png" class="d-block w-100" alt="...">
+        <img src="img\produtos\bag.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>bag</h5>
-          <p>€19,99</p>
+          <h5>TOTE BAG</h5>
+          <p>20€</p>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
 
   <style media="screen">
   .multi-item-carousel .carousel-inner > .item {
-  transition: 500ms ease-in-out left;
+  transition: 100ms ease-in-out left;
 }
 .multi-item-carousel .carousel-inner .active.left {
   left: -33%;
@@ -80,6 +80,7 @@
 body {
   background: #333;
   color: #ddd;
+ 
 }
 h1 {
   color: white;

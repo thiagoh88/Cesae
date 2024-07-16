@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="PCE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/PDF/PCE/FichaPraticaExtraFicheiros.zip!/" />
+      <root url="jar://$PROJECT_DIR$/PDF/PCE/FichaPratica07.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

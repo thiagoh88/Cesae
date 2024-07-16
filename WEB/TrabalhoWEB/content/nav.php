@@ -18,17 +18,23 @@
                 </li>        
                 <li class="nav-item">
                     <a class="nav-link <?php if ($p == "Contacto") echo "active"; ?>" href="index.php?p=Contacto">Contacto</a>
-                </li>
-                </li>        
+                </li>                      
                 <li class="nav-item">
                     <a class="nav-link <?php if ($p == "promocoes") echo "active"; ?>" href="index.php?p=promocoes">promocoes</a>
-                </li>
-                </li>
+                </li>                
             </ul> 
+
             <form class="form d-flex" role="search">
-                <i button class="bi bi-search  py-1" type="submit" placeholder="Search" aria-label="Search"></i>
-                
-                           
+            <i button class="bi bi-search  py-1" type="submit" placeholder="Search" aria-label="Search"></i>
+
+            <form class="form d-flex" role="person">
+            <i button class="bi bi-person-fill py-1" type="submit" placeholder="person" aria-label="person"></i>
+
+            <form class="form d-flex" role="shop">
+            <i class="bi bi-cart3 py-1" type="submit" placeholder="shop" aria-label="shop"></i>
+            
+                </form>  
+                </form>         
             </form>
         </div>
     </div>

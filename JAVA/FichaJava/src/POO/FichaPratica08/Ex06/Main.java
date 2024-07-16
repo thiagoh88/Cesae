@@ -19,10 +19,15 @@ public class Main {
         System.out.println("multiplicacao: " + calculadora.multiplicacao(num1, num2));
         System.out.println("divisao: " + calculadora.divisao(num1, num2));
 
-        calc.soma(num1, num2);
-        calc.subtracao(num1, num2);
-        calc.multiplicacao(num1, num2);
-        calc.divisao(num1, num2);
+        //duas formas de resolver
+
+        System.out.println(calc.soma(10, 5));
+        System.out.println(calc.subtracao(10, 5));
+        System.out.println(calc.multiplicacao(10, 5));
+        System.out.println(calc.divisao(10, 5));
+
+
+
     }
 
 
