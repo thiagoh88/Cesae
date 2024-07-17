@@ -1,0 +1,51 @@
+body{
+    background-color: bisque;
+    margin: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+header>img {
+    width: 50%;
+}
+
+nav{
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+   
+}
+nav a {
+    color: white;
+}
+
+nav img {
+    height: 50px;
+}
+main p{
+    text-align: justify;
+}
+/* comentário em css */
+#texto1 {
+    background-color: red; 
+    color: white;
+}
+
+.texto2 {
+    background-color: blue; 
+    color: white;
+}
+
+footer{
+    text-align: center;
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+}
+/*
+footer p{
+    text-align: center;
+}*/

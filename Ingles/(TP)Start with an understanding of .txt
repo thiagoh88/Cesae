@@ -1,0 +1,28 @@
+the software enviroment is bigger than we can imagine so we going to talk about 3 topics here. healthcare,finance and Entertainment
+
+(TP)Start with an understanding of how software development affects various industries.
+
+Software development changes many industries by making them better and more efficient. 
+In healthcare, it helps with online doctor visits and keeping patient records safe. 
+In finance, it makes online banking secure and stops fraud. Factories use software to keep machines running smoothly and manage supplies. 
+Overall, software makes many jobs easier and helps companies do better.
+
+----------------------------------------------------------
+
+(TP)Start with an understanding of how software development affects various industries.
+
+Software development changes industries by making things work better and smarter. 
+It helps doctors see patients online and keeps banking safe. Factories use it to run machines and get supplies on time.  Overall, software makes jobs easier and helps companies do better.
+
+
+-ECRÃ-
+Software development changes different industries in big ways.
+
+Healthcare and Finance
+In healthcare, software helps doctors see patients online and keep medical records safe. In finance, it makes banking safer and stops fraud.
+
+Manufacturing and Retail
+Factories use software to run machines better and get products out faster. Stores use it for online shopping and keeping customers happy.
+
+Education, Transportation, and Energy
+Schools use software for online classes and to track students. Trucks and buses use it to find the best routes and drive themselves. Power plants use software to manage electricity and use clean energy.
