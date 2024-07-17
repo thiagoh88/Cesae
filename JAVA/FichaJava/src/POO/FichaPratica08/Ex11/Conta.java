@@ -11,28 +11,32 @@ public class Conta {
         this.titular = titular;
     }
 
-    public double transferencia(double valorTrans, double valorReceber) {
-        this.saldo = this.saldo-valorTrans;
-this.saldo=
-        return saldo;
-    }
-
-    public double depositar(double valorDeposito) {
-        this.saldo += valorDeposito;
-        return saldo;
-    }
-
-    public double levantar(double valorRetirar) {
-        if (this.saldo < valorRetirar) {
-            System.out.println("saldo insuficiente");
-        } else {
-            this.saldo -= valorRetirar;
+    public double transferencia(Conta cliente, double valorTransferir) {
+        if (valorTransferir > 0 && this.saldo>=valorTransferir) {
+            this.saldo -= valorTransferir;
+            cliente.saldo += valorTransferir;
+        }else {
+            System.out.println("SALDO INSUFICIENTE");
         }
-        return valorRetirar;
+        return valorTransferir;
+    }
+
+    public double depositar(double valorDepositar) {
+        this.saldo += valorDepositar;
+        return saldo;
+    }
+
+    public double levantar(double valorLevantar) {
+        if (this.saldo < valorLevantar) {
+            System.out.println("SALDO INSUFICIENTE");
+        } else {
+            this.saldo -= valorLevantar;
+        }
+        return valorLevantar;
     }
 
     public double mostrarSaldo() {
-        System.out.println("Saldo da conta " + this.numConta + ": " + this.saldo);
+        System.out.println("Titular da conta: " + this.titular + "\t| conta: " + this.numConta + " | Saldo: " + this.saldo + "€");
         return saldo;
     }
 }
