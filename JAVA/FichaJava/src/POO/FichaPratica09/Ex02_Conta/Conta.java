@@ -8,11 +8,12 @@ public class Conta {
     private String margemEmprestimo;
     private double valorDivida;
 
-    public Conta(double numConta, double saldo, String titular, int anoAbertura) {
+    public Conta(double numConta, double saldo, String titular, int anoAbertura,double valorDivida) {
         this.numConta = numConta;
         this.saldo = saldo;
         this.titular = titular;
         this.anoAbertura = anoAbertura;
+        this.valorDivida = valorDivida;
     }
 
     public double transferencia(Conta titular, double valorTransferir) {
@@ -44,4 +45,17 @@ public class Conta {
         System.out.println("Titular da conta: " + this.titular + "\t| conta: " + this.numConta + " | Saldo: " + this.saldo + "€");
         return saldo;
     }
+
+    public void pedirEmprestimo(double valorPedir) {
+        if (valorDivida>0){
+            System.out.println("Emprestimo negado");
+        } else if (valorPedir<=(saldo*0.9)) {
+            this.valorDivida+=valorPedir;
+            this.saldo+=valorPedir;
+        }else {
+            System.out.println("Saldo insuficiente");
+        }
+    }
+
+
 }

@@ -3,10 +3,10 @@ package POO.FichaPratica09.Ex02_Conta;
 public class Main {
     public static void main(String[] args) {
 
-        Conta Jao = new Conta(1.1, 0, "Jão",2023);
-        Conta Quim = new Conta(002, 0, "Quim",2023);
+        Conta Jao = new Conta(1.1, 1000, "Jão",2023,0);
+        Conta Quim = new Conta(002, 0, "Quim",2023,0);
 
-        Conta Zequinha = new Conta(12345, 0, "Zequinha",2023);
+        Conta Zequinha = new Conta(12345, 0, "Zequinha",2023,0);
         System.out.println("------------------------------------");
         System.out.println("Jão valor do deposito: " + Jao.depositar(1000) + "€");
         Jao.mostrarSaldo();
@@ -23,5 +23,12 @@ public class Main {
         Jao.mostrarSaldo();
         System.out.println();
         Quim.mostrarSaldo();
+        System.out.println("\n----------------------------------------");
+        System.out.println();
+
+        Jao.pedirEmprestimo(900);
+        Jao.mostrarSaldo();
+        Jao.pedirEmprestimo(500);
+        Jao.mostrarSaldo();
     }
 }
