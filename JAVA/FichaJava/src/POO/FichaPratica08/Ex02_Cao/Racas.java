@@ -1,0 +1,5 @@
+package POO.FichaPratica08.Ex02_Cao;
+
+public enum Racas {
+    PASTOR_ALEMAO,BULLDOG,GOLDEN,LABRADOR,PINCHER,CARAMELO
+}
