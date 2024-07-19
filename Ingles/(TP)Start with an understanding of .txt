@@ -1,28 +1,45 @@
-the software enviroment is bigger than we can imagine so we going to talk about 3 topics here. healthcare,finance and Entertainment
 
 (TP)Start with an understanding of how software development affects various industries.
+
+
+The software enviroment is bigger than we can imagine, so we going to divide this into three topics: healthcare,finance and Entertainment.
+
+Software development helps many industries by making work faster and easier with automation. It creates new products and improves old ones, bringing new ideas to life. Also, it helps in analyzing data and making better decisions, giving businesses an advantage.
+
 
 Software development changes many industries by making them better and more efficient. 
-In healthcare, it helps with online doctor visits and keeping patient records safe. 
-In finance, it makes online banking secure and stops fraud. Factories use software to keep machines running smoothly and manage supplies. 
-Overall, software makes many jobs easier and helps companies do better.
 
-----------------------------------------------------------
+-Healthcare, it helps with online doctor keeping the patient records safe. 
 
-(TP)Start with an understanding of how software development affects various industries.
+-Finance, it makes online banking secure and stops fraud.
+ 
+-Entertainment, streaming platforms and digital content creation tools transform how we consume and produce media. 
 
-Software development changes industries by making things work better and smarter. 
-It helps doctors see patients online and keeps banking safe. Factories use it to run machines and get supplies on time.  Overall, software makes jobs easier and helps companies do better.
+Overall, software enviroment makes many jobs easier and helps companies do better.
 
+---------------------------------------------------------------------------------
 
--ECRÃ-
+-SLIDE-
+
 Software development changes different industries in big ways.
 
-Healthcare and Finance
-In healthcare, software helps doctors see patients online and keep medical records safe. In finance, it makes banking safer and stops fraud.
+Healthcare:
 
-Manufacturing and Retail
-Factories use software to run machines better and get products out faster. Stores use it for online shopping and keeping customers happy.
+-It helps with online doctor consultations and keeping patient records safe.
+-Enhances diagnostic accuracy with AI-powered tools.
+-Streamlines hospital management systems for better resource allocation.
+-Facilitates remote patient monitoring through wearable devices.
 
-Education, Transportation, and Energy
-Schools use software for online classes and to track students. Trucks and buses use it to find the best routes and drive themselves. Power plants use software to manage electricity and use clean energy.
+Finance:
+
+-It makes online banking secure and stops fraud.
+-Optimizes trading with automated algorithms.
+-Improves financial planning through personalized budgeting apps.
+-Enhances customer service with AI chatbots for quick support.
+
+Entertainment:
+
+-Streaming platforms and digital content creation tools transform how we consume and produce media.
+-Enables immersive experiences with virtual and augmented reality.
+-Facilitates global distribution of indie films through online platforms.
+-Uses data analytics to personalize content recommendations.
