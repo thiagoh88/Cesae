@@ -4,15 +4,16 @@ public class Conta {
     private double numConta;
     private double saldo;
     private String titular;
-    private int anoAbertura = 2024;
-    private double margemEmprestimo = this.saldo * 0.9;
+    private int anoAbertura;
+    private String margemEmprestimo;
     private double valorDivida;
 
-    public Conta(double numConta, double saldo, String titular) {
+    public Conta(double numConta, double saldo, String titular, int anoAbertura,double valorDivida) {
         this.numConta = numConta;
         this.saldo = saldo;
         this.titular = titular;
-
+        this.anoAbertura = anoAbertura;
+        this.valorDivida = valorDivida;
     }
 
     public double transferencia(Conta titular, double valorTransferir) {
@@ -31,13 +32,13 @@ public class Conta {
         return saldo;
     }
 
-    public void levantar(double valorLevantar) {
-        if (this.saldo >= valorLevantar) {
-            this.saldo -= valorLevantar;
-        } else {
+    public double levantar(double valorLevantar) {
+        if (this.saldo < valorLevantar) {
             System.out.println("SALDO INSUFICIENTE");
+        } else {
+            this.saldo -= valorLevantar;
         }
-
+        return valorLevantar;
     }
 
     public double mostrarSaldo() {
@@ -45,17 +46,16 @@ public class Conta {
         return saldo;
     }
 
-    public boolean pedirEmprestimo(double valorPedido) {
-        if (this.valorDivida == 0 && this.margemEmprestimo > valorPedido) {
-            this.saldo += valorPedido;
-            this.valorDivida += valorPedido;
-            return true;
+    public void pedirEmprestimo(double valorPedir) {
+        if (valorDivida>0){
+            System.out.println("Emprestimo negado");
+        } else if (valorPedir<=(saldo*0.9)) {
+            this.valorDivida+=valorPedir;
+            this.saldo+=valorPedir;
+        }else {
+            System.out.println("Saldo insuficiente");
         }
-        System.out.println("NEGADO");
-        return false;
     }
-    public void exibirDetalhe(){
-        System.out.println("---------------");
-        System.out.println("Titular: "+this.titular+"Saldo: "+this.saldo);
-    }
+
+
 }
