@@ -1,0 +1,77 @@
+body{
+    background-color: bisque;
+    margin: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+header {
+    text-align: center;
+    position: sticky;
+    top:0;
+}
+
+header>img {
+    width: 50%;
+}
+
+nav{
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+   
+}
+
+nav a {
+    color: white;
+}
+
+.fa-brands {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.fa-facebook, .fa-linkedin {
+    color: blue;
+}
+
+.fa-youtube {
+    color: red;
+}
+
+/*.fa-facebook:hover, .fa-linkedin:hover, .fa-youtube:hover {*/
+.fa-brands:hover {
+    color: white;
+}
+
+nav img {
+    height: 50px;
+}
+
+h1 {
+    font-family: 'Anton SC', sans-serif;
+}
+
+main p{
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+}
+/* comentário em css */
+#texto1 {
+    background-color: red; 
+    color: white;
+}
+
+.texto2 {
+    background-color: blue; 
+    color: white;
+}
+
+footer{
+    text-align: center;
+    background-color: grey;
+    padding: 5px;
+    margin: 10px;
+    position: sticky;
+    bottom: 0;
+}

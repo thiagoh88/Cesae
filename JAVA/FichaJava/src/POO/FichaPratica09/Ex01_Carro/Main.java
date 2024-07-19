@@ -12,8 +12,8 @@ import static POO.FichaPratica08.Ex05_Carro.TipoCombustivel.GASOLINA;
 public class Main {
     public static void main(String[] args) {
 
-        POO.FichaPratica08.Ex05_Carro.Carro adversario1 = new POO.FichaPratica08.Ex05_Carro.Carro(BMW, M100, 2010, 250, GASOLINA, 6.5);
-        POO.FichaPratica08.Ex05_Carro.Carro adversario2 = new Carro(MERCEDES, CORSA, 1990, 80, DIESEL, 5.5);
+        Carro adversario1 = new Carro(BMW, M100, 2010, 250, GASOLINA, 6.5);
+        Carro adversario2 = new Carro(MERCEDES, CORSA, 1990, 80, DIESEL, 5.5);
 
         adversario2.ligar();
         System.out.println("-----------------------------");
@@ -27,11 +27,14 @@ public class Main {
         System.out.println("---------------------------");
         System.out.println();
 
-        if (adversario1.distancia(97) > adversario2.distancia(97)) {
-            System.out.println();
-            System.out.println("Maior consumo: " + adversario1.distancia(97));
-        } else {
-            System.out.println("Maior consumo: " + adversario2.distancia(97));
+
+      //  Carro vencedor = adversario1.corrida(adversario2);
+
+      //  if (vencedor == null) {
+      //      System.out.println("empate");
+       // } else {
+      //      System.out.println("vencedor");
+       //     vencedor.exibirDetalhes();
         }
     }
-}
+

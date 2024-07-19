@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <legend>Formulário do CESAE</legend>
+            <div>
+                <label for="form-nome">Nome:</label>
+                <input type="text" name="form-nome" id="form-nome" placeholder="Insira o seu nome" required>
+            </div>
+            <div>
+                <label for="form-email">Email:</label>
+                <input type="email" name="form-email" id="form-email" value="@cesae.pt">
+            </div>
+            <div>
+                <label for="form-password">Password:</label>
+                <input type="password" name="form-password" id="form-password">
+            </div>
+            <div>
+                <label for="form-cor">Cor favorita</label>
+                <br>
+                <input type="radio" name="form-cor" id="form-cor-branco"><label for="form-cor-branco">Branco</label>     <br>
+                <input type="radio" name="form-cor" id="form-cor-preto"><label for="form-cor-preto">Preto</label>       <br>
+                <input type="radio" name="form-cor" id="form-cor-amarelo"><label for="form-cor-amarelo">Amarelo</label>   <br>
+                <input type="radio" name="form-cor" id="form-cor-roxo"><label for="form-cor-roxo">Roxo</label>         <br>
+                <input type="radio" name="form-cor" id="form-cor-castanho"><label for="form-cor-castanho">Castanho</label> <br>
+            </div>
+            <br>
+            <div>
+                <label for="form-curso">Curso a frequentar</label>
+                <br>
+                <select name="form-curso" id="form-curso">
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="form-curso-sd">Software Developer</option>
+                    <option value="form-curso-fe">Front-end Developer</option>
+                    <option value="form-curso-da">Data Analyst</option>
+                    <option value="form-curso-aws">AWS Re/start</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label for="">Dias da semana com formação</label>
+                <br>
+                <input type="checkbox" name="" id=""><label for="">Segunda-feira</label><br>
+                <input type="checkbox" name="" id=""><label for="">Terça-feira</label><br>
+            </div>
+            <div>
+                <label for="">Mensagem:</label><br>
+                <textarea name="" id="" cols="10" rows="5"></textarea>
+            </div>
+            <div>
+                <input type="reset" value="Limpar">
+                <input type="submit" value="Enviar">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

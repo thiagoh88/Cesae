@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header style="text-align: center;">
+        <img src="img/logo_cesae.png" alt="Logotipo do CESAE" width="300">
+        <br>
+        <nav>
+            <a href="https://www.cesaedigital.pt/" target="_blank">Ir para site oficial</a> |
+            <a href="exercicio.html">Página inicial</a> |
+            <a href="multimedia.html">Multimédia</a> |
+            <a href="form.html">Formulário</a>
+            <br>
+            <a title="Facebook" href="https://www.facebook.com/CesaeDigital" target="_blank">
+                <img src="img/facebook_logo.svg" alt="" height="50px"></a>
+            <a href="https://www.linkedin.com/company/cesae-digital/mycompany/" target="_blank">
+                <img src="img/linkedin_logo.webp" alt="" height="50px"></a>
+            <a href="https://www.youtube.com/user/CESAECanal" target="_blank">
+                <img src="img/Youtube_logo.png" alt="" height="50px"></a>
+        </nav>
+    </header>
+    <main>
+        <hr>
+        <form action="">
+            <fieldset>
+                <legend>Formulário de contacto do CESAE</legend>
+                <div>
+                    <label for="form-nome">Nome *:</label>
+                    <input type="text" name="form-nome" id="form-nome" placeholder="Insira o seu nome *" required>
+                </div>
+                <div>
+                    <label for="form-email">Email:</label>
+                    <input type="email" name="form-email" id="form-email">
+                </div>
+                <br>
+                <div>
+                    <label for="form-genero">Género:</label><br>
+                    <input type="radio" name="form-genero" id="form-genero-m"><label
+                        for="form-genero-m">Masculino</label><br>
+                    <input type="radio" name="form-genero" id="form-genero-f"><label
+                        for="form-genero-f">Feminino</label><br>
+                </div>
+                <br>
+                <div>
+                    <label for="form-data">Data atual:</label>
+                    <input type="date" name="form-data" id="form-data">
+                </div>
+                <div>
+                    <label for="form-turma">Turma:</label>
+                    <select name="form-turma" id="form-turma">
+                        <option value="" selected disabled>Escolha uma das opções</option>
+                        <option value="form-turma-sd">Software Developer</option>
+                        <option value="form-turma-outro">Outro curso</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="form-mensagem">Mensagem:</label>
+                    <textarea name="form-mensagem" id="form-mensagem" cols="30" rows="3"></textarea>
+                </div>
+                <div>
+                    <input type="reset" value="Limpar">
+                    <input type="submit" value="Enviar">
+                </div>
+                <div>
+                    <small>* campo obrigatório</small>
+                </div>
+            </fieldset>
+        </form>
+
+        <hr>
+    </main>
+    <footer>
+        <p>Desenvolvido por Bruno Santos</p>
+    </footer>
+</body>
+
+</html>
