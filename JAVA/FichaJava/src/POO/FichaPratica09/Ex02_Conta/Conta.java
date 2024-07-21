@@ -2,58 +2,67 @@ package POO.FichaPratica09.Ex02_Conta;
 
 public class Conta {
     private double numConta;
-    private double saldo;
+    private double saldo = 0;
     private String titular;
-    private int anoAbertura;
-    private String margemEmprestimo;
-    private double valorDivida;
+    private int anoAbertura = 2024;
+    private double margemEmprestimo = 0;
+    private double valorDivida = 0;
 
-    public Conta(double numConta, double saldo, String titular, int anoAbertura,double valorDivida) {
+    public Conta(double numConta, String titular) {
         this.numConta = numConta;
-        this.saldo = saldo;
         this.titular = titular;
-        this.anoAbertura = anoAbertura;
-        this.valorDivida = valorDivida;
+
     }
 
-    public double transferencia(Conta titular, double valorTransferir) {
-        if (this.saldo >= valorTransferir) {
-            this.saldo -= valorTransferir;
-            titular.saldo += valorTransferir;
-            System.out.printf("Transferencia de: " + valorTransferir + "€");
+    private void setSaldo(double saldo) {
+        this.saldo = saldo;
+        this.margemEmprestimo = 0.9 * this.saldo;
+    }
+
+    public void transferencia(double valor, Conta contaDestino) {
+        if (this.saldo >= valor) {
+            System.out.println("Transferencia Efetuada: " + valor);
+            this.setSaldo(this.saldo-valor);
+            contaDestino.setSaldo(contaDestino.saldo+valor);
         } else {
-            System.out.println("SALDO INSUFICIENTE");
+            System.out.println("Transferência Recusada. Saldo Insuficiente.");
         }
-        return valorTransferir;
     }
 
-    public double depositar(double valorDepositar) {
+    public void depositar(double valorDepositar) {
+        System.out.println("Desposito efetuado: " + valorDepositar);
         this.saldo += valorDepositar;
-        return saldo;
     }
 
-    public double levantar(double valorLevantar) {
-        if (this.saldo < valorLevantar) {
-            System.out.println("SALDO INSUFICIENTE");
+    public void levantar(double valorLevantar) {
+        if (this.saldo >= valorLevantar) {
+            System.out.println("Levantamento efetuado: " + valorLevantar);
+            this.setSaldo(this.saldo - valorLevantar);
         } else {
-            this.saldo -= valorLevantar;
+            System.out.println("Levantamento Recusado. Saldo Insuficiente.");
         }
-        return valorLevantar;
     }
 
-    public double mostrarSaldo() {
-        System.out.println("Titular da conta: " + this.titular + "\t| conta: " + this.numConta + " | Saldo: " + this.saldo + "€");
-        return saldo;
+    public void mostrarSaldo() {
+        System.out.println("Numero Conta: " + this.numConta + "\t| Titular: " + this.titular + "\t| Saldo: " + this.saldo + " €");
     }
 
-    public void pedirEmprestimo(double valorPedir) {
-        if (valorDivida>0){
-            System.out.println("Emprestimo negado");
-        } else if (valorPedir<=(saldo*0.9)) {
-            this.valorDivida+=valorPedir;
-            this.saldo+=valorPedir;
-        }else {
-            System.out.println("Saldo insuficiente");
+    public void pedirEmprestimo(double valor){
+        if(this.valorDivida==0){
+            // Não tem dívida
+
+            if(this.margemEmprestimo>=valor){
+                // Valor válido
+                this.setSaldo(this.saldo+valor);
+                this.valorDivida=valor;
+            }else{
+                // Pediu mais do que o que pode
+                System.out.println("Margem de Empréstimo insuficiente");
+            }
+
+        }else{
+            // Tem dívida
+            System.out.println("Dívidas pendentes. Não é possível emprestar mais.");
         }
     }
 

@@ -3,22 +3,22 @@ package POO.FichaPratica09.Ex02_Conta;
 public class Main {
     public static void main(String[] args) {
 
-        Conta Jao = new Conta(1.1, 1000, "Jão",2023,0);
-        Conta Quim = new Conta(002, 0, "Quim",2023,0);
+        Conta Jao = new Conta(1.1, "Jão");
+        Conta Quim = new Conta(002, "Quim");
 
-        Conta Zequinha = new Conta(12345, 0, "Zequinha",2023,0);
+        Conta Zequinha = new Conta(12345, "Zequinha");
         System.out.println("------------------------------------");
-        System.out.println("Jão valor do deposito: " + Jao.depositar(1000) + "€");
+        Jao.depositar(1000);
         Jao.mostrarSaldo();
 
         System.out.println("------------------------------------");
 
-        System.out.println("Jão valor levantado: " + Jao.levantar(500) + "€");
+        Jao.levantar(500);
         Jao.mostrarSaldo();
 
 
         System.out.println("-------------------------------------");
-        Jao.transferencia(Quim, 500);
+        Jao.transferencia(500,Quim);
         System.out.println("\n------------------------------------");
         Jao.mostrarSaldo();
         System.out.println();
