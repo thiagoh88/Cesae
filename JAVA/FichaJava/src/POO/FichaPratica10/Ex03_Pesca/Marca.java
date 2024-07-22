@@ -1,0 +1,5 @@
+package POO.FichaPratica10.Ex03_Pesca;
+
+public enum Marca {
+    BENTZ,DEVLIN,MAZURY,QUICKSILVER,SAVER,SMARTILNES,VORAZ,WOOLDRIDGE
+}

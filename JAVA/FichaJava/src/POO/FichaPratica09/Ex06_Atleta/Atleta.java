@@ -14,7 +14,8 @@ public class Atleta {
         this.peso = peso;
         this.origem = origem;
     }
-    public void exibirAtletas(){
+    public void exibirAtletas()
+    {
         System.out.println(this.nome);
     }
 

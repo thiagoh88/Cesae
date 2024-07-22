@@ -5,6 +5,12 @@ public class Competicao {
     private String pais;
     private Atleta[] listaAtletas;
 
+    /**
+     * Método construtor para uma competição
+     * @param nomeCompeticao
+     * @param pais
+     * @param capacidade
+     */
     public Competicao(String nomeCompeticao, String pais, int capacidade) {
         this.nomeCompeticao = nomeCompeticao;
         this.pais = pais;
