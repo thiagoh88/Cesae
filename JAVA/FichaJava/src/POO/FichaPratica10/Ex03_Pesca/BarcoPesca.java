@@ -79,6 +79,10 @@ public class BarcoPesca {
         mariscoPescado.remove(indexMarisco);
     }
 
+    /**
+     * Metodo que calcula o valor total da carga em euros
+     * @return valor da carga
+     */
     public double calcularTotal() {
 
         double valorPescaria = 0;
