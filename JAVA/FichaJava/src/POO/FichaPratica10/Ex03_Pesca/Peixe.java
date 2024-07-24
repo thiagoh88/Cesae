@@ -19,7 +19,7 @@ public class Peixe {
         this.precoKg = precoKg;
     }
 
-    public void exibirPeixe() {
+    public void exibirDetalhes() {
         System.out.println("Especie: " + this.especie + "\t| Peso: " + this.peso + "\t| Preço/KG: " + this.precoKg+"€");
     }
 }

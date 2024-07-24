@@ -1,4 +1,8 @@
-package POO.FichaPratica11.Ex03_Pizza;
+package POO.FichaPratica11.Ex03_Pizza.Ingredientes;
+
+import POO.FichaPratica11.Ex03_Pizza.Enums.Medidas;
+import POO.FichaPratica11.Ex03_Pizza.Enums.OrigemIngrediente;
+import POO.FichaPratica11.Ex03_Pizza.Enums.TipoVegetal;
 
 public class Vegetal extends Topping {
 

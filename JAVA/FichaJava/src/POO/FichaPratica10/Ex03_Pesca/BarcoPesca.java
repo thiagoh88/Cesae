@@ -51,6 +51,7 @@ public class BarcoPesca {
 
     /**
      * Metodo para verificar se tem capacidade de carga e add
+     *
      * @param peixeNovo
      */
     public void pescarPeixe(Peixe peixeNovo) {
@@ -62,6 +63,7 @@ public class BarcoPesca {
 
     /**
      * Metodo para verificar se tem capacidade de carga e add
+     *
      * @param mariscoNovo
      */
     public void pescarMarisco(Marisco mariscoNovo) {
@@ -71,17 +73,28 @@ public class BarcoPesca {
 
     }
 
+    /**
+     * Metodo para largar peixe (remover do array)
+     *
+     * @param indexPeixe
+     */
     public void largarPeixe(int indexPeixe) {
         peixePescado.remove(indexPeixe);
     }
 
+    /**
+     * Metodo para largar marisco (remover do array)
+     *
+     * @param indexMarisco
+     */
     public void largarMarisco(int indexMarisco) {
         mariscoPescado.remove(indexMarisco);
     }
 
     /**
-     * Metodo que calcula o valor total da carga em euros
-     * @return valor da carga
+     * Metodo que calcula o valor total da carga em €
+     *
+     * @return
      */
     public double calcularTotal() {
 
@@ -98,28 +111,35 @@ public class BarcoPesca {
         return valorPescaria;
     }
 
+    /**
+     * Método para exibir os detalhes do Barco de Pesca
+     */
+    public void exibirDetalhes() {
+        System.out.println("***** " + this.nome + " *****");
+        System.out.println("Capacidade Carga: " + this.capacidadeCarga + " Kg.");
+        System.out.println("Carga Atual: " + this.calcularCargaAtual() + " Kg.");
+
+        System.out.println("\nPeixe Pescado:");
+        for (Peixe peixeAtual : this.peixePescado) {
+            peixeAtual.exibirDetalhes();
+        }
+
+        System.out.println("\nMarisco Pescado:");
+        for (Marisco mariscoAtual : this.mariscoPescado) {
+            mariscoAtual.exibirDetalhes();
+        }
+
+        System.out.println("Valor Total da Carga: " + this.calcularTotal() + " €");
+    }
+
     public void salarioTripulacao() {
 
-        // valorPescaria-= valorPescaria*0.4;
+        double salarioTotal = this.calcularTotal();
 
+        salarioTotal = salarioTotal - (salarioTotal * 0.4);
 
+        double salarioIndividual = salarioTotal / this.tripulacao;
+
+        System.out.println("Salario de cada tripulante: " + salarioIndividual);
     }
-
-    public void exibirPescaria() {
-        System.out.println("***** Pescaria *****");
-        for (Peixe pescaria : this.peixePescado) {
-            pescaria.exibirPeixe();
-        }
-        for (Marisco pescaria : this.mariscoPescado) {
-            pescaria.exibirMarisco();
-        }
-
-    }
-
-    public void barcoDetalhes() {
-        System.out.println("***** Barco de pesca *****");
-        System.out.println("Nome: " + this.nome + "\t| Cor: " + this.cor + "\t| Ano de Frabricação: " + this.anoFabrico + "\t| Tripulação: " + this.tripulacao + "\t | Capacidade: " + this.capacidadeCarga);
-    }
-
-
 }

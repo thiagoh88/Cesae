@@ -1,4 +1,6 @@
-package POO.FichaPratica11.Ex03_Pizza;
+package POO.FichaPratica11.Ex03_Pizza.Ingredientes;
+
+import POO.FichaPratica11.Ex03_Pizza.Enums.Medidas;
 
 public class Ingrediente {
     private int id;
@@ -11,6 +13,10 @@ public class Ingrediente {
         this.nome = nome;
         this.unidadeMedida = unidadeMedida;
         this.calorias = calorias;
+    }
+
+    public double getCalorias() {
+        return calorias;
     }
 
     public int getId() {

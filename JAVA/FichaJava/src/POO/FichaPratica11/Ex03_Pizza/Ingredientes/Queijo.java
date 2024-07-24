@@ -1,6 +1,10 @@
-package POO.FichaPratica11.Ex03_Pizza;
+package POO.FichaPratica11.Ex03_Pizza.Ingredientes;
 
-public class Queijo extends Topping{
+import POO.FichaPratica11.Ex03_Pizza.Enums.Medidas;
+import POO.FichaPratica11.Ex03_Pizza.Enums.OrigemIngrediente;
+import POO.FichaPratica11.Ex03_Pizza.Enums.TipoQueijo;
+
+public class Queijo extends Topping {
 
     private TipoQueijo tipo;
 

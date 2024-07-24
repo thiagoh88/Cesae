@@ -17,10 +17,20 @@ public class Main {
         pescaria1.pescarPeixe(bacalhau);
         pescaria1.pescarMarisco(ostra);
         pescaria1.pescarMarisco(lula);
-        pescaria1.barcoDetalhes();
-        System.out.println();
-        pescaria1.exibirPescaria();
 
-        System.out.println("Valor Total das Pescaria: "+pescaria1.calcularTotal()+" €");
+        pescaria1.exibirDetalhes();
+
+        pescaria1.largarPeixe(0);
+        pescaria1.largarMarisco(1);
+
+        pescaria1.pescarPeixe(sardinha);
+        pescaria1.pescarMarisco(caracois);
+
+        pescaria1.exibirDetalhes();
+
+        pescaria1.salarioTripulacao();
+
+
+
     }
 }

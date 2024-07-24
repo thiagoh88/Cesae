@@ -1,21 +1,17 @@
 
 (TP)Start with an understanding of how software development affects various industries.
 
+Good afternoon,
 
-The software enviroment is bigger than we can imagine, so we going to divide this into three topics: healthcare,finance and Entertainment.
+Thank you for coming today.
 
-Software development helps many industries by making work faster and easier with automation. It creates new products and improves old ones, bringing new ideas to life. Also, it helps in analyzing data and making better decisions, giving businesses an advantage.
+In this presentation, we will look at how software development affects different fields. We’ll see how it helps companies work better and creates new chances and challenges.
 
+Software helps many industries by making work faster and easier with automation. It brings new products and improves old ones, and helps with analyzing data and making better choices.
 
-Software development changes many industries by making them better and more efficient. 
+This topic is big, so we will focus on three areas: healthcare, finance, and entertainment.
 
--Healthcare, it helps with online doctor keeping the patient records safe. 
-
--Finance, it makes online banking secure and stops fraud.
- 
--Entertainment, streaming platforms and digital content creation tools transform how we consume and produce media. 
-
-Overall, software enviroment makes many jobs easier and helps companies do better.
+Let’s see how software is changing these industries and shaping the future.
 
 ---------------------------------------------------------------------------------
 
