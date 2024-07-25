@@ -1,8 +1,8 @@
 package POO.FichaPratica11.Ex03_Pizza;
 
 import POO.FichaPratica11.Ex03_Pizza.Enums.TamanhoPizza;
-import POO.FichaPratica11.Ex03_Pizza.Ingredientes.Base;
-import POO.FichaPratica11.Ex03_Pizza.Ingredientes.Topping;
+import POO.FichaPratica11.Ex03_Pizza.Enums.TipoCarne;
+import POO.FichaPratica11.Ex03_Pizza.Ingredientes.*;
 
 import java.util.ArrayList;
 
@@ -42,6 +42,7 @@ public class Pizza {
                 return;
             }
         }
+
     }
 
     /**
@@ -53,10 +54,12 @@ public class Pizza {
         for (IngredientePizza ingredienteAtual : this.listaIngredientes) {
 //se o ingrediente atual getIngrediente(classe-IngredientePizza).getId(classe-Ingrediente) igual ao id//
             if (ingredienteAtual.getIngrediente().getId() == idRemover) {
-                this.listaIngredientes.remove(ingredienteAtual);
-                System.out.println("Ingrediente removido: ");
-                ingredienteAtual.exibirDetalhes();
-                return;
+                if (ingredienteAtual.getIngrediente() instanceof Topping && this.listaIngredientes.size() >= 3) {
+                    this.listaIngredientes.remove(ingredienteAtual);
+                    System.out.println("Ingrediente removido: ");
+                    ingredienteAtual.exibirDetalhes();
+                    return;
+                }
             }
         }
     }
@@ -103,6 +106,24 @@ public class Pizza {
             System.out.print("Ingrediente " + cont++ + ":");
             ingredientePizzaAtual.exibirDetalhes();
             System.out.println();
+
+        }
+    }
+
+    public void determinarTipoPizza() {
+
+        //VERIFICAR SE É CARNE
+        for (IngredientePizza ingredienteAtual : this.listaIngredientes) {
+
+            int contadorCarne = 0;
+            int contadorQueijo = 0;
+            int contadorVegetal = 0;
+            int contadorFrutoMar = 0;
+            if (ingredienteAtual.getIngrediente()) {
+
+                contadorCarne++;
+                return;
+            }
         }
     }
 }

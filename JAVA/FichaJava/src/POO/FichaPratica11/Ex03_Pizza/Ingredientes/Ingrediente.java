@@ -25,6 +25,7 @@ public class Ingrediente {
 
     /**
      * Exporta a unidade de medida para IngredientePizza verificar de acordo
+     *
      * @return
      */
     public Medidas getUnidadeMedida() {
@@ -33,7 +34,6 @@ public class Ingrediente {
 
     /**
      * Metodo para exibir os detalhes dos ingredientes
-     *
      */
     public void exibirDetalhes() {
 

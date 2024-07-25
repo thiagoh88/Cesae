@@ -1,9 +1,6 @@
 package POO.FichaPratica11.Ex03_Pizza;
 
-import POO.FichaPratica11.Ex03_Pizza.Enums.BasePizza;
-import POO.FichaPratica11.Ex03_Pizza.Enums.Medidas;
-import POO.FichaPratica11.Ex03_Pizza.Enums.OrigemIngrediente;
-import POO.FichaPratica11.Ex03_Pizza.Enums.TamanhoPizza;
+import POO.FichaPratica11.Ex03_Pizza.Enums.*;
 import POO.FichaPratica11.Ex03_Pizza.Ingredientes.*;
 
 import static POO.FichaPratica11.Ex03_Pizza.Enums.TipoCarne.*;
@@ -33,6 +30,7 @@ public class Main {
         Vegetal vegetalPimento = new Vegetal(41, "Pimento", Medidas.UNIDADES, 8, OrigemIngrediente.IMPORTADO, PIMENTO);
         Vegetal vegetalCogumelo = new Vegetal(42, "Cogumelo", Medidas.UNIDADES, 2, OrigemIngrediente.IMPORTADO, COGUMELO);
         Vegetal vegetalMilho = new Vegetal(43, "Milho", Medidas.GRAMAS, 1, OrigemIngrediente.NACIONAL, MILHO);
+        Vegetal vegetalmolho = new Vegetal(44, "Molho", Medidas.LITROS, 2, OrigemIngrediente.NACIONAL, MOLHO_TOMATE);
 
         Base baseAlta = new Base(50, "Base Alta", 2, BasePizza.MASSA_ALTA, "Base de massa alta");
         Base baseFina = new Base(51, "Base Fina", 1, BasePizza.MASSA_FINA, "Base de massa fina");
@@ -41,11 +39,21 @@ public class Main {
         Pizza pizzaMista = new Pizza(12345, "Pizza Mista", "Pizza tradicional", 20, TamanhoPizza.GRANDE);
 
         pizzaMista.addIngredientePizza(new IngredientePizza(baseAlta, 100));
+        pizzaMista.addIngredientePizza(new IngredientePizza(vegetalmolho, 0.1));
         pizzaMista.addIngredientePizza(new IngredientePizza(queijoMozzarela, 100));
         pizzaMista.addIngredientePizza(new IngredientePizza(carneVaca, 100));
-
+        pizzaMista.addIngredientePizza((new IngredientePizza(baseFina, 100)));
 
         pizzaMista.exbibirDetalhes();
+
+        System.out.println("---------------------------------");
+
+        pizzaMista.removeIngredientesPizza(50);
+        pizzaMista.removeIngredientesPizza(10);
+
+        pizzaMista.exbibirDetalhes();
+
+        pizzaMista.determinarTipoPizza();
 
 
     }
