@@ -1,6 +1,7 @@
 package POO.FichaPratica11.Ex03_Pizza;
 
 import POO.FichaPratica11.Ex03_Pizza.Ingredientes.Ingrediente;
+import POO.FichaPratica11.Ex03_Pizza.Ingredientes.Topping;
 
 public class IngredientePizza {
     private Ingrediente ingrediente;
@@ -10,7 +11,6 @@ public class IngredientePizza {
         this.ingrediente = ingrediente;
         this.quantidade = quantidade;
     }
-
 
     public Ingrediente getIngrediente() {
         return ingrediente;
@@ -45,6 +45,11 @@ public class IngredientePizza {
                 System.out.print(" uni.");
                 break;
         }
+        if(ingrediente instanceof Topping){
+            Topping tp = (Topping) ingrediente;
+            System.out.print("| "+tp.getOrigem());
+        }
+
     }
 
 

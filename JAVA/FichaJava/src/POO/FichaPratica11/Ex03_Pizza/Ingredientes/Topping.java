@@ -11,4 +11,8 @@ public class Topping extends Ingrediente {
         super(id, nome, unidadeMedida, calorias);
         this.origem = origem;
     }
+
+    public OrigemIngrediente getOrigem() {
+        return origem;
+    }
 }
