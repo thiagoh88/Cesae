@@ -37,7 +37,7 @@ public class Main {
         Base baseAlta = new Base(50, "Base Alta", 2, BasePizza.MASSA_ALTA, "Base de massa alta");
         Base baseFina = new Base(51, "Base Fina", 1, BasePizza.MASSA_FINA, "Base de massa fina");
 
-
+        FrutoMar obj = new Vegetal(50,"4444",Medidas.UNIDADES,2,OrigemIngrediente.NACIONAL,)
         Pizza pizzaMista = new Pizza(12345, "Pizza Mista", "Pizza tradicional", 20, TamanhoPizza.GRANDE);
 
         pizzaMista.addIngredientePizza(new IngredientePizza(baseAlta, 100));
