@@ -1,25 +1,24 @@
-:root {
-    --corPrimaria: #E51B15;
-    --corSecundaria: #fff;
-    --corTerciaria: #000;
-}
 
-body {
-    font-family: 'Open Sans', sans-serif;
+:root{
+    --corPrimaria: #000000;
+    --corSegundaria: #fff;
+    --corTerciaria: black;
 }
+body{
+font-family: 'Open Sans', sans-serif;
 
-header {
+}
+header{
     background-color: var(--corPrimaria);
-    color: var(--corSecundaria);
+    color: var(--corSegundaria);
 }
 
-nav input {
-    background-color: var(--corSecundaria) !important;
+nav input{
+    background-color: var(--corSegundaria) !important;
     color: var(--corTerciaria) !important;
-    border-color: var(--corSecundaria) !important;
+    border-color: var(--corSegundaria) !important;
 }
-
-.logo {
+.badge{
     background-color: var(--corPrimaria);
 }
 .card img{
@@ -28,38 +27,26 @@ nav input {
 .card-title{
     min-height: 70px;
 }
-.badge {
+footer{
     background-color: var(--corPrimaria);
-}
-.carousel-caption h5, 
-.carousel-caption p {
-    text-shadow: 0px 0px 2px black;
+    color: var(--corSegundaria);
 }
 
-
-footer {
-    background-color: var(--corPrimaria);
-    color: var(--corSecundaria);
-}
-
-footer a {
-    color: var(--corSecundaria);
+footer a{
+    color: var(--corSegundaria);
     padding: 10px;
-    font-size: 20px;
+    font-size: 40px;
 }
-
-footer a:hover {
+footer a:hover{
     opacity: 80%;
 }
-
-.btn {
+.btn{
     background-color: var(--corPrimaria);
-    color: var(--corSecundaria);
-    border: 1px solid var(--corSecundaria);
+    color: var(--corSegundaria);
+    border: 1px solid var(--corSegundaria);
 }
-
-.btn:hover {
-    background-color: var(--corSecundaria);
+.btn:hover{
+    background-color: var(--corSegundaria);
     color: var(--corPrimaria);
     border: 1px solid var(--corPrimaria);
 }

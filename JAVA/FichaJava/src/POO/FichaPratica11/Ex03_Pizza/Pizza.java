@@ -119,14 +119,14 @@ public class Pizza {
             int contadorQueijo = 0;
             int contadorVegetal = 0;
             int contadorFrutoMar = 0;
-            if (ingredienteAtual.getIngrediente()) {
+           // if (ingredienteAtual.getIngrediente()) {
 
                 contadorCarne++;
                 return;
             }
         }
     }
-}
+
 
 
 
