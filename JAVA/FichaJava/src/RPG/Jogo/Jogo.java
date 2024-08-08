@@ -4,6 +4,7 @@ import RPG.Entidades.Archer;
 import RPG.Entidades.Mage;
 import RPG.Entidades.Warrior;
 import RPG.Itens.ArmaPrincipal;
+import RPG.Itens.Consumivel;
 import RPG.Itens.ConsumivelCombate;
 import RPG.Itens.Potion;
 import RPG.Entidades.Hero;
@@ -28,9 +29,9 @@ public class Jogo {
         System.out.println();
         System.out.println(" ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F Criar Heroi ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F");
         System.out.println();
-        System.out.println("             1.Warrior ⚔\uFE0F");
-        System.out.println("             2.Archer \uD83C\uDFF9");
-        System.out.println("             3.Mage \uD83E\uDDD9\u200D♂\uFE0F");
+        System.out.println("             1.Warrior ⚔\uFE0F - Status: Lento | +10 Defesa | Gold x2");
+        System.out.println("             2.Archer \uD83C\uDFF9 - Status: Primeiro turno Movimento x2");
+        System.out.println("             3.Mage \uD83E\uDDD9\u200D♂\uFE0F - Status: Random 50% Dano x2 | -10 Defesa");
         System.out.print("Classe: ");
         int escolhaClasse = input.nextInt();
 
@@ -91,16 +92,18 @@ public class Jogo {
             System.out.println("\nDistribuição inválida. Tente novamente.");
             System.out.println("   Vida 1 ponto = 1 ponto: ");
             System.out.print("Vida: ");
-             vida = input.nextInt();
+            vida = input.nextInt();
             System.out.println("  Força 1 ponto = 5 pontos: ");
             System.out.print("Força: ");
-             forca = input.nextInt();
+            forca = input.nextInt();
         }
 
         System.out.println("\nDistribuiu: " + vida + " pnts de vida e " + forca + " pnts de força");
 
         // Arma principal recebida na criação do personagem
-        ArmaPrincipal armaPrincipal = new ArmaPrincipal("Stick", 0, 10, 20);
+
+        ArmaPrincipal armaPrincipal = stick;
+
 
         // Switch de escolha da criação do personagem
         Hero hero = null;
@@ -108,21 +111,22 @@ public class Jogo {
             case 1:
                 hero = new Warrior("Warrior", vida, vida, forca, 01, goldInicial, armaPrincipal);
                 System.out.println("\nWarrior Level: 1");
-                System.out.println("❤\uFE0F "+vida + "/" + vida + "hp");
+                System.out.println("❤\uFE0F " + vida + "/" + vida + "hp");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
                 break;
             case 2:
                 hero = new Archer("Archer", vida, vida, forca, 01, goldInicial, armaPrincipal);
                 System.out.println("\nArcher Level: 1");
-                System.out.println("❤\uFE0F "+vida + "/" + vida + "hp");
+                System.out.println("❤\uFE0F " + vida + "/" + vida + "hp");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
+
                 break;
             case 3:
                 hero = new Mage("Mage", vida, vida, forca, 01, goldInicial, armaPrincipal);
                 System.out.println("\nMage Level: 1");
-                System.out.println("❤\uFE0F "+vida + "/" + vida + " HP");
+                System.out.println("❤\uFE0F " + vida + "/" + vida + " HP");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
                 break;
@@ -132,8 +136,9 @@ public class Jogo {
         return hero;
     }
 
+
     // Bandidos
-    NPC joca = new NPC("Joca", 100, 30, 15, 10);
+    NPC joca = new NPC("Joca", 100, 100, 15, 10);
     NPC quim = new NPC("Quim", 100, 30, 15, 10);
     NPC zequinha = new NPC("Zequinha", 200, 200, 25, 50);
 
@@ -182,6 +187,7 @@ public class Jogo {
     ArmaPrincipal fireSword = new ArmaPrincipal("Fire Sword", 30, 40, 60);
     ArmaPrincipal holySword = new ArmaPrincipal("Holy Sword", 50, 60, 80);
 
+
     /**
      * Método para chamar o vendedor
      *
@@ -212,11 +218,30 @@ public class Jogo {
         vendedor.adicionarItem(godKiller);
 
         // Invocando o vendedor
-        vendedor.imprimirLoja();
-
-        System.out.println("Inventario");
+        System.out.println("\nO vendedor Salim apareceu com algumas tralhas\n");
+        System.out.println("1.Comprar");
+        System.out.println("0.Sair");
+        int op = input.nextInt();
+        switch (op) {
+            case 1:
+                vendedor.imprimirLoja();
+                System.out.println("\nDigite 0 para sair");
+                System.out.print("Escolha: ");
+                int itemIndex = input.nextInt();
+                vendedor.vender(hero, itemIndex);
+                while (itemIndex != 0) {
+                    vendedor.imprimirLoja();
+                    System.out.println("\nDigite 0 para sair");
+                    System.out.print("Escolha: ");
+                    itemIndex = input.nextInt();
+                    vendedor.vender(hero, itemIndex);
+                }
+            case 0:
+                break;
+            default:
+                break;
+        }
         hero.mostrarInventario();
-
     }
 
     public void intro() {
@@ -235,9 +260,10 @@ public class Jogo {
 
     }
 
+
     public void salaPrincipal(Hero hero) {
 
-        System.out.println("Seguindo pela estrada é possivel escutar gritos de socorro!");
+        System.out.println("\nSeguindo pela estrada é possivel escutar gritos de socorro!");
         System.out.println("Um jovem aventureiro sendo atacado por bandidos!\n");
         hero.atacar(joca);
         System.out.println();

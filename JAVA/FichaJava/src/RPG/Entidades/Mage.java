@@ -2,6 +2,7 @@ package RPG.Entidades;
 
 import RPG.Itens.ArmaPrincipal;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Mage extends Hero {
@@ -16,92 +17,92 @@ public class Mage extends Hero {
      */
     @Override
     public void atacar(NPC npc) {
+        Scanner input = new Scanner(System.in);
         boolean ataqueEspecial = false;
-        System.out.println("Encontrou o " + npc.getNome());
-        System.out.println("Parece que ele está muito chateado!");
+        int dmg = 0;
 
+        System.out.println("⚔\uFE0F Enfrentando o " + npc.getNome() + " ⚔\uFE0F \n");
+        System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "hp\n" + "Força: " + npc.getForca());
         while (this.getHpAtual() > 0 && npc.getHpAtual() > 0) {
-            Scanner input = new Scanner(System.in);
-            int dmg = npc.getForca();
-
-            // Turno NPC
-            System.out.println();
-            System.out.print(npc.getNome() + " ataca " + this.getNome());
-            System.out.println(" -" + npc.getForca() + "hp");
-            System.out.println();
-            this.setHpAtual(this.getHpAtual() - npc.getForca());
-            System.out.println(this.getNome() + "\n" + this.getHpAtual() + "/" + this.getMaxHp() + "HP");
-            System.out.println();
-            if (this.getHpAtual() <= 0) {
-                break;
-            }
-
-
-            //Heroi turn
-            System.out.println();
-            System.out.println("1.Atacar");
-            System.out.println("2.Ataque especial");
-            System.out.println("3.Inventario");
-            System.out.println();
+            System.out.println("\n1.Atacar \uD83D\uDDE1\uFE0F");
+            System.out.println("2.Ataque especial \uD83D\uDCA5");
+            System.out.println("3.Inventario \uD83C\uDF92 \n");
             int escolhaMenu = input.nextInt();
 
             switch (escolhaMenu) {
                 case 1: // Ataque normal
-                    System.out.print("Ataque");
-                    System.out.println();
+                    System.out.print("Ataque \uD83D\uDDE1\uFE0F\n");
                     dmg = this.getForca() + this.armaPrincipal.getAtaque();
+                    npc.setHpAtual(npc.getHpAtual() - dmg);
+                    System.out.print(this.getNome() + " ataca " + npc.getNome());
+                    System.out.println(" -" + dmg + "hp\n");
+                    System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
+
+                    Random random = new Random();
+                    boolean ataqueduplo = random.nextBoolean();
+
+                    if (ataqueduplo) {
+                        System.out.print("\nFIRE BALL! \uD83D\uDDE1\uFE0F\n");
+                        dmg = this.getForca() + this.armaPrincipal.getAtaque();
+                        npc.setHpAtual(npc.getHpAtual() - dmg);
+                        System.out.print(this.getNome() + " ataca " + npc.getNome());
+                        System.out.println(" -" + dmg + "hp\n");
+                        System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
+                    } else {
+                        System.out.println("\nFalhou a magia\n");
+                    }
                     break;
                 case 2: // Ataque especial
                     if (!ataqueEspecial) {
-                        System.out.print("Ataque Especial");
-                        System.out.println();
+                        System.out.print("Ataque Especial \uD83D\uDCA5\n");
                         dmg = this.getForca() + this.armaPrincipal.getAtaqueEspecial();
+                        npc.setHpAtual(npc.getHpAtual() - dmg);
+                        System.out.print(this.getNome() + " ataca " + npc.getNome());
+                        System.out.println(" -" + dmg + "hp\n");
+                        System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
                         ataqueEspecial = true;
                     } else {
-                        System.out.println("Estas a brincar? Já usou isso uma vez!");
-                        System.out.println();
-                        System.out.println("Ataque normal");
-                        System.out.println();
+                        System.out.println("Estas a brincar? Já usou isso uma vez!\n");
+                        System.out.println("Ataque \uD83D\uDDE1\uFE0F\n");
                         dmg = this.getForca() + this.armaPrincipal.getAtaque();
+                        npc.setHpAtual(npc.getHpAtual() - dmg);
+                        System.out.print(this.getNome() + " ataca " + npc.getNome());
+                        System.out.println(" -" + dmg + "hp\n");
+                        System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
                     }
                     break;
                 case 3: //Ataque Consumivel
                     break;
                 default:
-                    System.out.println();
-                    System.out.println("va lá, escolhe alguma coisa direito...");
-                    System.out.println();
+                    System.out.println("\nva lá, escolhe alguma coisa direito...\n");
                     break;
             }
+            if (npc.getHpAtual() <= 0) {
+                this.level++;
+                this.setMaxHp(this.getMaxHp() + 10);
+                this.setForca(this.getForca() + 5);
+                this.gold += npc.getGold();
+                System.out.println(this.getNome() + " Derrotou o " + npc.getNome() + "\n");
+                System.out.println("     ⚜\uFE0F LEVEL UP! ⚜\uFE0F");
+                System.out.println("        Level: " + this.level);
+                System.out.println("❤\uFE0F HP +10 | " + this.getHpAtual() + "/" + this.getMaxHp() + " HP");
+                System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força +5 | " + this.getForca() + " Força");
+                System.out.println("\uD83D\uDCB0 + " + npc.getGold() + " Gold | " + this.gold + " Gold");
 
-            npc.setHpAtual(npc.getHpAtual() - dmg);
-            System.out.print(this.getNome() + " ataca " + npc.getNome());
-            System.out.println(" -" + dmg + "hp");
-            System.out.println();
-            System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP");
-            System.out.println();
+            }
 
+            // Turno NPC
+            if (npc.getHpAtual() > 0) {
+                this.setHpAtual(this.getHpAtual() - npc.getForca() + 10);
+                System.out.print(npc.getNome() + " ataca " + this.getNome());
+                System.out.println(" -" + npc.getForca() + "hp\n");
+                System.out.println(this.getNome() + "\n" + this.getHpAtual() + "/" + this.getMaxHp() + "HP\n");
 
-        }
-
-        if (this.getHpAtual() > 0) {
-            this.level++;
-            this.setMaxHp(this.getHpAtual() + 50);
-            this.setForca(this.getForca() + 5);
-            this.gold += npc.getGold();
-            System.out.println(this.getNome() + " Derrotou o " + npc.getNome());
-            System.out.println();
-            System.out.println("LEVEL UP!");
-            System.out.println("Level: " + this.level);
-            System.out.println("HP +10 | " + this.getHpAtual() + "/" + this.getMaxHp() + " HP");
-            System.out.println("Força +5 | " + this.getForca() + " Força");
-            System.out.println("+ " + npc.getGold() + " Gold");
-            System.out.println(+this.gold + " Gold");
-        } else {
-            System.out.println(npc.getNome() + " acabou com " + this.getNome());
-            System.out.println();
-            System.out.println("GAME OVER MY FRIEND");
+                if (this.getHpAtual() <= 0) {
+                    System.out.println(npc.getNome() + " acabou com " + this.getNome() + "\n");
+                    System.out.println("GAME OVER MY FRIEND");
+                }
+            }
         }
     }
-
 }

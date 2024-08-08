@@ -9,7 +9,7 @@ public class Main {
         Jogo jogo = new Jogo();
         jogo.intro();
         Hero hero = jogo.criarPersonagem();
-
+        jogo.chamarVendedor(hero);
         jogo.salaPrincipal(hero);
         jogo.sala01(hero);
         jogo.sala02(hero);
@@ -30,8 +30,6 @@ public class Main {
         jogo.sala17(hero);
         jogo.sala18(hero);
         jogo.sala19Secret(hero);
-
-
 
 
     }

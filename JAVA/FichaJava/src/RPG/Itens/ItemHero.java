@@ -23,10 +23,6 @@ public abstract class ItemHero {
      */
     public void mostrarDetalhes() {
         System.out.print("Nome: " + this.nome + " | " + this.preco + " Ouros");
-        for (ItemHero heroiAtual : this.heroisPermitidos) {
-            // if (heroiAtual.getEquipamentos)
-        }
-        //  System.out.println("Equipavel: "+heroiAtual);
     }
 
 

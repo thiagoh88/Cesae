@@ -13,90 +13,84 @@ public class Warrior extends Hero {
 
     @Override
     public void atacar(NPC npc) {
+        Scanner input = new Scanner(System.in);
         boolean ataqueEspecial = false;
-        System.out.println("Encontrou o " + npc.getNome());
-        System.out.println("Parece que ele está muito chateado!");
+        int dmg = 0;
+
+        System.out.println("⚔\uFE0F Enfrentando o " + npc.getNome() + " ⚔\uFE0F \n");
+        System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "hp\n" + "Força: " + npc.getForca());
 
         while (this.getHpAtual() > 0 && npc.getHpAtual() > 0) {
-            Scanner input = new Scanner(System.in);
+            // Turno NPC 1º
+            if (npc.getHpAtual() > 0) {
+                //NPC causa -10 Dano
+                int danoNPC = getForca() - 10;
+                this.setHpAtual(this.getHpAtual() - danoNPC);
+                System.out.println("\n" + npc.getNome() + " ataca " + this.getNome());
+                System.out.println("Warrior Defente -" + danoNPC + "hp\n");
+                System.out.println(this.getNome() + "\n" + this.getHpAtual() + "/" + this.getMaxHp() + "HP\n");
 
-            System.out.println();
-            System.out.println("1.Atacar");
-            System.out.println("2.Ataque especial");
-            System.out.println("3.Inventario");
-            System.out.println();
-            int escolhaMenu = input.nextInt();
-            int dmg = 0;
+                if (this.getHpAtual() <= 0) {
+                    System.out.println(npc.getNome() + " acabou com " + this.getNome() + "\n");
+                    System.out.println("GAME OVER MY FRIEND");
+                }
+            }
+            // Turno Heroi
+            if (this.getHpAtual() > 0 && npc.getHpAtual() > 0) {
 
-            switch (escolhaMenu) {
-                case 1: // Ataque normal
-                    System.out.print("Ataque");
-                    System.out.println();
-                    dmg = this.getForca() + this.armaPrincipal.getAtaque();
-                    break;
-                case 2: // Ataque especial
-                    if (!ataqueEspecial) {
-                        System.out.print("Ataque Especial");
-                        System.out.println();
-                        dmg = this.getForca() + this.armaPrincipal.getAtaqueEspecial();
-                        ataqueEspecial = true;
-                    } else {
-                        System.out.println("Estas a brincar? Já usou isso uma vez!");
-                        System.out.println();
-                        System.out.println("Ataque normal");
-                        System.out.println();
+                System.out.println("\n1.Atacar \uD83D\uDDE1\uFE0F");
+                System.out.println("2.Ataque especial \uD83D\uDCA5");
+                System.out.println("3.Inventario \uD83C\uDF92 \n");
+                int escolhaMenu = input.nextInt();
+
+                switch (escolhaMenu) {
+                    case 1: // Ataque normal
+                        System.out.print("Ataque \uD83D\uDDE1\uFE0F\n");
                         dmg = this.getForca() + this.armaPrincipal.getAtaque();
-                    }
-                    break;
-                case 3: //Ataque Consumivel
-                    break;
-                default:
-                    System.out.println();
-                    System.out.println("va lá, escolhe alguma coisa direito...");
-                    System.out.println();
-                    break;
+                        npc.setHpAtual(npc.getHpAtual() - dmg);
+                        System.out.print(this.getNome() + " ataca " + npc.getNome());
+                        System.out.println(" -" + dmg + "hp\n");
+                        System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
+                        break;
+                    case 2: // Ataque especial
+                        if (!ataqueEspecial) {
+                            System.out.print("Ataque Especial \uD83D\uDCA5\n");
+                            dmg = this.getForca() + this.armaPrincipal.getAtaqueEspecial();
+                            npc.setHpAtual(npc.getHpAtual() - dmg);
+                            System.out.print(this.getNome() + " ataca " + npc.getNome());
+                            System.out.println(" -" + dmg + "hp\n");
+                            System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
+                            ataqueEspecial = true;
+                        } else {
+                            System.out.println("Estas a brincar? Já usou isso uma vez!\n");
+                            System.out.println("Ataque \uD83D\uDDE1\uFE0F\n");
+                            dmg = this.getForca() + this.armaPrincipal.getAtaque();
+                            npc.setHpAtual(npc.getHpAtual() - dmg);
+                            System.out.print(this.getNome() + " ataca " + npc.getNome());
+                            System.out.println(" -" + dmg + "hp\n");
+                            System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP\n");
+                        }
+                        break;
+                    case 3: //Ataque Consumivel
+                        break;
+                    default:
+                        System.out.println("\nva lá, escolhe alguma coisa direito...\n");
+                        break;
+                }
+                if (npc.getHpAtual() <= 0) {
+                    this.level++;
+                    this.setMaxHp(this.getMaxHp() + 10);
+                    this.setForca(this.getForca() + 5);
+                    // Gold x2
+                    this.gold += (2 * npc.getGold());
+                    System.out.println(this.getNome() + " Derrotou o " + npc.getNome() + "\n");
+                    System.out.println("     ⚜\uFE0F LEVEL UP! ⚜\uFE0F");
+                    System.out.println("        Level: " + this.level);
+                    System.out.println("❤\uFE0F HP +10 | " + this.getHpAtual() + "/" + this.getMaxHp() + " HP");
+                    System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força +5 | " + this.getForca() + " Força");
+                    System.out.println("\uD83D\uDCB0 +x2 " + 2 * npc.getGold() + " Gold | " + this.gold + " Gold");
+                }
             }
-
-            npc.setHpAtual(npc.getHpAtual() - dmg);
-
-            System.out.print(this.getNome() + " ataca " + npc.getNome());
-            System.out.println(" -" + dmg + "hp");
-            System.out.println();
-            System.out.println(npc.getNome() + "\n" + npc.getHpAtual() + "/" + npc.getMaxHp() + "HP");
-            System.out.println();
-
-            if (npc.getHpAtual() <= 0) {
-                break;
-            }
-
-            // NPC
-
-            this.setHpAtual(this.getHpAtual() - npc.getForca());
-
-            System.out.print(npc.getNome() + " ataca " + this.getNome());
-            System.out.println(" -" + npc.getForca() + "hp");
-            System.out.println();
-            System.out.println(this.getNome() + "\n" + this.getHpAtual() + "/" + this.getMaxHp() + "HP");
-            System.out.println();
-        }
-
-        if (this.getHpAtual() > 0) {
-            this.level++;
-            this.setMaxHp(this.getHpAtual() + 50);
-            this.setForca(this.getForca() + 5);
-            this.gold += npc.getGold();
-            System.out.println(this.getNome() + " Derrotou o " + npc.getNome());
-            System.out.println();
-            System.out.println("LEVEL UP!");
-            System.out.println("Level: " + this.level);
-            System.out.println("HP +10 | " + this.getHpAtual() + "/" + this.getMaxHp() + " HP");
-            System.out.println("Força +5 | " + this.getForca() + " Força");
-            System.out.println("+ " + npc.getGold() + " Gold");
-            System.out.println(+this.gold + " Gold");
-        } else {
-            System.out.println(npc.getNome() + " acabou com " + this.getNome());
-            System.out.println();
-            System.out.println("GAME OVER MY FRIEND");
         }
     }
 }
