@@ -6,31 +6,45 @@ import RPG.Jogo.Jogo;
 public class Main {
     public static void main(String[] args) {
 
+        Jogo.MusicPlayer musicaIntro = new Jogo.MusicPlayer();
+        Jogo.MusicPlayer musicaJogo = new Jogo.MusicPlayer();
+        Jogo.MusicPlayer musicaFinal = new Jogo.MusicPlayer();
+        Jogo.MusicPlayer musicaEnd = new Jogo.MusicPlayer();
+
+
+        musicaIntro.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/action.mp3");
         Jogo jogo = new Jogo();
         jogo.intro();
         Hero hero = jogo.criarPersonagem();
-        jogo.chamarVendedor(hero);
+        musicaIntro.stopMusic();
+
+        musicaJogo.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/chase.mp3");
         jogo.salaPrincipal(hero);
-        jogo.sala01(hero);
-        jogo.sala02(hero);
-        jogo.sala03(hero);
-        jogo.sala04(hero);
-        jogo.sala05(hero);
-        jogo.sala06(hero);
-        jogo.sala07(hero);
-        jogo.sala08(hero);
-        jogo.sala09(hero);
-        jogo.sala10(hero);
-        jogo.sala11(hero);
-        jogo.sala12(hero);
-        jogo.sala13(hero);
-        jogo.sala14(hero);
-        jogo.sala15(hero);
-        jogo.sala16(hero);
-        jogo.sala17(hero);
-        jogo.sala18(hero);
+        jogo.montanhaMorte(hero);
+        jogo.labirintoTempestuoso(hero);
+        jogo.valeSombrio(hero);
+        jogo.subirPedras(hero);
+        jogo.labesquerda(hero);
+        jogo.labdireita(hero);
+        jogo.caminhoFloresta(hero);
+        jogo.caminhoEstreito(hero);
+        jogo.caverna(hero);
+        jogo.corredor(hero);
+        jogo.corredorLargo(hero);
+        jogo.lodo(hero);
+        jogo.cume(hero);
+        jogo.trilhaMontanha(hero);
+        jogo.salasaida(hero);
+        jogo.chest(hero);
+        jogo.entradaMonasterio(hero);
+        musicaJogo.stopMusic();
+
+        musicaFinal.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/boss.mp3");
+        jogo.monasterio(hero);
         jogo.sala19Secret(hero);
+        musicaFinal.stopMusic();
 
-
+        musicaEnd.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/end.mp3");
+        jogo.end(hero);
     }
 }

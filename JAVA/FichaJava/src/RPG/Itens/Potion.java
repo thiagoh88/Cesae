@@ -1,12 +1,14 @@
 package RPG.Itens;
 
+import java.util.ArrayList;
+
 public class Potion extends Consumivel {
 
     public int hpHeal;
     public int powerUp;
 
-    public Potion(String nome, int preco, int hpHeal, int powerUp) {
-        super(nome, preco);
+    public Potion(String nome, int preco, ArrayList<String> heroisPermitidos, int hpHeal, int powerUp) {
+        super(nome, preco, heroisPermitidos);
         this.hpHeal = hpHeal;
         this.powerUp = powerUp;
     }

@@ -1,9 +1,6 @@
 package RPG.Entidades;
 
-import RPG.Itens.Consumivel;
-import RPG.Itens.ArmaPrincipal;
-import RPG.Itens.ItemHero;
-import RPG.Itens.Potion;
+import RPG.Itens.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,6 +21,7 @@ public abstract class Hero extends Entidade {
 
     }
 
+
     /**
      * Override do metodo para apresentar detalhes
      */
@@ -39,7 +37,7 @@ public abstract class Hero extends Entidade {
      * Metodo para apresentar o inventario
      */
     public void mostrarInventario() {
-        System.out.println("Weapon: " + this.armaPrincipal.getNome());
+        System.out.println("Arma Principal: " + this.armaPrincipal.getNome());
         for (Consumivel consumivelAtual : this.inventario) {
             consumivelAtual.mostrarDetalhes();
             System.out.println();
@@ -56,47 +54,60 @@ public abstract class Hero extends Entidade {
     public void potionUse() {
         Scanner input = new Scanner(System.in);
 
-        for (int i = 0; i < this.inventario.size(); i++) {
-            Consumivel consumivelAtual = this.inventario.get(i);
-            if (consumivelAtual instanceof Potion) {
-                System.out.println(i + " - " + consumivelAtual.getNome() + " | Cura: " + ((Potion) consumivelAtual).getHpHeal() + " | Power Up: " + ((Potion) consumivelAtual).getPowerUp());
-            }
-        }
-        System.out.println("\nEscolha uma Potion\n");
-        int escolha = input.nextInt();
-        while (escolha < 0 && escolha > inventario.size()) {
-            System.out.println("Escolha uma Potion");
-            escolha = input.nextInt();
-        }
-
-        if (inventario.get(escolha) instanceof Potion) {
-            Potion potion = (Potion) inventario.get(escolha);
-            this.setHpAtual(getHpAtual() + potion.getHpHeal());
-            this.setForca(getForca() + potion.getPowerUp());
-            inventario.remove(escolha);
-            System.out.println("Usou " + potion.getNome());
-            System.out.println(+getHpAtual() + "/" + getMaxHp());
-            System.out.println("Força: " + getForca());
-
-            if (this.getHpAtual() > this.getMaxHp()) {
-                System.out.println("\nA Potion recupera mais que precisa, quer continuar?");
-                System.out.println("1.Sim");
-                System.out.println("2.Não\n");
-                int op = input.nextInt();
-                switch (op) {
-                    case 1:
-                        this.setHpAtual(this.getMaxHp());
-                        inventario.remove(escolha);
-                        System.out.println("Usou " + potion.getNome());
-                        System.out.println(+getHpAtual() + "/" + getMaxHp());
-                        System.out.println("Força: " + getForca());
-                        break;
-                    case 2:
-                        System.out.println("Nada de usar Potion então...");
-                        this.setHpAtual(getHpAtual() - potion.getHpHeal());
-                        break;
-
-                }
+        System.out.println("\nMelhor recuperar o HP antes de continuar...\nGostaria de usar uma Potion?\n1.Sim\n2.Não\n\n" + this.getNome() + " " + this.getHpAtual() + "/" + this.getMaxHp() + "HP");
+        System.out.print("\nEscolha: ");
+        int hp = input.nextInt();
+        while (hp != 1 && hp != 2) {
+            System.out.println("\nMelhor recuperar o HP antes de continuar...\nGostaria de usar uma Potion?\n1.Sim\n2.Não\n\n" + this.getNome() + " " + this.getHpAtual() + "/" + this.getMaxHp() + "HP");
+            System.out.print("\nEscolha: ");
+            hp = input.nextInt();
+            switch (hp) {
+                case 1:
+                    for (int i = 0; i < this.inventario.size(); i++) {
+                        Consumivel consumivelAtual = this.inventario.get(i);
+                        if (consumivelAtual instanceof Potion) {
+                            System.out.print(i + " - " + consumivelAtual.getNome() + " | Cura: " + ((Potion) consumivelAtual).getHpHeal() + " | Power Up: " + ((Potion) consumivelAtual).getPowerUp());
+                        }
+                        System.out.print("\nEscolha uma Potion ou 0 para sair: ");
+                        int escolha = input.nextInt();
+                        while (escolha < 0 && escolha > this.inventario.size()) {
+                            System.out.print("\nEscolha uma Potion ou 0 para sair: ");
+                            escolha = input.nextInt();
+                            if (escolha == 0) {
+                                return;
+                            }
+                            if (this.inventario.get(escolha) instanceof Potion) {
+                                Potion potion = (Potion) this.inventario.get(escolha);
+                                this.setHpAtual(getHpAtual() + potion.getHpHeal());
+                                this.setForca(getForca() + potion.getPowerUp());
+                                if (this.getHpAtual() > this.getMaxHp()) {
+                                    System.out.println("\nVai haver desperdicio, quer continuar?\n1.Sim\n2.Não\n");
+                                    int op = input.nextInt();
+                                    switch (op) {
+                                        case 1:
+                                            this.setHpAtual(this.getMaxHp());
+                                            System.out.println("\nUsou " + potion.getNome() + "\n\n" + this.getNome() + "\n❤\uFE0F " + getHpAtual() + "/" + getMaxHp() + "HP\n\uD83D\uDCAA\uD83C\uDFFB Força: " + this.getForca());
+                                            this.inventario.remove(escolha);
+                                            break;
+                                        case 2:
+                                            System.out.println("Nada de usar Potion...");
+                                            this.setHpAtual(getHpAtual() - potion.getHpHeal());
+                                            break;
+                                        default:
+                                            System.out.println("Opção invalida.");
+                                            break;
+                                    }
+                                }
+                                System.out.println("\nUsou " + potion.getNome() + "\n\n" + this.getNome() + "\n❤\uFE0F " + getHpAtual() + "/" + getMaxHp() + "HP\n\uD83D\uDCAA\uD83C\uDFFB Força: " + this.getForca());
+                                this.inventario.remove(escolha);
+                            }
+                        }
+                    }
+                case 2:
+                    break;
+                default:
+                    System.out.println("Opção Invalida");
+                    break;
             }
         }
     }

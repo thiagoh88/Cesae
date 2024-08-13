@@ -1,11 +1,13 @@
 package RPG.Itens;
 
+import java.util.ArrayList;
+
 public class ConsumivelCombate extends Consumivel {
 
     private int AtaqueInstantaneo;
 
-    public ConsumivelCombate(String nome, int preco, int ataqueInstantaneo) {
-        super(nome, preco);
+    public ConsumivelCombate(String nome, int preco, ArrayList<String> heroisPermitidos, int ataqueInstantaneo) {
+        super(nome, preco, heroisPermitidos);
         AtaqueInstantaneo = ataqueInstantaneo;
     }
 

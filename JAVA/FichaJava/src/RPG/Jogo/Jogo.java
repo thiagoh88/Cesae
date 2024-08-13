@@ -3,19 +3,92 @@ package RPG.Jogo;
 import RPG.Entidades.Archer;
 import RPG.Entidades.Mage;
 import RPG.Entidades.Warrior;
-import RPG.Itens.ArmaPrincipal;
-import RPG.Itens.Consumivel;
-import RPG.Itens.ConsumivelCombate;
-import RPG.Itens.Potion;
+import RPG.Itens.*;
 import RPG.Entidades.Hero;
 import RPG.Entidades.NPC;
 import RPG.Entidades.Vendedor;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Jogo {
 
     Scanner input = new Scanner(System.in);
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
+    // Bandidos
+    NPC joca = new NPC("Joca", 150, 100, 30, 10);
+    NPC quim = new NPC("Quim", 150, 50, 30, 10);
+    NPC zequinha = new NPC("Zequinha", 250, 50, 40, 50);
+
+
+    // Vale Sombrio
+    NPC aranhaGigante = new NPC("Aranha Gigante", 200, 50, 35, 10);
+    NPC abelhaAssassina = new NPC("Abelha Assassina", 250, 50, 40, 10);
+    NPC insectoide = new NPC("Insectoide", 300, 50, 50, 25);
+
+    // Labirinto Tempestuoso
+    NPC gargula = new NPC("Gargula", 200, 50, 35, 5);
+    NPC golem = new NPC("Golem", 250, 50, 40, 10);
+    NPC minotauro = new NPC("Minotauro", 300, 50, 50, 20);
+
+    //Montanha da Morte
+    NPC goblin = new NPC("Goblin", 200, 50, 35, 20);
+    NPC orc = new NPC("Orc", 250, 50, 40, 15);
+    NPC troll = new NPC("Troll", 300, 50, 50, 30);
+
+    // BOSS
+    NPC reiDemonio = new NPC("Rei Demonio", 500, 50, 70, 1000);
+    NPC vitor = new NPC("Dark Vitor", 200, 50, 100, 0);
+
+    ArrayList<String> heroisPermitidos = new ArrayList<>(List.of("Warrior", "Mage", "Archer"));
+    ArrayList<String> heroiWarrior = new ArrayList<>(List.of("Warrior"));
+    ArrayList<String> heroiArcher = new ArrayList<>(List.of("Archer"));
+    ArrayList<String> heroiMage = new ArrayList<>(List.of("Mage"));
+
+    // Criação Consumiveis
+    Potion lifepotionMinor = new Potion("Minor Potion", 10, heroisPermitidos, 20, 0);
+    Potion lifepotionMedium = new Potion("Medium Potion", 20, heroisPermitidos, 40, 0);
+    Potion lifepotionMajor = new Potion("Major Potion", 30, heroisPermitidos, 60, 0);
+    Potion strenghtPotion = new Potion("Strength Potion", 50, heroisPermitidos, 0, 10);
+    Potion megaStrengthPotion = new Potion("Mega Strength Potion", 100, heroisPermitidos, 0, 20);
+
+    // Criação Consumivel de Combate
+    ConsumivelCombate bomba = new ConsumivelCombate("Bomba", 15, heroisPermitidos, 50);
+    ConsumivelCombate superBomba = new ConsumivelCombate("Super Bomba", 30, heroisPermitidos, 100);
+    ConsumivelCombate godKiller = new ConsumivelCombate("GOD KILLER", 100, heroisPermitidos, 999);
+
+    // Criação Armas
+    ArmaPrincipal stick = new ArmaPrincipal("Stick", 0, 10, 20, heroisPermitidos);
+
+    ArmaPrincipal superStaff = new ArmaPrincipal("Super Staff", 10, 20, 40, heroiMage);
+    ArmaPrincipal fireStaff = new ArmaPrincipal("Fire Staff", 30, 40, 60, heroiMage);
+    ArmaPrincipal holyStaff = new ArmaPrincipal("Holy Staff", 50, 60, 80, heroiMage);
+
+    ArmaPrincipal bow = new ArmaPrincipal("Bow", 10, 20, 40, heroiArcher);
+    ArmaPrincipal fireBow = new ArmaPrincipal("Fire Bow", 30, 40, 60, heroiArcher);
+    ArmaPrincipal holyBow = new ArmaPrincipal("Holy Bow", 50, 60, 80, heroiArcher);
+
+
+    ArmaPrincipal sword = new ArmaPrincipal("Sword", 10, 20, 40, heroiWarrior);
+    ArmaPrincipal fireSword = new ArmaPrincipal("Fire Sword", 30, 40, 60, heroiWarrior);
+    ArmaPrincipal holySword = new ArmaPrincipal("Holy Sword", 50, 60, 80, heroiWarrior);
+
 
     /**
      * Método de criação do personagem
@@ -25,14 +98,19 @@ public class Jogo {
     public Hero criarPersonagem() {
 
         // Escolher classe
-        System.out.println();
-        System.out.println();
-        System.out.println(" ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F Criar Heroi ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F");
-        System.out.println();
-        System.out.println("             1.Warrior ⚔\uFE0F - Status: Lento | +10 Defesa | Gold x2");
-        System.out.println("             2.Archer \uD83C\uDFF9 - Status: Primeiro turno Movimento x2");
-        System.out.println("             3.Mage \uD83E\uDDD9\u200D♂\uFE0F - Status: Random 50% Dano x2 | -10 Defesa");
-        System.out.print("Classe: ");
+        try {
+            Thread.sleep(8000);
+            System.out.println(ANSI_BLUE);
+            System.out.println();
+            System.out.println("                                        ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F Criar Heroi ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F");
+            System.out.println();
+            System.out.println("                            1.Warrior ⚔\uFE0F - Bônus: Lento | -10 Dano | +20 Defesa | Gold x2");
+            System.out.println("                            2.Archer \uD83C\uDFF9 - Bônus: 1ºturno x2 | Critical Arrow Dano x2 | -5 Defesa");
+            System.out.println("                            3.Mage \uD83E\uDDD9\u200D♂\uFE0F - Bônus: Random 50% FireBall Dano x2 | -10 Defesa");
+            System.out.print("\nClasse: ");
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
         int escolhaClasse = input.nextInt();
 
         // Deve escolher entre 1 e 3
@@ -49,19 +127,19 @@ public class Jogo {
 
         // Escolher dificuldade
         System.out.println();
-        System.out.println("            Dificuldade");
-        System.out.println("              1.Easy");
-        System.out.println("              2.Hard");
-        System.out.print("Escolha: ");
+        System.out.println("                                                  Dificuldade");
+        System.out.println("                                          1.Easy - 300 Pontos Criação");
+        System.out.println("                                          2.Hard - 200 Pontos Criação");
+        System.out.print("\nEscolha: ");
         int escolhaDificuldade = input.nextInt();
 
         // Deve escolher 1 ou 2
         while (escolhaDificuldade != 1 && escolhaDificuldade != 2) {
             System.out.println();
-            System.out.println("            Dificuldade");
-            System.out.println("              1.Easy");
-            System.out.println("              2.Hard");
-            System.out.print("Escolha: ");
+            System.out.println("                                                  Dificuldade");
+            System.out.println("                                          1.Easy - 300 Pontos Criação");
+            System.out.println("                                          2.Hard - 200 Pontos Criação");
+            System.out.print("\nEscolha: ");
             escolhaDificuldade = input.nextInt();
         }
         int pntsCriacao = 0;
@@ -78,12 +156,12 @@ public class Jogo {
         }
 
         // Distribuir pontos de criação
-        System.out.println("\nDistribua os pontos de criação");
-        System.out.println("         Pontos: " + escolhaDificuldade);
-        System.out.println("   Vida 1 ponto = 1 ponto: ");
+        System.out.println("\n                                        Distribua os pontos de criação");
+        System.out.println("                                                 Pontos: " + escolhaDificuldade);
+        System.out.println("                                            Vida 1 ponto = 1 ponto ");
+        System.out.println("                                           Força 1 ponto = 5 pontos ");
         System.out.print("Vida: ");
         int vida = input.nextInt();
-        System.out.println("  Força 1 ponto = 5 pontos: ");
         System.out.print("Força: ");
         int forca = input.nextInt();
 
@@ -98,10 +176,9 @@ public class Jogo {
             forca = input.nextInt();
         }
 
-        System.out.println("\nDistribuiu: " + vida + " pnts de vida e " + forca + " pnts de força");
+        System.out.println("\nDistribuiu: " + vida + " pnts de vida e " + forca + " pnts de força\n");
 
         // Arma principal recebida na criação do personagem
-
         ArmaPrincipal armaPrincipal = stick;
 
 
@@ -109,84 +186,37 @@ public class Jogo {
         Hero hero = null;
         switch (escolhaClasse) {
             case 1:
+                System.out.println("\nNovo Heroi Criado");
                 hero = new Warrior("Warrior", vida, vida, forca, 01, goldInicial, armaPrincipal);
                 System.out.println("\nWarrior Level: 1");
                 System.out.println("❤\uFE0F " + vida + "/" + vida + "hp");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
+                System.out.println("----------------------------------------------------------------------" + ANSI_RESET);
                 break;
             case 2:
+                System.out.println("\nNovo Heroi Criado");
                 hero = new Archer("Archer", vida, vida, forca, 01, goldInicial, armaPrincipal);
                 System.out.println("\nArcher Level: 1");
                 System.out.println("❤\uFE0F " + vida + "/" + vida + "hp");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
-
+                System.out.println("----------------------------------------------------------------------" + ANSI_RESET);
                 break;
             case 3:
+                System.out.println("\nNovo Heroi Criado");
                 hero = new Mage("Mage", vida, vida, forca, 01, goldInicial, armaPrincipal);
                 System.out.println("\nMage Level: 1");
                 System.out.println("❤\uFE0F " + vida + "/" + vida + " HP");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
+                System.out.println("----------------------------------------------------------------------" + ANSI_RESET);
                 break;
             default:
-                System.out.println("escolha invalida");
+                System.out.println("escolha invalida" + ANSI_RESET);
         }
         return hero;
     }
-
-
-    // Bandidos
-    NPC joca = new NPC("Joca", 100, 100, 15, 10);
-    NPC quim = new NPC("Quim", 100, 30, 15, 10);
-    NPC zequinha = new NPC("Zequinha", 200, 200, 25, 50);
-
-
-    // Vale Sombrio
-    NPC aranhaGigante = new NPC("Aranha Gigante", 100, 10, 20, 10);
-    NPC abelhaAssassina = new NPC("Abelha Assassina", 150, 15, 25, 10);
-    NPC insectoide = new NPC("Insectoide", 200, 20, 35, 25);
-
-    // Labirinto Tempestuoso
-    NPC gargula = new NPC("Gargula", 300, 30, 10, 5);
-    NPC golem = new NPC("Golem", 250, 25, 25, 10);
-    NPC minotauro = new NPC("Minotauro", 350, 35, 35, 20);
-
-    //Montanha da Morte
-    NPC goblin = new NPC("Goblin", 150, 15, 30, 20);
-    NPC orc = new NPC("Orc", 250, 25, 35, 15);
-    NPC troll = new NPC("Troll", 300, 20, 40, 30);
-
-    // BOSS
-    NPC reiDemonio = new NPC("Rei Demonio", 600, 10, 40, 1000);
-    NPC vitor = new NPC("Dark Vitor", 300, 30, 60, 0);
-
-
-    // Criação Consumiveis
-    Potion lifepotionMinor = new Potion("Minor Potion", 10, 20, 0);
-    Potion lifepotionMedium = new Potion("Medium Potion", 20, 40, 0);
-    Potion lifepotionMajor = new Potion("Major Potion", 30, 60, 0);
-    Potion strenghtPotion = new Potion("Strength Potion", 50, 0, 10);
-    Potion megaStrengthPotion = new Potion("Mega Strength Potion", 100, 0, 20);
-
-    // Criação Consumivel de Combate
-    ConsumivelCombate bomba = new ConsumivelCombate("Bomba", 15, 50);
-    ConsumivelCombate superBomba = new ConsumivelCombate("Super Bomba", 30, 100);
-    ConsumivelCombate godKiller = new ConsumivelCombate("GOD KILLER", 100, 999);
-
-    // Criação Armas
-    ArmaPrincipal stick = new ArmaPrincipal("Stick", 0, 10, 20);
-    ArmaPrincipal superStaff = new ArmaPrincipal("Super Staff", 10, 20, 40);
-    ArmaPrincipal fireStaff = new ArmaPrincipal("Fire Staff", 30, 40, 60);
-    ArmaPrincipal holyStaff = new ArmaPrincipal("Holy Staff", 50, 60, 80);
-    ArmaPrincipal bow = new ArmaPrincipal("Bow", 10, 20, 40);
-    ArmaPrincipal fireBow = new ArmaPrincipal("Fire Bow", 30, 40, 60);
-    ArmaPrincipal holyBow = new ArmaPrincipal("Holy Bow", 50, 60, 80);
-    ArmaPrincipal sword = new ArmaPrincipal("Sword", 10, 20, 40);
-    ArmaPrincipal fireSword = new ArmaPrincipal("Fire Sword", 30, 40, 60);
-    ArmaPrincipal holySword = new ArmaPrincipal("Holy Sword", 50, 60, 80);
-
 
     /**
      * Método para chamar o vendedor
@@ -217,22 +247,23 @@ public class Jogo {
         vendedor.adicionarItem(superBomba);
         vendedor.adicionarItem(godKiller);
 
+
         // Invocando o vendedor
-        System.out.println("\nO vendedor Salim apareceu com algumas tralhas\n");
+        System.out.println(ANSI_YELLOW + "\nO vendedor Salim apareceu com algumas tralhas\n");
         System.out.println("1.Comprar");
         System.out.println("0.Sair");
         int op = input.nextInt();
         switch (op) {
             case 1:
-                vendedor.imprimirLoja();
-                System.out.println("\nDigite 0 para sair");
+                vendedor.imprimirLoja(hero);
+                System.out.println("\nDigite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
                 System.out.print("Escolha: ");
                 int itemIndex = input.nextInt();
                 vendedor.vender(hero, itemIndex);
                 while (itemIndex != 0) {
-                    vendedor.imprimirLoja();
-                    System.out.println("\nDigite 0 para sair");
-                    System.out.print("Escolha: ");
+                    vendedor.imprimirLoja(hero);
+                    System.out.println("\nDigite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
+                    System.out.print("Escolha: " + ANSI_RESET);
                     itemIndex = input.nextInt();
                     vendedor.vender(hero, itemIndex);
                 }
@@ -242,46 +273,119 @@ public class Jogo {
                 break;
         }
         hero.mostrarInventario();
+
     }
 
+    /**
+     * Método para tocar musicas
+     */
+    public static class MusicPlayer {
+
+        public Thread musica;
+        public Player player;
+        public boolean play;
+
+        public void play(String filePath) {
+            play = true;
+            musica = new Thread(() -> {
+                try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
+                    player = new Player(fileInputStream);
+                    player.play();
+                } catch (JavaLayerException | IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            musica.start();  // Inicia a thread de música
+        }
+
+        public void stopMusic() {
+            if (player != null) {
+                play = false;
+                player.close();
+                try {
+                    if (musica != null) {
+                        musica.join();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * Intro da história do jogo
+     */
     public void intro() {
-        System.out.println();
-        System.out.println();
-        System.out.println("                                         ◯ ☽ ◑    Eldoria    ◐ ❨ ◯\n");
-        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆                      Em um mundo onde a magia e o aço se entrelaçam.                                   ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
-        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆                      Eldoria é uma terra vasta e cheia de mistérios.                                   ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
-        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆                 Governada por reis sábios e protegida por guerreiros honrados.                         ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
-        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆          Mas uma antiga profecia, perdida no tempo, ameaça o equilíbrio de todo o reino.               ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
-        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆ Diz-se que, quando as estrelas alinharem-se de maneira particular, uma força sombria de outro mundo... ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
-        System.out.println("                                           Tentará invadir Eldoria...\n");
-        System.out.println("                      Apenas o Herói Destinado poderá impedir que as trevas consumam o reino.\n\n");
-        System.out.println("                Você é um jovem aventureiro que vive em uma pequena vila nas fronteiras de Eldoria. ");
-        System.out.println("                       Aos 18 anos, decide partir em uma jornada para provar seu valor....\n\n");
 
+
+        System.out.println(ANSI_GREEN + "\n******************************************************************************************************************************");
+        System.out.println();
+        System.out.println("                                             ◯ ☽ ◑    Eldoria    ◐ ❨ ◯\n");
+        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆                          Em um mundo onde a magia e o aço se entrelaçam.                               ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
+        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆                          Eldoria é uma terra vasta e cheia de mistérios.                               ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
+        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆                   Governada por reis sábios e protegida por guerreiros honrados.                       ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
+        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆           Mas uma antiga profecia, perdida no tempo, ameaça o equilíbrio de todo o reino.              ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
+        System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆ Diz-se que, quando as estrelas alinharem-se de maneira particular, uma força sombria de outro mundo... ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆");
+        System.out.println("                                             Tentará invadir Eldoria...\n");
+        System.out.println("                         Apenas o Herói Destinado poderá impedir que as trevas consumam o reino.\n\n");
+        System.out.println("                    Você é um jovem aventureiro que vive em uma pequena vila nas fronteiras de Eldoria. ");
+        System.out.println("                            Aos 18 anos, decide partir em uma jornada para provar seu valor....");
+        System.out.println("\n******************************************************************************************************************************" + ANSI_RESET);
     }
 
-
+    /**
+     * Sala Principal
+     *
+     * @param hero
+     */
     public void salaPrincipal(Hero hero) {
-
-        System.out.println("\nSeguindo pela estrada é possivel escutar gritos de socorro!");
-        System.out.println("Um jovem aventureiro sendo atacado por bandidos!\n");
-        hero.atacar(joca);
-        System.out.println();
-        System.out.println();
-        hero.atacar(quim);
-        System.out.println();
-        System.out.println("O jovem aventureiro agradece e diz que tentou chegar no Monastério ");
-        System.out.println("mas um grande monstro impediu sua passagem, apenas o Herói pode passar!\n");
-        System.out.println("Ele segiu o caminho da cidade...\n");
-        System.out.println("Ao fim da estrada temos os caminhos para o monastério, cada caminho tem a sua provação...\nQual devemos seguir?\n");
-        System.out.println("Mas antes vou comprar algo com aquele vendedor pois o Vitor pediu. \uD83D\uDE01");
         chamarVendedor(hero);
+        hero.potionUse();
+        System.out.println(ANSI_GREEN + "\nSeguindo pela estrada é possivel escutar gritos de socorro!");
+        System.out.println("Um jovem aventureiro sendo atacado por bandidos!\n\nPrepare-se!\n");
+        System.out.print(ANSI_RED);
+
+        hero.atacar(joca);
+        try {
+            Thread.sleep(2000);
+            System.out.println("\n Outro bandido, Prepare-se!  \n");
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
+        hero.atacar(quim);
+        System.out.print(ANSI_RESET);
+        System.out.print(ANSI_GREEN);
+        try {
+            Thread.sleep(2000);
+            System.out.println("\nO jovem aventureiro agradece a ajuda e diz que tentou chegar ao Monastério da Luz");
+            System.out.println("Mas um grande monstro impediu sua passagem, apenas o Herói pode passar!\n");
+            System.out.println("Ele segiu o caminho da cidade...\n");
+            System.out.println("Ao fim da estrada temos os caminhos para o monastério, cada caminho tem a sua provação...\nQual devemos seguir?\n");
+            System.out.println("Mas antes vou comprar algo com aquele vendedor pois o Vitor pediu. \uD83D\uDE01");
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
+        try {
+            Thread.sleep(5000);
+            System.out.println(ANSI_YELLOW);
+            chamarVendedor(hero);
+            System.out.println(ANSI_RESET);
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
+        System.out.print(ANSI_RED);
+        hero.potionUse();
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
         System.out.println("1.Montanha da Morte");
         System.out.println("2.Labirinto Tempestuoso");
         System.out.println("3.Vale Sombrio");
         int op = input.nextInt();
         while (op != 1 && op != 2 && op != 3) {
             System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
             System.out.println("1.Montanha da Morte");
             System.out.println("2.Labirinto Tempestuoso");
             System.out.println("3.Vale Sombrio");
@@ -290,97 +394,741 @@ public class Jogo {
         switch (op) {
             case 1:
                 System.out.println("A Montanha da Morte não me mete medo! ao todo...");
-                sala01(hero);
+                montanhaMorte(hero);
                 break;
             case 2:
                 System.out.println("Esse Labirinto Tempestuoso vai perder a fama depois que conquista-lo! espero...");
-                sala02(hero);
+                labirintoTempestuoso(hero);
                 break;
             case 3:
                 System.out.println("Vale das Sombras será um passeio no campo! E os insetos?!...");
-                sala03(hero);
+                valeSombrio(hero);
             default:
                 break;
         }
-
-
+        System.out.println("------------------------------------------------------------------\n");
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala01(Hero hero) {
-        System.out.println("sala01");
+    public void montanhaMorte(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Montanha da Morte");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.Subir as pedras");
+        System.out.println("2.Seguir pela caverna");
+        int op = input.nextInt();
+        while (op != 1 && op != 2 && op != 3) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.Subir as pedras");
+            System.out.println("2.Seguir pela caverna");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("Espero não cair...");
+                subirPedras(hero);
+                break;
+            case 2:
+                System.out.println("Essa caverna parese perigosa!");
+                caverna(hero);
+                break;
+            default:
+                break;
+        }
+        System.out.print(ANSI_RESET);
     }
 
-    public void sala02(Hero hero) {
-        System.out.println("sala02");
+    public void labirintoTempestuoso(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Labirinto Tempestuoso");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.Esquerda");
+        System.out.println("2.Direita");
+        int op = input.nextInt();
+        while (op != 1 && op != 2 && op != 3) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.Esquerda");
+            System.out.println("2.Direita");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("É tudo igual!?");
+                labesquerda(hero);
+                break;
+            case 2:
+                System.out.println("É tudo igual!?");
+                labdireita(hero);
+                break;
+            default:
+                break;
+        }
+        System.out.print(ANSI_RESET);
     }
 
-    public void sala03(Hero hero) {
-        System.out.println("sala03");
+    public void valeSombrio(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Vale Sombrio");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.Subir as pedras");
+        System.out.println("2.Seguir pela caverna");
+        int op = input.nextInt();
+        while (op != 1 && op != 2 && op != 3) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.Subir as pedras");
+            System.out.println("2.Seguir pela caverna");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("Espero não cair...");
+                subirPedras(hero);
+                break;
+            case 2:
+                System.out.println("Essa caverna parese perigosa!");
+                caverna(hero);
+                break;
+            default:
+                break;
+        }
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala04(Hero hero) {
-        System.out.println("sala04");
+    public void subirPedras(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Subir Pedras");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("devo seguir pelo Caminho estreiro..\n");
+        caminhoEstreito(hero);
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala05(Hero hero) {
-        System.out.println("sala05");
+    public void labesquerda(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Labirinto Caminho Esquerdo");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.Caminho estranho");
+        System.out.println("2.Seguir pelo corredor");
+        int op = input.nextInt();
+        while (op != 1 && op != 2) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.Caminho estranho");
+            System.out.println("2.Seguir pelo corredor");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("Uma Caverna!");
+                caverna(hero);
+                break;
+            case 2:
+                System.out.println("Acho que estou perdido...");
+                corredor(hero);
+                break;
+            default:
+                break;
+        }
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala06(Hero hero) {
-        System.out.println("sala06");
+    public void labdireita(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Labirinto Caminho Direito");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.Caminho estreito pela direita");
+        System.out.println("2.Seguir em frente");
+        int op = input.nextInt();
+        while (op != 1 && op != 2) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.Caminho estreito pela direita");
+            System.out.println("2.Seguir em frente");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("Ué?!");
+                labesquerda(hero);
+                break;
+            case 2:
+                System.out.println("Essa caverna parese perigosa!");
+                corredorLargo(hero);
+                break;
+            default:
+                break;
+        }
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala07(Hero hero) {
-        System.out.println("sala07");
+    public void caminhoFloresta(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Caminho da Floresta");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Tenho que encarar esse lodo!?\n");
+        lodo(hero);
+        System.out.print(ANSI_RESET);
     }
 
-    public void sala08(Hero hero) {
-        System.out.println("sala08");
+    public void caminhoEstreito(Hero hero) {
+        System.out.println("Caminho Estreito");
+
+
+        //O QUE OCORRE NA SALA
+
+
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println("Melhor seguir por esta Trilha da Montanha...\n");
+        trilhaMontanha(hero);
     }
 
-    public void sala09(Hero hero) {
-        System.out.println("sala09");
+    public void caverna(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Caverna");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Finalmente a saida!\n");
+        trilhaMontanha(hero);
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala10(Hero hero) {
-        System.out.println("sala10");
+    public void corredor(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Saida do Labirinto");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Estou no cume de uma montanha!\n");
+        trilhaMontanha(hero);
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala11(Hero hero) {
-        System.out.println("sala11");
+    public void corredorLargo(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Corredor Largo");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Apenas é possivel ir em frente...");
+        salasaida(hero);
+
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala12(Hero hero) {
-        System.out.println("sala12");
+    public void lodo(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Lodo");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.print(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("O que é aquilo?\n");
+        chest(hero);
+        System.out.print(ANSI_RESET);
     }
 
-    public void sala13(Hero hero) {
+    public void cume(Hero hero) {
         System.out.println("sala13");
+
+
+        //O QUE OCORRE NA SALA
+
+        //50% random de encontrar salasecreta
+        Random random = new Random();
+        boolean salasecret = random.nextBoolean();
+        if (salasecret) {
+            System.out.println("Isso é uma pedra falsa?");
+            System.out.println("1.Mover a pedra");
+            System.out.println("2.Melhor não tocar nisso...");
+            int op = input.nextInt();
+            switch (op) {
+                case 1:
+                    System.out.println("\nUma sala secreta!");
+                    sala19Secret(hero);
+                    break;
+                case 2:
+                    System.out.println("Vou seguir o meu caminho...");
+            }
+        }
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println("Parece um entrada secreta para o Monastério...\n");
+        entradaMonasterio(hero);
     }
 
-    public void sala14(Hero hero) {
-        System.out.println("sala14");
+    public void trilhaMontanha(Hero hero) {
+        System.out.println("Trilha da Montanha");
+
+
+        //O QUE OCORRE NA SALA
+
+
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.Cume");
+        System.out.println("2.Atravessar uma Ponte");
+        int op = input.nextInt();
+        while (op != 1 && op != 2) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.Cume");
+            System.out.println("2.Atravessar uma Ponte");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("Parece alto...");
+                cume(hero);
+                break;
+            case 2:
+                System.out.println("Finalmente!");
+                entradaMonasterio(hero);
+                break;
+            default:
+                break;
+        }
     }
 
-    public void sala15(Hero hero) {
-        System.out.println("sala15");
+    public void salasaida(Hero hero) {
+        System.out.println("Sala sem Saida?!");
+
+
+        //O QUE OCORRE NA SALA
+
+
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println("Enfim, uma sala sem saida...\nAquela parede parece suspeita!\n Boa, uma porta falsa!");
+        lodo(hero);
+
     }
 
-    public void sala16(Hero hero) {
-        System.out.println("sala16");
+    public void chest(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Chest");
+
+
+        //O QUE OCORRE NA SALA
+
+        System.out.print(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        entradaMonasterio(hero);
+        System.out.print(ANSI_RESET);
     }
 
-    public void sala17(Hero hero) {
+    public void entradaMonasterio(Hero hero) {
         System.out.println("sala17");
+
+
+        //O QUE OCORRE NA SALA
+
+
+        System.out.println(ANSI_YELLOW);
+        chamarVendedor(hero);
+        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("\nVamos a isto!\n");
+        monasterio(hero);
+        System.out.println(ANSI_RESET);
     }
 
-    public void sala18(Hero hero) {
-        System.out.println("sala18");
+    public void monasterio(Hero hero) {
+        System.out.println(ANSI_GREEN);
+        System.out.println("Monasterio");
+
+
+        //O QUE OCORRE NA SALA
+
+
+        System.out.print(ANSI_RED);
+
+        hero.atacar(reiDemonio);
+
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Qual caminho devo serguir?\n");
+        System.out.println("1.END");
+        System.out.println("2.RITUAL");
+        int op = input.nextInt();
+        while (op != 1 && op != 2 && op != 3) {
+            System.out.println("\nOpção invalida\n");
+            System.out.println("Qual caminho devo serguir?\n");
+            System.out.println("1.END");
+            System.out.println("2.RITUAL");
+
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.println("Espero não cair...");
+                end(hero);
+                break;
+            case 2:
+                System.out.println("Essa caverna parese perigosa!");
+                ritual(hero);
+                break;
+            default:
+                break;
+        }
+        System.out.print(ANSI_RESET);
     }
 
     public void sala19Secret(Hero hero) {
-        System.out.println("sala19Secret");
+        System.out.println(ANSI_GREEN);
+        System.out.println("Sala Secreta");
+
+        System.out.println("Um tesouro!\nO que será que isso faz?!");
+        hero.chest(godKiller);
+        System.out.println(ANSI_RESET);
+
+        System.out.print(ANSI_RED);
+        System.out.println("\nMelhor recuperar o HP antes de continuar...");
+        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
+        int hp = input.nextInt();
+        switch (hp) {
+            case 1:
+                hero.potionUse();
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("invalido");
+        }
+        System.out.print(ANSI_RESET);
+        System.out.println(ANSI_GREEN);
+        System.out.println("Parece um entrada secreta para o Monastério...\n");
+        entradaMonasterio(hero);
+        System.out.println(ANSI_RESET);
     }
+
+    public void ritual(Hero hero) {
+        System.out.println("O RITUAL");
+
+        //O QUE OCORRE NA SALA
+
+
+        System.out.println(ANSI_RED);
+        hero.atacar(vitor);
+        System.out.println(ANSI_RESET);
+
+        System.out.println(ANSI_GREEN);
+        end(hero);
+        System.out.println(ANSI_RESET);
+    }
+
+    public void end(Hero hero) {
+        System.out.println("END");
+
+        //O QUE OCORRE NA SALA
+
+    }
+
 
 }
 
