@@ -12,13 +12,13 @@ public class Main {
         Jogo.MusicPlayer musicaEnd = new Jogo.MusicPlayer();
 
 
-        musicaIntro.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/action.mp3");
+       // musicaIntro.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/action.mp3");
         Jogo jogo = new Jogo();
         jogo.intro();
         Hero hero = jogo.criarPersonagem();
         musicaIntro.stopMusic();
 
-        musicaJogo.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/chase.mp3");
+      //  musicaJogo.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/chase.mp3");
         jogo.salaPrincipal(hero);
         jogo.montanhaMorte(hero);
         jogo.labirintoTempestuoso(hero);

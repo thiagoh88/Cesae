@@ -30,7 +30,7 @@ public abstract class ItemHero {
      * Método para apresentar os detalhes
      */
     public void mostrarDetalhes() {
-        System.out.print(this.nome + " | " + this.preco + " Ouros");
+        System.out.print(this.nome + " | " + this.preco + " Gold");
     }
 
 

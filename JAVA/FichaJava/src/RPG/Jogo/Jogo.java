@@ -102,11 +102,11 @@ public class Jogo {
             Thread.sleep(8000);
             System.out.println(ANSI_BLUE);
             System.out.println();
-            System.out.println("                                        ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F Criar Heroi ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F");
+            System.out.println("                                        ⚔\uFE0F \uD83C\uDFF9 \uD83D\uDD2E \uD83D\uDDE1\uFE0F Criar Heroi \uD83D\uDDE1\uFE0F \uD83D\uDD2E \uD83C\uDFF9 ⚔\uFE0F");
             System.out.println();
-            System.out.println("                            1.Warrior ⚔\uFE0F - Bônus: Lento | -10 Dano | +20 Defesa | Gold x2");
-            System.out.println("                            2.Archer \uD83C\uDFF9 - Bônus: 1ºturno x2 | Critical Arrow Dano x2 | -5 Defesa");
-            System.out.println("                            3.Mage \uD83E\uDDD9\u200D♂\uFE0F - Bônus: Random 50% FireBall Dano x2 | -10 Defesa");
+            System.out.println("                            1.⚔\uFE0F Warrior - Bônus: Lento | -10 Dano | +20 Defesa | Gold x2");
+            System.out.println("                            2.\uD83C\uDFF9 Archer - Bônus: 1ºturno x2 | Critical Arrow Dano x2 | -5 Defesa");
+            System.out.println("                            3.\uD83E\uDDD9\u200D♂\uFE0F Mage - Bônus: Random 50% FireBall Dano x2 | -10 Defesa");
             System.out.print("\nClasse: ");
         } catch (InterruptedException e) {
             System.out.println();
@@ -115,12 +115,13 @@ public class Jogo {
 
         // Deve escolher entre 1 e 3
         while (escolhaClasse != 1 && escolhaClasse != 2 && escolhaClasse != 3) {
-            System.out.println("\n ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F Criar Heroi ⚔\uFE0F\uD83D\uDEE1\uFE0F \uD83C\uDFF9 \uD83D\uDDE1\uFE0F");
             System.out.println();
-            System.out.println("             1.Warrior ⚔\uFE0F");
-            System.out.println("             2.Archer \uD83C\uDFF9");
-            System.out.println("             3.Mage \uD83E\uDDD9\u200D♂\uFE0F");
-            System.out.print("Classe: ");
+            System.out.println("                                        ⚔\uFE0F \uD83C\uDFF9 \uD83D\uDD2E \uD83D\uDDE1\uFE0F Criar Heroi \uD83D\uDDE1\uFE0F \uD83D\uDD2E \uD83C\uDFF9 ⚔\uFE0F");
+            System.out.println();
+            System.out.println("                            1.⚔\uFE0F Warrior - Bônus: Lento | -10 Dano | +20 Defesa | Gold x2");
+            System.out.println("                            2.\uD83C\uDFF9 Archer - Bônus: 1ºturno x2 | Critical Arrow Dano x2 | -5 Defesa");
+            System.out.println("                            3.\uD83E\uDDD9\u200D♂\uFE0F Mage - Bônus: Random 50% FireBall Dano x2 | -10 Defesa");
+            System.out.print("\nClasse: ");
             escolhaClasse = input.nextInt();
         }
 
@@ -188,29 +189,29 @@ public class Jogo {
             case 1:
                 System.out.println("\nNovo Heroi Criado");
                 hero = new Warrior("Warrior", vida, vida, forca, 01, goldInicial, armaPrincipal);
-                System.out.println("\nWarrior Level: 1");
+                System.out.println("\n⚔\uFE0F Warrior Level: 1");
                 System.out.println("❤\uFE0F " + vida + "/" + vida + "hp");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
-                System.out.println("----------------------------------------------------------------------" + ANSI_RESET);
+                System.out.println("---------------------------------------------------------------------------------" + ANSI_RESET);
                 break;
             case 2:
                 System.out.println("\nNovo Heroi Criado");
                 hero = new Archer("Archer", vida, vida, forca, 01, goldInicial, armaPrincipal);
-                System.out.println("\nArcher Level: 1");
+                System.out.println("\n\uD83C\uDFF9 Archer Level: 1");
                 System.out.println("❤\uFE0F " + vida + "/" + vida + "hp");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
-                System.out.println("----------------------------------------------------------------------" + ANSI_RESET);
+                System.out.println("---------------------------------------------------------------------------------" + ANSI_RESET);
                 break;
             case 3:
                 System.out.println("\nNovo Heroi Criado");
                 hero = new Mage("Mage", vida, vida, forca, 01, goldInicial, armaPrincipal);
-                System.out.println("\nMage Level: 1");
+                System.out.println("\n\uD83E\uDDD9\u200D♂\uFE0F Mage Level: 1");
                 System.out.println("❤\uFE0F " + vida + "/" + vida + " HP");
                 System.out.println("\uD83D\uDCAA\uD83C\uDFFB Força: " + forca);
                 System.out.println("\uD83D\uDCB0 Gold: " + goldInicial + "\n");
-                System.out.println("----------------------------------------------------------------------" + ANSI_RESET);
+                System.out.println("---------------------------------------------------------------------------------" + ANSI_RESET);
                 break;
             default:
                 System.out.println("escolha invalida" + ANSI_RESET);
@@ -225,7 +226,7 @@ public class Jogo {
      */
     public void chamarVendedor(Hero hero) {
 
-        // Criação dos itens/armas na loja do vendedor
+        // ADD itens/armas na loja do vendedor
         Vendedor vendedor = new Vendedor();
 
         vendedor.adicionarItem(stick);
@@ -248,32 +249,50 @@ public class Jogo {
         vendedor.adicionarItem(godKiller);
 
 
-        // Invocando o vendedor
-        System.out.println(ANSI_YELLOW + "\nO vendedor Salim apareceu com algumas tralhas\n");
-        System.out.println("1.Comprar");
-        System.out.println("0.Sair");
+        System.out.print(ANSI_YELLOW);
+        System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
+        System.out.print("\nOpção: ");
         int op = input.nextInt();
+        while (op != 1 && op != 0) {
+            System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
+            System.out.print("\nOpção: ");
+            op = input.nextInt();
+        }
         switch (op) {
             case 1:
+                System.out.print(ANSI_BLUE);
+                System.out.println("---------------------------------------------------------------------------------");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_YELLOW);
                 vendedor.imprimirLoja(hero);
-                System.out.println("\nDigite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
-                System.out.print("Escolha: ");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_BLUE);
+                System.out.println("---------------------------------------------------------------------------------");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_BLUE);
+                System.out.println("Digite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
+                System.out.print("\nOpção: ");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_YELLOW);
                 int itemIndex = input.nextInt();
                 vendedor.vender(hero, itemIndex);
                 while (itemIndex != 0) {
-                    vendedor.imprimirLoja(hero);
-                    System.out.println("\nDigite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
-                    System.out.print("Escolha: " + ANSI_RESET);
+                    System.out.print(ANSI_RESET);
+                    System.out.print(ANSI_BLUE);
+                    System.out.println("Digite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
+                    System.out.print("\nOpção: ");
+                    System.out.print(ANSI_RESET);
+                    System.out.print(ANSI_YELLOW);
                     itemIndex = input.nextInt();
                     vendedor.vender(hero, itemIndex);
                 }
             case 0:
-                break;
+                System.out.println("\nInventario:");
+                hero.mostrarInventario();
             default:
                 break;
         }
-        hero.mostrarInventario();
-
+        System.out.print(ANSI_RESET);
     }
 
     /**
@@ -340,9 +359,8 @@ public class Jogo {
      * @param hero
      */
     public void salaPrincipal(Hero hero) {
-        chamarVendedor(hero);
-        hero.potionUse();
-        System.out.println(ANSI_GREEN + "\nSeguindo pela estrada é possivel escutar gritos de socorro!");
+
+        System.out.print(ANSI_GREEN + "\nSeguindo pela estrada é possivel escutar gritos de socorro!");
         System.out.println("Um jovem aventureiro sendo atacado por bandidos!\n\nPrepare-se!\n");
         System.out.print(ANSI_RED);
 
@@ -368,9 +386,9 @@ public class Jogo {
         }
         try {
             Thread.sleep(5000);
-            System.out.println(ANSI_YELLOW);
+            System.out.print(ANSI_YELLOW);
             chamarVendedor(hero);
-            System.out.println(ANSI_RESET);
+            System.out.print(ANSI_RESET);
         } catch (InterruptedException e) {
             System.out.println();
         }
@@ -411,13 +429,13 @@ public class Jogo {
     }
 
     public void montanhaMorte(Hero hero) {
-        System.out.println(ANSI_GREEN);
+        System.out.print(ANSI_GREEN);
         System.out.println("Montanha da Morte");
 
 
         //O QUE OCORRE NA SALA
 
-        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RESET);
         System.out.print(ANSI_RED);
         System.out.println("\nMelhor recuperar o HP antes de continuar...");
         System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
