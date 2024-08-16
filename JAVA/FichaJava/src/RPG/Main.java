@@ -19,7 +19,7 @@ public class Main {
         musicaIntro.stopMusic();
 
       //  musicaJogo.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/chase.mp3");
-        jogo.salaPrincipal(hero);
+        jogo.inicio(hero);
         jogo.montanhaMorte(hero);
         jogo.labirintoTempestuoso(hero);
         jogo.valeSombrio(hero);

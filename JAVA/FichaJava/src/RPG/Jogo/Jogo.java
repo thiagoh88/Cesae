@@ -32,7 +32,7 @@ public class Jogo {
     public static final String ANSI_WHITE = "\u001B[37m";
 
     // Bandidos
-    NPC joca = new NPC("Joca", 150, 100, 30, 10);
+    NPC joca = new NPC("Joca", 150, 50, 30, 10);
     NPC quim = new NPC("Quim", 150, 50, 30, 10);
     NPC zequinha = new NPC("Zequinha", 250, 50, 40, 50);
 
@@ -358,20 +358,33 @@ public class Jogo {
      *
      * @param hero
      */
-    public void salaPrincipal(Hero hero) {
+    public void inicio(Hero hero) {
 
         System.out.print(ANSI_GREEN + "\nSeguindo pela estrada é possivel escutar gritos de socorro!");
         System.out.println("Um jovem aventureiro sendo atacado por bandidos!\n\nPrepare-se!\n");
         System.out.print(ANSI_RED);
 
         hero.atacar(joca);
+
         try {
             Thread.sleep(2000);
-            System.out.println("\n Outro bandido, Prepare-se!  \n");
+            System.out.println("\n Outro bandido, prepare-se!  \n");
         } catch (InterruptedException e) {
             System.out.println();
         }
+
         hero.atacar(quim);
+
+        try {
+            Thread.sleep(2000);
+            System.out.println("\n O lider dos bandidos apareceu!  \n");
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
+
+        hero.atacar(zequinha);
+
+
         System.out.print(ANSI_RESET);
         System.out.print(ANSI_GREEN);
         try {
