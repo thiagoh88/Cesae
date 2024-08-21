@@ -39,7 +39,7 @@ public class Vendedor {
 
         }
         // Print em shuffle do novo array até 10 itens permitidos
-        Collections.shuffle(novaLoja);
+        //Collections.shuffle(novaLoja);
         for (int i = 0; i < 10; i++) {
             System.out.print((i + 1) + " - ");
             novaLoja.get(i).mostrarDetalhes();

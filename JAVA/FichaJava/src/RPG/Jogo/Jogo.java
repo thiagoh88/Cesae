@@ -19,6 +19,12 @@ import java.util.Scanner;
 
 public class Jogo {
 
+    Jogo.MusicPlayer musicaIntro = new Jogo.MusicPlayer();
+    Jogo.MusicPlayer musicaJogo = new Jogo.MusicPlayer();
+    Jogo.MusicPlayer musicaFinal = new Jogo.MusicPlayer();
+    Jogo.MusicPlayer musicaEnd = new Jogo.MusicPlayer();
+
+
     Scanner input = new Scanner(System.in);
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -32,9 +38,9 @@ public class Jogo {
     public static final String ANSI_WHITE = "\u001B[37m";
 
     // Bandidos
-    NPC joca = new NPC("Joca", 150, 50, 30, 10);
-    NPC quim = new NPC("Quim", 150, 50, 30, 10);
-    NPC zequinha = new NPC("Zequinha", 250, 50, 40, 50);
+    NPC joca = new NPC("Joca", 150, 150, 300, 10);
+    NPC quim = new NPC("Quim", 150, 150, 300, 10);
+    NPC zequinha = new NPC("Zequinha", 250, 50, 400, 50);
 
 
     // Vale Sombrio
@@ -89,6 +95,163 @@ public class Jogo {
     ArmaPrincipal fireSword = new ArmaPrincipal("Fire Sword", 30, 40, 60, heroiWarrior);
     ArmaPrincipal holySword = new ArmaPrincipal("Holy Sword", 50, 60, 80, heroiWarrior);
 
+    /**
+     * Método para tocar musicas
+     */
+    public static class MusicPlayer {
+
+        public Thread musica;
+        public Player player;
+        public boolean play;
+
+        public void play(String filePath) {
+            play = true;
+            musica = new Thread(() -> {
+                try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
+                    player = new Player(fileInputStream);
+                    player.play();
+                } catch (JavaLayerException | IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            musica.start();  // Inicia a thread de música
+        }
+
+        public void stopMusic() {
+            if (player != null) {
+                play = false;
+                player.close();
+                try {
+                    if (musica != null) {
+                        musica.join();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * Método para chamar o vendedor
+     *
+     * @param hero
+     */
+    public void chamarVendedor(Hero hero) {
+
+        // ADD itens/armas na loja do vendedor
+        Vendedor vendedor = new Vendedor();
+
+        vendedor.adicionarItem(stick);
+        vendedor.adicionarItem(superStaff);
+        vendedor.adicionarItem(fireStaff);
+        vendedor.adicionarItem(holyStaff);
+        vendedor.adicionarItem(bow);
+        vendedor.adicionarItem(fireBow);
+        vendedor.adicionarItem(holyBow);
+        vendedor.adicionarItem(sword);
+        vendedor.adicionarItem(fireSword);
+        vendedor.adicionarItem(holySword);
+        vendedor.adicionarItem(lifepotionMinor);
+        vendedor.adicionarItem(lifepotionMedium);
+        vendedor.adicionarItem(lifepotionMajor);
+        vendedor.adicionarItem(strenghtPotion);
+        vendedor.adicionarItem(megaStrengthPotion);
+        vendedor.adicionarItem(bomba);
+        vendedor.adicionarItem(superBomba);
+        vendedor.adicionarItem(godKiller);
+
+
+        System.out.print(ANSI_YELLOW);
+        System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
+        System.out.print("\nOpção: ");
+        int op = input.nextInt();
+        while (op != 1 && op != 0) {
+            System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
+            System.out.print("\nOpção: ");
+            op = input.nextInt();
+        }
+        switch (op) {
+            case 1:
+                System.out.print(ANSI_BLUE);
+                System.out.println("\n---------------------------------------------------------------------------------");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_YELLOW);
+                vendedor.imprimirLoja(hero);
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_BLUE);
+                System.out.println("---------------------------------------------------------------------------------");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_BLUE);
+                System.out.println("Digite 0 para sair                                        " + hero.getNome() + " - ❤\uFE0F " + hero.getHpAtual() + "/" + hero.getMaxHp() + "hp\n                                                                    \uD83D\uDCAA\uD83C\uDFFB Força: " + hero.getForca() + "\n                                                                    \uD83D\uDCB0 Gold: " + hero.gold);
+                System.out.print("\nOpção: ");
+                System.out.print(ANSI_RESET);
+                System.out.print(ANSI_YELLOW);
+                int itemIndex = input.nextInt();
+                vendedor.vender(hero, itemIndex);
+                while (itemIndex != 0) {
+                    System.out.print(ANSI_BLUE);
+                    System.out.println("---------------------------------------------------------------------------------");
+                    System.out.print(ANSI_RESET);
+                    System.out.print(ANSI_YELLOW);
+                    vendedor.imprimirLoja(hero);
+                    System.out.print(ANSI_RESET);
+                    System.out.print(ANSI_BLUE);
+                    System.out.println("---------------------------------------------------------------------------------");
+                    System.out.print(ANSI_RESET);
+                    System.out.print(ANSI_BLUE);
+                    System.out.println("Digite 0 para sair                                        " + hero.getNome() + " - ❤\uFE0F " + hero.getHpAtual() + "/" + hero.getMaxHp() + "hp\n                                                                    \uD83D\uDCAA\uD83C\uDFFB Força: " + hero.getForca() + "\n                                                                    \uD83D\uDCB0 Gold: " + hero.gold);
+                    System.out.print("\nOpção: ");
+                    System.out.print(ANSI_RESET);
+                    System.out.print(ANSI_YELLOW);
+                    itemIndex = input.nextInt();
+                    vendedor.vender(hero, itemIndex);
+                }
+            case 0:
+                System.out.println("\nInventario:");
+                hero.mostrarInventario();
+            default:
+                break;
+        }
+        System.out.print(ANSI_RESET);
+    }
+
+    /**
+     * Mátodo para recomeçar o jogo ou sair.
+     *
+     * @param hero
+     */
+    public void morreu(Hero hero) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("\n1.Jogar novamente com o mesmo Heroi.\n2.Jogar novamente com um novo Heroi.\n3.Sair do Jogo.");
+        System.out.print("Opção: ");
+        int op = input.nextInt();
+        boolean escolha = false;
+        while (!escolha) {
+            switch (op) {
+                case 1:
+                    hero.setHpAtual(hero.getMaxHp());
+                    hero.inventario.clear();
+                    hero.setGold(20);
+                    intro(hero);
+                    escolha = true;
+                    break;
+                case 2:
+                    criarPersonagem();
+                    intro(hero);
+                    escolha = true;
+                    break;
+                case 3:
+                    System.exit(0);
+                    escolha = true;
+                    break;
+                default:
+                    System.out.println("Opção invalida");
+                    break;
+            }
+        }
+    }
 
     /**
      * Método de criação do personagem
@@ -96,6 +259,8 @@ public class Jogo {
      * @return
      */
     public Hero criarPersonagem() {
+        musicaIntro.stopMusic();
+        musicaIntro.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/action.mp3");
 
         // Escolher classe
         try {
@@ -220,123 +385,9 @@ public class Jogo {
     }
 
     /**
-     * Método para chamar o vendedor
-     *
-     * @param hero
-     */
-    public void chamarVendedor(Hero hero) {
-
-        // ADD itens/armas na loja do vendedor
-        Vendedor vendedor = new Vendedor();
-
-        vendedor.adicionarItem(stick);
-        vendedor.adicionarItem(superStaff);
-        vendedor.adicionarItem(fireStaff);
-        vendedor.adicionarItem(holyStaff);
-        vendedor.adicionarItem(bow);
-        vendedor.adicionarItem(fireBow);
-        vendedor.adicionarItem(holyBow);
-        vendedor.adicionarItem(sword);
-        vendedor.adicionarItem(fireSword);
-        vendedor.adicionarItem(holySword);
-        vendedor.adicionarItem(lifepotionMinor);
-        vendedor.adicionarItem(lifepotionMedium);
-        vendedor.adicionarItem(lifepotionMajor);
-        vendedor.adicionarItem(strenghtPotion);
-        vendedor.adicionarItem(megaStrengthPotion);
-        vendedor.adicionarItem(bomba);
-        vendedor.adicionarItem(superBomba);
-        vendedor.adicionarItem(godKiller);
-
-
-        System.out.print(ANSI_YELLOW);
-        System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
-        System.out.print("\nOpção: ");
-        int op = input.nextInt();
-        while (op != 1 && op != 0) {
-            System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
-            System.out.print("\nOpção: ");
-            op = input.nextInt();
-        }
-        switch (op) {
-            case 1:
-                System.out.print(ANSI_BLUE);
-                System.out.println("---------------------------------------------------------------------------------");
-                System.out.print(ANSI_RESET);
-                System.out.print(ANSI_YELLOW);
-                vendedor.imprimirLoja(hero);
-                System.out.print(ANSI_RESET);
-                System.out.print(ANSI_BLUE);
-                System.out.println("---------------------------------------------------------------------------------");
-                System.out.print(ANSI_RESET);
-                System.out.print(ANSI_BLUE);
-                System.out.println("Digite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
-                System.out.print("\nOpção: ");
-                System.out.print(ANSI_RESET);
-                System.out.print(ANSI_YELLOW);
-                int itemIndex = input.nextInt();
-                vendedor.vender(hero, itemIndex);
-                while (itemIndex != 0) {
-                    System.out.print(ANSI_RESET);
-                    System.out.print(ANSI_BLUE);
-                    System.out.println("Digite 0 para sair                                             " + hero.getNome() + " - " + hero.gold + " Gold");
-                    System.out.print("\nOpção: ");
-                    System.out.print(ANSI_RESET);
-                    System.out.print(ANSI_YELLOW);
-                    itemIndex = input.nextInt();
-                    vendedor.vender(hero, itemIndex);
-                }
-            case 0:
-                System.out.println("\nInventario:");
-                hero.mostrarInventario();
-            default:
-                break;
-        }
-        System.out.print(ANSI_RESET);
-    }
-
-    /**
-     * Método para tocar musicas
-     */
-    public static class MusicPlayer {
-
-        public Thread musica;
-        public Player player;
-        public boolean play;
-
-        public void play(String filePath) {
-            play = true;
-            musica = new Thread(() -> {
-                try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
-                    player = new Player(fileInputStream);
-                    player.play();
-                } catch (JavaLayerException | IOException e) {
-                    e.printStackTrace();
-                }
-            });
-            musica.start();  // Inicia a thread de música
-        }
-
-        public void stopMusic() {
-            if (player != null) {
-                play = false;
-                player.close();
-                try {
-                    if (musica != null) {
-                        musica.join();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    /**
      * Intro da história do jogo
      */
-    public void intro() {
-
+    public void intro(Hero hero) {
 
         System.out.println(ANSI_GREEN + "\n******************************************************************************************************************************");
         System.out.println();
@@ -351,20 +402,24 @@ public class Jogo {
         System.out.println("                    Você é um jovem aventureiro que vive em uma pequena vila nas fronteiras de Eldoria. ");
         System.out.println("                            Aos 18 anos, decide partir em uma jornada para provar seu valor....");
         System.out.println("\n******************************************************************************************************************************" + ANSI_RESET);
+        inicio(hero);
+        musicaIntro.stopMusic();
     }
 
     /**
      * Sala Principal
-     *
-     * @param hero
      */
     public void inicio(Hero hero) {
-
+        musicaIntro.stopMusic();
+        musicaJogo.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/chase.mp3");
         System.out.print(ANSI_GREEN + "\nSeguindo pela estrada é possivel escutar gritos de socorro!");
         System.out.println("Um jovem aventureiro sendo atacado por bandidos!\n\nPrepare-se!\n");
         System.out.print(ANSI_RED);
 
         hero.atacar(joca);
+        if (hero.getHpAtual() <= 0) {
+            morreu(hero);
+        }
 
         try {
             Thread.sleep(2000);
@@ -374,6 +429,9 @@ public class Jogo {
         }
 
         hero.atacar(quim);
+        if (hero.getHpAtual() <= 0) {
+            morreu(hero);
+        }
 
         try {
             Thread.sleep(2000);
@@ -383,6 +441,9 @@ public class Jogo {
         }
 
         hero.atacar(zequinha);
+        if (hero.getHpAtual() <= 0) {
+            morreu(hero);
+        }
 
 
         System.out.print(ANSI_RESET);
@@ -489,6 +550,7 @@ public class Jogo {
                 break;
         }
         System.out.print(ANSI_RESET);
+
     }
 
     public void labirintoTempestuoso(Hero hero) {
@@ -934,18 +996,7 @@ public class Jogo {
 
 
         System.out.print(ANSI_RED);
-        System.out.println("\nMelhor recuperar o HP antes de continuar...");
-        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
-        int hp = input.nextInt();
-        switch (hp) {
-            case 1:
-                hero.potionUse();
-                break;
-            case 2:
-                break;
-            default:
-                System.out.println("invalido");
-        }
+
         System.out.print(ANSI_RESET);
         System.out.println("Qual caminho devo serguir?\n");
         System.out.println("1.Cume");
@@ -976,112 +1027,34 @@ public class Jogo {
     public void salasaida(Hero hero) {
         System.out.println("Sala sem Saida?!");
 
-
         //O QUE OCORRE NA SALA
-
-
-        System.out.print(ANSI_RED);
-        System.out.println("\nMelhor recuperar o HP antes de continuar...");
-        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
-        int hp = input.nextInt();
-        switch (hp) {
-            case 1:
-                hero.potionUse();
-                break;
-            case 2:
-                break;
-            default:
-                System.out.println("invalido");
-        }
-        System.out.print(ANSI_RESET);
-        System.out.println("Enfim, uma sala sem saida...\nAquela parede parece suspeita!\n Boa, uma porta falsa!");
-        lodo(hero);
 
     }
 
     public void chest(Hero hero) {
-        System.out.println(ANSI_GREEN);
         System.out.println("Chest");
-
 
         //O QUE OCORRE NA SALA
 
-        System.out.print(ANSI_RESET);
-        System.out.print(ANSI_RED);
-        System.out.println("\nMelhor recuperar o HP antes de continuar...");
-        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
-        int hp = input.nextInt();
-        switch (hp) {
-            case 1:
-                hero.potionUse();
-                break;
-            case 2:
-                break;
-            default:
-                System.out.println("invalido");
-        }
-        System.out.print(ANSI_RESET);
-        System.out.println(ANSI_GREEN);
-        System.out.println("Qual caminho devo serguir?\n");
-        entradaMonasterio(hero);
-        System.out.print(ANSI_RESET);
     }
 
     public void entradaMonasterio(Hero hero) {
+        musicaJogo.stopMusic();
+        musicaFinal.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/boss.mp3");
         System.out.println("sala17");
-
 
         //O QUE OCORRE NA SALA
 
-
-        System.out.println(ANSI_YELLOW);
-        chamarVendedor(hero);
-        System.out.println(ANSI_RESET);
-        System.out.print(ANSI_RED);
-        System.out.println("\nMelhor recuperar o HP antes de continuar...");
-        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
-        int hp = input.nextInt();
-        switch (hp) {
-            case 1:
-                hero.potionUse();
-                break;
-            case 2:
-                break;
-            default:
-                System.out.println("invalido");
-        }
-        System.out.print(ANSI_RESET);
-        System.out.println(ANSI_GREEN);
-        System.out.println("\nVamos a isto!\n");
-        monasterio(hero);
-        System.out.println(ANSI_RESET);
     }
 
     public void monasterio(Hero hero) {
-        System.out.println(ANSI_GREEN);
         System.out.println("Monasterio");
-
 
         //O QUE OCORRE NA SALA
 
-
-        System.out.print(ANSI_RED);
-
         hero.atacar(reiDemonio);
 
-        System.out.println("\nMelhor recuperar o HP antes de continuar...");
-        System.out.println("Gostaria de usar uma poção?\n1.Sim\n2.Não");
-        int hp = input.nextInt();
-        switch (hp) {
-            case 1:
-                hero.potionUse();
-                break;
-            case 2:
-                break;
-            default:
-                System.out.println("invalido");
-        }
-        System.out.print(ANSI_RESET);
+
         System.out.println(ANSI_GREEN);
         System.out.println("Qual caminho devo serguir?\n");
         System.out.println("1.END");
@@ -1136,6 +1109,7 @@ public class Jogo {
         System.out.println("Parece um entrada secreta para o Monastério...\n");
         entradaMonasterio(hero);
         System.out.println(ANSI_RESET);
+        musicaFinal.stopMusic();
     }
 
     public void ritual(Hero hero) {
@@ -1151,17 +1125,18 @@ public class Jogo {
         System.out.println(ANSI_GREEN);
         end(hero);
         System.out.println(ANSI_RESET);
+        musicaFinal.stopMusic();
     }
 
     public void end(Hero hero) {
+        musicaEnd.play("C:/Users/thiag/Documents/CESAE/JAVA/FichaJava/src/RPG/MP3/end.mp3");
         System.out.println("END");
 
         //O QUE OCORRE NA SALA
 
     }
-
-
 }
+
 
 
 

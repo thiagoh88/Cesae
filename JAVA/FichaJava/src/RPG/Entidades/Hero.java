@@ -72,7 +72,7 @@ public abstract class Hero extends Entidade {
 
                     if (consumivelAtual instanceof Potion) {
                         potionInventario = true;
-                        System.out.print(i + " - " + consumivelAtual.getNome() + " | Cura: " + ((Potion) consumivelAtual).getHpHeal() + " | Power Up: " + ((Potion) consumivelAtual).getPowerUp());
+                        System.out.println(i + " - " + consumivelAtual.getNome() + " | Cura: " + ((Potion) consumivelAtual).getHpHeal() + " | Power Up: " + ((Potion) consumivelAtual).getPowerUp());
                     }
                 }
                 if (!potionInventario) {
@@ -131,6 +131,10 @@ public abstract class Hero extends Entidade {
                 System.out.println("Opção Invalida1");
                 break;
         }
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
     }
 }
 
