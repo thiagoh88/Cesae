@@ -158,7 +158,7 @@ public class Jogo {
      */
     public Hero criarPersonagem() {
         musicaIntro.stopMusic();
-        musicaIntro.play("RPG/MP3/action.mp3");
+        musicaIntro.play("src/RPG/MP3/inicio.mp3");
 
         // Escolher classe
         try {
@@ -413,7 +413,7 @@ public class Jogo {
     public void intro(Hero hero) throws FileNotFoundException {
         try {
             Thread.sleep(3000);
-            String pathPotato = "RPG/Art/potato.txt";
+            String pathPotato = "src/RPG/Art/potato.txt";
             System.out.println(ANSI_GOLD + ANSI_BGBLACK + "\n**************************************************************************************************************");
             imprimirFicheiro(pathPotato);
             System.out.println();
@@ -438,7 +438,7 @@ public class Jogo {
      */
     public void inicio(Hero hero) throws FileNotFoundException {
         musicaIntro.stopMusic();
-        musicaJogo.play("RPG/MP3/chase.mp3");
+        musicaJogo.play("src/RPG/MP3/jogo.mp3");
 
         try {
             Thread.sleep(20000);
@@ -1299,7 +1299,7 @@ public class Jogo {
 
     public void end(Hero hero) throws FileNotFoundException {
         musicaFinal.stopMusic();
-        musicaEnd.play("RPG/MP3/end.mp3");
+        musicaEnd.play("src/RPG/MP3/end.mp3");
         System.out.println(ANSI_YELLOW + "END...?");
         System.out.println("\nParabéns, derrotaste o Rei Demónio e consagraste o Rei Batata\nEntretanto, um ser misterioso esperava por esse momento para realizar a profecia e dominar todo o reino!\nFalhaste em proteger o reino, mas ganhaste um chocolate!");
         System.out.println("\n\nFIM\n\n" + ANSI_RESET);
@@ -1308,7 +1308,7 @@ public class Jogo {
 
     public void finalVerdadeiro(Hero hero) throws FileNotFoundException {
         musicaFinal.stopMusic();
-        musicaEnd.play("RPG/MP3/end.mp3");
+        musicaEnd.play("src/RPG/MP3/end.mp3");
         System.out.println(ANSI_YELLOW + "Parabéns, derrotaste o maior inimigo do reino e consagraste o Deus Batata!\nCom o reino a salvo, agora podes fazer um puré de batata com salsicha na panela dourada.");
         System.out.println("\n\nFIM\n\n" + ANSI_RESET);
         morreu(hero);
