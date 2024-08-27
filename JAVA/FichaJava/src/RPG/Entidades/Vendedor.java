@@ -47,7 +47,7 @@ public class Vendedor {
     }
 
     /**
-     * Método para apresentar a loja e "vender" itens adicionados
+     * Metodo para apresentar a loja e "vender" itens adicionados
      *
      * @param hero
      */

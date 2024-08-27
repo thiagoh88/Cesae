@@ -21,6 +21,14 @@ public abstract class Hero extends Entidade {
 
     }
 
+    public void setArmaPrincipal(ArmaPrincipal armaPrincipal) {
+        this.armaPrincipal = armaPrincipal;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
 
     /**
      * Override do metodo para apresentar detalhes
@@ -38,6 +46,7 @@ public abstract class Hero extends Entidade {
      */
     public void mostrarInventario() {
         System.out.println("Arma Principal: " + this.armaPrincipal.getNome());
+        System.out.println();
         for (Consumivel consumivelAtual : this.inventario) {
             consumivelAtual.mostrarDetalhes();
             System.out.println();
@@ -131,10 +140,6 @@ public abstract class Hero extends Entidade {
                 System.out.println("Opção Invalida1");
                 break;
         }
-    }
-
-    public void setGold(int gold) {
-        this.gold = gold;
     }
 }
 
