@@ -14,7 +14,7 @@ public class Main {
         Hero hero = jogo.criarPersonagem();
 
         jogo.intro(hero);
-teste
+
     }
 }
 
