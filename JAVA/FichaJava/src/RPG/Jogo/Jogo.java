@@ -20,15 +20,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Jogo {
-
-    Jogo.MusicPlayer musicaIntro = new Jogo.MusicPlayer();
-    Jogo.MusicPlayer musicaJogo = new Jogo.MusicPlayer();
-    Jogo.MusicPlayer musicaFinal = new Jogo.MusicPlayer();
-    Jogo.MusicPlayer musicaEnd = new Jogo.MusicPlayer();
-
-
     Scanner input = new Scanner(System.in);
 
+    //PLAYER
+    MusicPlayer musicaIntro = new MusicPlayer();
+    MusicPlayer musicaJogo = new MusicPlayer();
+    MusicPlayer musicaFinal = new MusicPlayer();
+    MusicPlayer musicaEnd = new MusicPlayer();
+    //COR
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -42,58 +41,49 @@ public class Jogo {
     public static final String ANSI_BGBLACK = "\u001B[40m";
     // Bandidos
     NPC joca = new NPC("Joca", 80, 120, 30, 25);
-    NPC quim = new NPC("Quim", 80, 80, 30, 25);
+    NPC quim = new NPC("Quim", 80, 80, 130, 25);
     NPC zequinha = new NPC("Zequinha", 80, 80, 40, 50);
-
-
     // Vale Sombrio
     NPC aranhaGigante = new NPC("Aranha Gigante", 100, 100, 25, 25);
     NPC abelhaAssassina = new NPC("Abelha Assassina", 100, 100, 25, 25);
     NPC insectoide = new NPC("Insectoide", 125, 125, 50, 50);
-
     // Labirinto Tempestuoso
     NPC gargula = new NPC("Gargula", 100, 100, 25, 25);
     NPC golem = new NPC("Golem", 100, 100, 25, 25);
     NPC minotauro = new NPC("Minotauro", 125, 125, 45, 50);
-
     //Montanha da Morte
     NPC goblin = new NPC("Goblin", 100, 100, 25, 25);
     NPC orc = new NPC("Orc", 100, 100, 25, 30);
     NPC troll = new NPC("Troll", 125, 125, 45, 50);
-
     // BOSS
     NPC reiDemonio = new NPC("Rei Demonio", 250, 250, 70, 1000);
     NPC vitor = new NPC("Master Chef Vitor", 1000, 1000, 20, 0);
-
+    //Array de itens por classe
     ArrayList<String> heroisPermitidos = new ArrayList<>(List.of("Warrior", "Mage", "Archer"));
     ArrayList<String> heroiWarrior = new ArrayList<>(List.of("Warrior"));
     ArrayList<String> heroiArcher = new ArrayList<>(List.of("Archer"));
     ArrayList<String> heroiMage = new ArrayList<>(List.of("Mage"));
-
     // Criação Consumiveis
     Potion lifepotionMinor = new Potion("Minor Potion", 20, heroisPermitidos, 50, 0);
     Potion lifepotionMedium = new Potion("Medium Potion", 40, heroisPermitidos, 100, 0);
     Potion lifepotionMajor = new Potion("Major Potion", 80, heroisPermitidos, 150, 0);
     Potion strenghtPotion = new Potion("Strength Potion", 50, heroisPermitidos, 0, 10);
     Potion megaStrengthPotion = new Potion("Mega Strength Potion", 100, heroisPermitidos, 0, 20);
-
     // Criação Consumivel de Combate
     ConsumivelCombate pedra = new ConsumivelCombate("Pedra", 15, heroisPermitidos, 50);
     ConsumivelCombate superPedra = new ConsumivelCombate("Super Pedra", 30, heroisPermitidos, 100);
     ConsumivelCombate buggyCode = new ConsumivelCombate("Buggy Code", 100, heroisPermitidos, 999);
-
     // Criação Armas
     ArmaPrincipal stick = new ArmaPrincipal("Stick", 0, 10, 20, heroisPermitidos);
-
+    //Armas MAGE
     ArmaPrincipal superStaff = new ArmaPrincipal("Super Staff", 80, 20, 40, heroiMage);
     ArmaPrincipal fireStaff = new ArmaPrincipal("Fire Staff", 120, 40, 60, heroiMage);
     ArmaPrincipal holyStaff = new ArmaPrincipal("Holy Staff", 160, 60, 80, heroiMage);
-
+    //Armas ARCHER
     ArmaPrincipal bow = new ArmaPrincipal("Bow", 80, 20, 40, heroiArcher);
     ArmaPrincipal fireBow = new ArmaPrincipal("Fire Bow", 120, 40, 60, heroiArcher);
     ArmaPrincipal holyBow = new ArmaPrincipal("Holy Bow", 160, 60, 80, heroiArcher);
-
-
+    //Armas WARRIOR
     ArmaPrincipal sword = new ArmaPrincipal("Sword", 80, 20, 40, heroiWarrior);
     ArmaPrincipal fireSword = new ArmaPrincipal("Fire Sword", 120, 40, 60, heroiWarrior);
     ArmaPrincipal holySword = new ArmaPrincipal("Holy Sword", 160, 60, 80, heroiWarrior);
@@ -157,7 +147,7 @@ public class Jogo {
      */
     public Hero criarPersonagem() {
         musicaIntro.stopMusic();
-        musicaIntro.play("MP3/inicio.mp3");
+        musicaIntro.play("RPG/MP3/inicio.mp3");
         // Escolher classe
         try {
             Thread.sleep(2000);
@@ -175,7 +165,6 @@ public class Jogo {
         }
         int escolhaClasse = input.nextInt();
 
-        // Deve escolher entre 1 e 3
         while (escolhaClasse != 1 && escolhaClasse != 2 && escolhaClasse != 3) {
             System.out.println();
             System.out.println("                                        ⚔\uFE0F \uD83C\uDFF9 \uD83D\uDD2E \uD83D\uDDE1\uFE0F Criar Heroi \uD83D\uDDE1\uFE0F \uD83D\uDD2E \uD83C\uDFF9 ⚔\uFE0F");
@@ -186,8 +175,6 @@ public class Jogo {
             System.out.print("\nClasse: ");
             escolhaClasse = input.nextInt();
         }
-
-
         // Escolher dificuldade
         System.out.println();
         System.out.println("                                                  Dificuldade");
@@ -195,7 +182,6 @@ public class Jogo {
         System.out.println("                                          2.Hard - 200 Pontos Criação");
         System.out.print("\nOpção: ");
         int escolhaDificuldade = input.nextInt();
-
         // Deve escolher 1 ou 2
         while (escolhaDificuldade != 1 && escolhaDificuldade != 2) {
             System.out.println();
@@ -217,7 +203,6 @@ public class Jogo {
             pntsCriacao = 220;
             goldInicial = 15;
         }
-
         // Distribuir pontos de criação
         System.out.println("\n                                        Distribua os pontos de criação");
         System.out.println("                                                 Pontos: " + escolhaDificuldade);
@@ -238,15 +223,12 @@ public class Jogo {
             System.out.print("Força: ");
             forca = input.nextInt();
         }
-
         System.out.println("\nDistribuiu: " + vida + " pnts de vida e " + forca + " pnts de força\n");
-
         // Arma principal recebida na criação do personagem
         ArmaPrincipal armaPrincipal = stick;
-
-
         // Switch de escolha da criação do personagem
         Hero hero = null;
+        Hero heroSave = null;
         switch (escolhaClasse) {
             case 1:
                 System.out.println("\nNovo Heroi Criado");
@@ -278,6 +260,7 @@ public class Jogo {
             default:
                 System.out.println("escolha invalida" + ANSI_RESET);
         }
+        heroSave = hero;
         return hero;
     }
 
@@ -286,7 +269,7 @@ public class Jogo {
      *
      * @param hero
      */
-    public void morreu(Hero hero) throws FileNotFoundException {
+    public void morreu(Hero hero,Hero heroSave) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         System.out.println(ANSI_CYAN);
         System.out.println("\n1.Retry com o mesmo Herói.\n2.Retry Sistema de Criação de Herói.\n3.Sair do Jogo.");
@@ -297,9 +280,9 @@ public class Jogo {
             switch (op) {
                 case 1:
                     System.out.println("\nRetry com o mesmo Herói...");
-                    hero.setHpAtual(hero.getMaxHp());
-                    intro(hero);
                     escolha = true;
+                    hero = heroSave;
+                    intro(hero);
                     break;
                 case 2:
                     System.out.println("\nRetry Sistema de Criação de Herói...");
@@ -411,7 +394,7 @@ public class Jogo {
     public void intro(Hero hero) throws FileNotFoundException {
         try {
             Thread.sleep(3000);
-            String pathPotato = "Art/potato.txt";
+            String pathPotato = "RPG/Art/potato.txt";
             System.out.println(ANSI_GOLD + ANSI_BGBLACK + "\n**************************************************************************************************************");
             imprimirFicheiro(pathPotato);
             System.out.println();
@@ -424,7 +407,7 @@ public class Jogo {
             System.out.println("⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆     Agora, cabe ao Herói descobrir o que diz a profecia e... salvar o mundo?!     ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆\n");
             System.out.println("                                              Quem sabe?!");
             System.out.println("\n**************************************************************************************************************");
-            System.out.println(ANSI_RESET);
+            System.out.print(ANSI_RESET);
             inicio(hero);
             musicaIntro.stopMusic();
         } catch (InterruptedException e) {
@@ -435,10 +418,10 @@ public class Jogo {
     /**
      * Sala Principal
      */
-    public void inicio(Hero hero) throws FileNotFoundException {
-        musicaIntro.stopMusic();
-        musicaJogo.play("MP3/jogo.mp3");
+    public void inicio(Hero hero,Hero heroSave) throws FileNotFoundException {
 
+        musicaIntro.stopMusic();
+        musicaJogo.play("RPG/MP3/jogo.mp3");
         try {
             Thread.sleep(20000);
             System.out.print(ANSI_GREEN + "\nNuma manhã qualquer, o nosso Herói segue sem destino até ouvir um sussurro:'Olha para cima!'\nDe repente, é atingido por uma batata do céu que se revela mágica\nE lhe pede para a levar ao Monastério, ou o Rei Demónio destruirá o reino.\nAgora, o Herói tem um objetivo, embora pouco claro, e deve enfrentar as forças do mal que tentarão impedi-lo.\n");
@@ -457,7 +440,7 @@ public class Jogo {
         }
         if (hero.getHpAtual() <= 0) {
             musicaJogo.stopMusic();
-            morreu(hero);
+            morreu(hero,heroSave);
         }
         System.out.println(ANSI_RESET);
         try {
@@ -1178,7 +1161,7 @@ public class Jogo {
 
     public void entradaMonasterio(Hero hero) throws FileNotFoundException {
         musicaJogo.stopMusic();
-        musicaFinal.play("MP3/boss.mp3");
+        musicaFinal.play("RPG/MP3/boss.mp3");
         System.out.println(ANSI_GREEN + "Entrada do Monastério");
         System.out.println("Olha o Salim!" + ANSI_RESET);
         chamarVendedor(hero);
@@ -1264,7 +1247,7 @@ public class Jogo {
 
     public void profecia(Hero hero) throws FileNotFoundException {
         musicaJogo.stopMusic();
-        musicaFinal.play("MP3/action.mp3");
+        musicaFinal.play("RPG/MP3/action.mp3");
         System.out.println(ANSI_YELLOW + "\nA PROFECIA");
 
         try {
@@ -1298,7 +1281,7 @@ public class Jogo {
 
     public void end(Hero hero) throws FileNotFoundException {
         musicaFinal.stopMusic();
-        musicaEnd.play("MP3/end.mp3");
+        musicaEnd.play("RPG/MP3/end.mp3");
         System.out.println(ANSI_YELLOW + "END...?");
         System.out.println("\nParabéns, derrotaste o Rei Demónio e consagraste o Rei Batata\nEntretanto, um ser misterioso esperava por esse momento para realizar a profecia e dominar todo o reino!\nFalhaste em proteger o reino, mas ganhaste um chocolate!");
         System.out.println("\n\nFIM\n\n" + ANSI_RESET);
@@ -1307,7 +1290,7 @@ public class Jogo {
 
     public void finalVerdadeiro(Hero hero) throws FileNotFoundException {
         musicaFinal.stopMusic();
-        musicaEnd.play("MP3/end.mp3");
+        musicaEnd.play("RPG/MP3/end.mp3");
         System.out.println(ANSI_YELLOW + "Parabéns, derrotaste o maior inimigo do reino e consagraste o Deus Batata!\nCom o reino a salvo, agora podes fazer um puré de batata com salsicha na panela dourada.");
         System.out.println("\n\nFIM\n\n" + ANSI_RESET);
         morreu(hero);

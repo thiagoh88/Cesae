@@ -25,7 +25,4 @@ public class ConsumivelCombate extends Consumivel {
     }
 
 
-
-
-
 }

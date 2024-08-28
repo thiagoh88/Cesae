@@ -29,7 +29,6 @@ public abstract class Hero extends Entidade {
         this.gold = gold;
     }
 
-
     /**
      * Override do metodo para apresentar detalhes
      */
@@ -54,12 +53,25 @@ public abstract class Hero extends Entidade {
         }
     }
 
+    /**
+     * Metodo para combate
+     *
+     * @param npc
+     */
     public abstract void atacar(NPC npc);
 
+    /**
+     * Adicionar itens encontrado no jogo no inventario
+     *
+     * @param itemNovo
+     */
     public void chest(Consumivel itemNovo) {
         this.inventario.add(itemNovo);
     }
 
+    /**
+     * Usar poção / questionar sobreuso / limite maxHP
+     */
     public void potionUse() {
         Scanner input = new Scanner(System.in);
 

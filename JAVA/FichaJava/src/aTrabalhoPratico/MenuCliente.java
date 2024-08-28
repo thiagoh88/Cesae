@@ -1,9 +1,9 @@
-package TrabalhoPratico;
+package aTrabalhoPratico;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import static TrabalhoPratico.Funções.lerCsvParaMatriz;
+import static aTrabalhoPratico.Funções.lerCsvParaMatriz;
 
 public class MenuCliente {
 

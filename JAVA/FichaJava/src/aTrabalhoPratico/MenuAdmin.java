@@ -1,11 +1,7 @@
-package TrabalhoPratico;
+package aTrabalhoPratico;
 
-import javax.xml.transform.Source;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
-
-import static TrabalhoPratico.Funções.lerCsvParaMatriz;
 
 public class MenuAdmin {
 

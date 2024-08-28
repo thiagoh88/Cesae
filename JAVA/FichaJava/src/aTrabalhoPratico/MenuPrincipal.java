@@ -1,9 +1,8 @@
-package TrabalhoPratico;
-import java.io.FileNotFoundException;
+package aTrabalhoPratico;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static TrabalhoPratico.Funções.*;
+import static aTrabalhoPratico.Funções.*;
 public class MenuPrincipal {
 
     public static void main(String[] args) throws IOException

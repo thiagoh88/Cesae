@@ -34,85 +34,85 @@ public class Mage extends Hero {
         if (npc.getNome().equals("Joca")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "                 \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + String.format("%03d", npc.getMaxHp()) + "     X      ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "          \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //QUIM
         if (npc.getNome().equals("Quim")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "                \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + String.format("%03d", npc.getMaxHp()) + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //ZEQUINHA
         if (npc.getNome().equals("Zequinha")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "            \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + String.format("%03d", npc.getMaxHp()) + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //ARANHA GIGANTE
         if (npc.getNome().equals("Aranha Gigante")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "             \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //ABELHA ASSASSINA
         if (npc.getNome().equals("Abelha Assassina")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "     \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //INSECTOIDE
         if (npc.getNome().equals("Insectoide")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "           \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //GARGULA
         if (npc.getNome().equals("Gargula")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "              \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //GOLEM
         if (npc.getNome().equals("Golem")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "                \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //MINOTAURO
         if (npc.getNome().equals("Minotauro")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "            \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //GOBLIN
         if (npc.getNome().equals("Goblin")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "              \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //ORC
         if (npc.getNome().equals("Orc")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "                 \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //TROLL
         if (npc.getNome().equals("Troll")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "                \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //REI DEMONIO
         if (npc.getNome().equals("Rei Demonio")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "          \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //DARK VITOR
         if (npc.getNome().equals("Dark Vitor")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "           \uD83E\uDDD9\u200D♂\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "        \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
 
         while (this.getHpAtual() > 0 && npc.getHpAtual() > 0) {
