@@ -23,6 +23,12 @@ public class Archer extends Hero {
         } catch (InterruptedException e) {
             System.out.println();
         }
+        //Randomize
+        if (npc.getNome().equals("Randomize")) {
+            System.out.println("| \uD83D\uDC80" + npc.getNome() + "           ⚔\uFE0F " + this.getNome() + " |");
+            System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + String.format("%03d", npc.getMaxHp()) + "     X      ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "         \uD83D\uDCAA\uD83C\uDFFB" + this.getForca() + "+" + this.armaPrincipal.getAtaque() + "/" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
+        }
         //JOCA
         if (npc.getNome().equals("Joca")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "              \uD83C\uDFF9 " + this.getNome() + " |");

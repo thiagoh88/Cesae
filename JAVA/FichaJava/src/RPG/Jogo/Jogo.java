@@ -9,10 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Jogo {
     Scanner input = new Scanner(System.in);
@@ -37,8 +34,32 @@ public class Jogo {
     public static final String ANSI_GOLD = "\u001B[0;93m";
     public static final String ANSI_BGBLACK = "\u001B[40m";
     // Bandidos
-    NPC joca = new NPC("Joca", 80, 120, 30, 25);
-    NPC quim = new NPC("Quim", 80, 80, 1300, 25);
+
+
+    public NPC monstros (){
+        ArrayList<String> monstros = new ArrayList<>();
+        monstros.add("Goblin");
+        monstros.add("Orc");
+        monstros.add("Troll");
+        monstros.add("Gargula");
+        monstros.add("Golem");
+        monstros.add("Minotauro");
+        monstros.add("Aranha Gigante");
+        monstros.add("Abelha Assassina");
+        monstros.add("Insectoide");
+        Collections.shuffle(monstros);
+        Random random = new Random();
+        int index = random.nextInt(monstros.size());
+        String nomeRandom = monstros.get(index);
+        int hp = random.nextInt(80, 100);
+        int stg = random.nextInt(25, 35);
+        int gold = random.nextInt(10, 50);
+        NPC randomize = new NPC(nomeRandom,hp,hp,stg,gold);
+        return randomize;
+    }
+
+    NPC joca = new NPC("Joca", 80, 80, 30, 25);
+    NPC quim = new NPC("Quim", 80, 80, 30, 25);
     NPC zequinha = new NPC("Zequinha", 80, 80, 40, 50);
     // Vale Sombrio
     NPC aranhaGigante = new NPC("Aranha Gigante", 100, 100, 25, 25);
@@ -435,16 +456,34 @@ public class Jogo {
         System.out.print(ANSI_RED);
 
         //LUTA 1
-        try {
-            Thread.sleep(00000);
-            hero.atacar(joca);
-            if (hero.getHpAtual() <= 0) {
-                musicaJogo.stopMusic();
-                morreu(hero);
+        Random random = new Random();
+        boolean luta1 = random.nextBoolean();
+
+        if (luta1){
+            try {
+                Thread.sleep(00000);
+                hero.atacar(monstros());
+                if (hero.getHpAtual() <= 0) {
+                    musicaJogo.stopMusic();
+                    morreu(hero);
+                }
+            } catch (
+                    InterruptedException e) {
+                System.out.println();
             }
-        } catch (
-                InterruptedException e) {
-            System.out.println();
+        }
+        else {
+            try {
+                Thread.sleep(00000);
+                hero.atacar(monstros());
+                if (hero.getHpAtual() <= 0) {
+                    musicaJogo.stopMusic();
+                    morreu(hero);
+                }
+            } catch (
+                    InterruptedException e) {
+                System.out.println();
+            }
         }
 
         System.out.println(ANSI_RESET);
