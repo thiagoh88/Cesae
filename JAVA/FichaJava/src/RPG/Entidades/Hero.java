@@ -3,6 +3,7 @@ package RPG.Entidades;
 import RPG.Itens.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public abstract class Hero extends Entidade {
@@ -11,6 +12,8 @@ public abstract class Hero extends Entidade {
     public int gold;
     public ArmaPrincipal armaPrincipal;
     public ArrayList<Consumivel> inventario;
+    public int forcaInicial;
+    public int vidaInicial;
 
     public Hero(String nome, int maxHp, int hpAtual, int forca, int level, int gold, ArmaPrincipal armaPrincipal) {
         super(nome, maxHp, hpAtual, forca);
@@ -19,6 +22,38 @@ public abstract class Hero extends Entidade {
         this.armaPrincipal = armaPrincipal;
         this.inventario = new ArrayList<>();
 
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public ArmaPrincipal getArmaPrincipal() {
+        return armaPrincipal;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setForcaInicial(int forcaInicial) {
+        this.forcaInicial = forcaInicial;
+    }
+
+    public void setVidaInicial(int vidaInicial) {
+        this.vidaInicial = vidaInicial;
+    }
+
+    public int getForcaInicial() {
+        return forcaInicial;
+    }
+
+    public int getVidaInicial() {
+        return vidaInicial;
     }
 
     public void setArmaPrincipal(ArmaPrincipal armaPrincipal) {
@@ -67,6 +102,42 @@ public abstract class Hero extends Entidade {
      */
     public void chest(Consumivel itemNovo) {
         this.inventario.add(itemNovo);
+    }
+
+    /**
+     * Metodo em Do-While para random ouro ou morrer / 40% Gold / 20% Morrer
+     */
+    public void totem() {
+        Scanner input = new Scanner(System.in);
+        boolean sair = false;
+        int op = 0;
+        do {
+            System.out.println("Apertar o botão?\n1.Sim\n2.Não");
+            System.out.print("Opção: ");
+            op = input.nextInt();
+            switch (op) {
+                case 1:
+                    Random random = new Random();
+                    int sorte = random.nextInt(1, 10);
+                    if (sorte == 2 || sorte == 4 || sorte == 6 || sorte == 8) {
+                        this.gold += 5;
+                        System.out.println("Ganhou 5 Gold!");
+                        System.out.println(this.getGold() + "Gold");
+                    } else if (sorte == 3 || sorte == 5) {
+                        System.out.println("Morreu!");
+                        this.setHpAtual(0);
+                        sair = true;
+                        break;
+                    } else {
+                        System.out.println("Não aconteceu nada...");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Melhor eu ir andando...");
+                    sair = true;
+                    break;
+            }
+        } while (!sair);
     }
 
     /**

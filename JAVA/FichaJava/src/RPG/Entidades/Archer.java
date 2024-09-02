@@ -4,7 +4,6 @@ import RPG.Itens.ArmaPrincipal;
 import RPG.Itens.ConsumivelCombate;
 import RPG.Itens.ItemHero;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Archer extends Hero {
@@ -291,7 +290,6 @@ public class Archer extends Hero {
             npc.setHpAtual(npc.getMaxHp());
         }
     }
-
 }
 
 

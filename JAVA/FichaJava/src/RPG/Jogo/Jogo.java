@@ -1,12 +1,7 @@
 package RPG.Jogo;
 
-import RPG.Entidades.Archer;
-import RPG.Entidades.Mage;
-import RPG.Entidades.Warrior;
+import RPG.Entidades.*;
 import RPG.Itens.*;
-import RPG.Entidades.Hero;
-import RPG.Entidades.NPC;
-import RPG.Entidades.Vendedor;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
@@ -21,6 +16,8 @@ import java.util.Scanner;
 
 public class Jogo {
     Scanner input = new Scanner(System.in);
+
+    public Hero heroSave;
 
     //PLAYER
     MusicPlayer musicaIntro = new MusicPlayer();
@@ -41,7 +38,7 @@ public class Jogo {
     public static final String ANSI_BGBLACK = "\u001B[40m";
     // Bandidos
     NPC joca = new NPC("Joca", 80, 120, 30, 25);
-    NPC quim = new NPC("Quim", 80, 80, 130, 25);
+    NPC quim = new NPC("Quim", 80, 80, 1300, 25);
     NPC zequinha = new NPC("Zequinha", 80, 80, 40, 50);
     // Vale Sombrio
     NPC aranhaGigante = new NPC("Aranha Gigante", 100, 100, 25, 25);
@@ -164,7 +161,6 @@ public class Jogo {
             System.out.println();
         }
         int escolhaClasse = input.nextInt();
-
         while (escolhaClasse != 1 && escolhaClasse != 2 && escolhaClasse != 3) {
             System.out.println();
             System.out.println("                                        ⚔\uFE0F \uD83C\uDFF9 \uD83D\uDD2E \uD83D\uDDE1\uFE0F Criar Heroi \uD83D\uDDE1\uFE0F \uD83D\uDD2E \uD83C\uDFF9 ⚔\uFE0F");
@@ -212,7 +208,6 @@ public class Jogo {
         int vida = input.nextInt();
         System.out.print("Força: ");
         int forca = input.nextInt();
-
         // Garantir a distribuição correta
         while (vida + (forca * 5) != pntsCriacao || vida + (forca * 5) > pntsCriacao) {
             System.out.println("\nDistribuição inválida. Tente novamente.");
@@ -228,7 +223,6 @@ public class Jogo {
         ArmaPrincipal armaPrincipal = stick;
         // Switch de escolha da criação do personagem
         Hero hero = null;
-        Hero heroSave = null;
         switch (escolhaClasse) {
             case 1:
                 System.out.println("\nNovo Heroi Criado");
@@ -260,16 +254,15 @@ public class Jogo {
             default:
                 System.out.println("escolha invalida" + ANSI_RESET);
         }
-        heroSave = hero;
         return hero;
     }
 
     /**
      * Metodo para recomeçar o jogo ou sair.
      *
-     * @param hero
+     * @param
      */
-    public void morreu(Hero hero,Hero heroSave) throws FileNotFoundException {
+    public void morreu(Hero hero) throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
         System.out.println(ANSI_CYAN);
         System.out.println("\n1.Retry com o mesmo Herói.\n2.Retry Sistema de Criação de Herói.\n3.Sair do Jogo.");
@@ -281,20 +274,26 @@ public class Jogo {
                 case 1:
                     System.out.println("\nRetry com o mesmo Herói...");
                     escolha = true;
-                    hero = heroSave;
+                    hero.setForca(hero.getForcaInicial());
+                    hero.setHpAtual(hero.getVidaInicial());
+                    hero.setMaxHp(hero.getVidaInicial());
+                    hero.setGold(20);
+                    hero.setLevel(1);
+                    hero.setArmaPrincipal(stick);
+                    hero.inventario.clear();
                     intro(hero);
                     break;
                 case 2:
                     System.out.println("\nRetry Sistema de Criação de Herói...");
+                    escolha = true;
                     hero.inventario.clear();
                     criarPersonagem();
                     intro(hero);
-                    escolha = true;
                     break;
                 case 3:
                     System.out.println("\nObrigado por jogar.\n\nSaindo...");
-                    System.exit(0);
                     escolha = true;
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Opção invalida");
@@ -418,12 +417,16 @@ public class Jogo {
     /**
      * Sala Principal
      */
-    public void inicio(Hero hero,Hero heroSave) throws FileNotFoundException {
+    public void inicio(Hero hero) throws FileNotFoundException {
+
+        //Guarda o input inicial do Hero
+        hero.setForcaInicial(hero.getForca());
+        hero.setVidaInicial(hero.getHpAtual());
 
         musicaIntro.stopMusic();
         musicaJogo.play("RPG/MP3/jogo.mp3");
         try {
-            Thread.sleep(20000);
+            Thread.sleep(00000);
             System.out.print(ANSI_GREEN + "\nNuma manhã qualquer, o nosso Herói segue sem destino até ouvir um sussurro:'Olha para cima!'\nDe repente, é atingido por uma batata do céu que se revela mágica\nE lhe pede para a levar ao Monastério, ou o Rei Demónio destruirá o reino.\nAgora, o Herói tem um objetivo, embora pouco claro, e deve enfrentar as forças do mal que tentarão impedi-lo.\n");
             System.out.println("\nSeguindo pela floresta, encontras uma estrada e és avistado por bandidos possuídos! Prepara-te!\n" + ANSI_RESET);
         } catch (InterruptedException e) {
@@ -433,35 +436,38 @@ public class Jogo {
 
         //LUTA 1
         try {
-            Thread.sleep(10000);
+            Thread.sleep(00000);
             hero.atacar(joca);
-        } catch (InterruptedException e) {
+            if (hero.getHpAtual() <= 0) {
+                musicaJogo.stopMusic();
+                morreu(hero);
+            }
+        } catch (
+                InterruptedException e) {
             System.out.println();
         }
-        if (hero.getHpAtual() <= 0) {
-            musicaJogo.stopMusic();
-            morreu(hero,heroSave);
-        }
+
         System.out.println(ANSI_RESET);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(0000);
             System.out.println(ANSI_GREEN + "\n Outro bandido, prepare-se!  \n" + ANSI_RESET);
-        } catch (InterruptedException e) {
+        } catch (
+                InterruptedException e) {
             System.out.println();
         }
         //LUTA 2
         System.out.print(ANSI_RED);
         hero.atacar(quim);
-
         if (hero.getHpAtual() <= 0) {
             musicaJogo.stopMusic();
             morreu(hero);
         }
         System.out.println(ANSI_RESET);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(0000);
             System.out.println(ANSI_GREEN + "\n O lider dos bandidos apareceu!  \n" + ANSI_RESET);
-        } catch (InterruptedException e) {
+        } catch (
+                InterruptedException e) {
             System.out.println();
         }
         //LUTA 3
@@ -475,7 +481,8 @@ public class Jogo {
         try {
             Thread.sleep(2000);
             System.out.println(ANSI_GREEN + "\nA estrada se divide em 3 caminhos...\nQual devemos seguir?\n\nMas antes vou comprar algo com aquele vendedor pois o Vitor pediu. \uD83D\uDE01" + ANSI_RESET);
-        } catch (InterruptedException e) {
+        } catch (
+                InterruptedException e) {
             System.out.println();
         }
         try {
@@ -483,7 +490,8 @@ public class Jogo {
             System.out.print(ANSI_YELLOW);
             chamarVendedor(hero);
             System.out.print(ANSI_RESET);
-        } catch (InterruptedException e) {
+        } catch (
+                InterruptedException e) {
             System.out.println();
         }
         //POTION
@@ -901,6 +909,15 @@ public class Jogo {
             musicaJogo.stopMusic();
             morreu(hero);
         }
+
+        System.out.println("Encontrei um totem dourado e tem um botão...");
+        hero.totem();
+        if (hero.getHpAtual() <= 0) {
+            musicaJogo.stopMusic();
+            morreu(hero);
+        }
+
+
         try {
             Thread.sleep(2000);
             System.out.println(ANSI_GREEN + "Esse caminho segue apenas numa direção..." + ANSI_RESET);

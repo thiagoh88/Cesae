@@ -221,5 +221,6 @@ public class Mage extends Hero {
             npc.setHpAtual(npc.getMaxHp());
         }
     }
+
 }
 

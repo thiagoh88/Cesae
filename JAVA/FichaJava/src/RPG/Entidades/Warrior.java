@@ -3,8 +3,6 @@ package RPG.Entidades;
 import RPG.Itens.ArmaPrincipal;
 import RPG.Itens.ConsumivelCombate;
 import RPG.Itens.ItemHero;
-import RPG.Jogo.Jogo;
-import RPG.Main;
 
 import java.util.Scanner;
 
@@ -17,6 +15,7 @@ public class Warrior extends Hero {
 
     /**
      * Metodo de combate
+     *
      * @param npc
      */
     @Override
@@ -70,7 +69,7 @@ public class Warrior extends Hero {
         if (npc.getNome().equals("Gargula")) {
             System.out.println("| \uD83D\uDC80" + npc.getNome() + "           ⚔\uFE0F " + this.getNome() + " |");
             System.out.println("| ❤\uFE0F" + String.format("%03d", npc.getHpAtual()) + "/" + npc.getMaxHp() + "     X     ❤\uFE0F" + String.format("%03d", this.getHpAtual()) + "/" + this.getMaxHp() + " |");
-            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "          \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d",this.getForca()+this.armaPrincipal.getAtaque()) +"+"+this.armaPrincipal.getAtaqueEspecial()+" |\n");
+            System.out.println("| \uD83D\uDCAA\uD83C\uDFFBForça: " + npc.getForca() + "          \uD83D\uDCAA\uD83C\uDFFB " + String.format("%03d", this.getForca() + this.armaPrincipal.getAtaque()) + "+" + this.armaPrincipal.getAtaqueEspecial() + " |\n");
         }
         //GOLEM
         if (npc.getNome().equals("Golem")) {
@@ -116,9 +115,9 @@ public class Warrior extends Hero {
         }
 
         while (this.getHpAtual() > 0 && npc.getHpAtual() > 0) {
-
             // Turno NPC 1º
             if (npc.getHpAtual() > 0) {
+
                 //NPC causa -20 Dano
                 int danoNPC = (npc.getForca() - 20);
                 this.setHpAtual(this.getHpAtual() - danoNPC);
@@ -130,6 +129,7 @@ public class Warrior extends Hero {
                 }
                 if (this.getHpAtual() <= 0) {
                     System.out.println("\n" + npc.getNome() + " Derrotou " + this.getNome() + "\n\uD83D\uDC80 GAME OVER \uD83D\uDC80");
+                    this.level = 1;
                     break;
                 }
             }
@@ -216,5 +216,7 @@ public class Warrior extends Hero {
         }
     }
 
+
 }
+
 
