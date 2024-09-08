@@ -13,9 +13,6 @@ import java.util.*;
 
 public class Jogo {
     Scanner input = new Scanner(System.in);
-
-    public Hero heroSave;
-
     //PLAYER
     MusicPlayer musicaIntro = new MusicPlayer();
     MusicPlayer musicaJogo = new MusicPlayer();
@@ -33,31 +30,8 @@ public class Jogo {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_GOLD = "\u001B[0;93m";
     public static final String ANSI_BGBLACK = "\u001B[40m";
+
     // Bandidos
-
-
-    public NPC monstros (){
-        ArrayList<String> monstros = new ArrayList<>();
-        monstros.add("Goblin");
-        monstros.add("Orc");
-        monstros.add("Troll");
-        monstros.add("Gargula");
-        monstros.add("Golem");
-        monstros.add("Minotauro");
-        monstros.add("Aranha Gigante");
-        monstros.add("Abelha Assassina");
-        monstros.add("Insectoide");
-        Collections.shuffle(monstros);
-        Random random = new Random();
-        int index = random.nextInt(monstros.size());
-        String nomeRandom = monstros.get(index);
-        int hp = random.nextInt(80, 100);
-        int stg = random.nextInt(25, 35);
-        int gold = random.nextInt(10, 50);
-        NPC randomize = new NPC(nomeRandom,hp,hp,stg,gold);
-        return randomize;
-    }
-
     NPC joca = new NPC("Joca", 80, 80, 30, 25);
     NPC quim = new NPC("Quim", 80, 80, 30, 25);
     NPC zequinha = new NPC("Zequinha", 80, 80, 40, 50);
@@ -81,17 +55,17 @@ public class Jogo {
     ArrayList<String> heroiWarrior = new ArrayList<>(List.of("Warrior"));
     ArrayList<String> heroiArcher = new ArrayList<>(List.of("Archer"));
     ArrayList<String> heroiMage = new ArrayList<>(List.of("Mage"));
-    // Criação Consumiveis
+    //Criação Consumiveis
     Potion lifepotionMinor = new Potion("Minor Potion", 20, heroisPermitidos, 50, 0);
     Potion lifepotionMedium = new Potion("Medium Potion", 40, heroisPermitidos, 100, 0);
     Potion lifepotionMajor = new Potion("Major Potion", 80, heroisPermitidos, 150, 0);
     Potion strenghtPotion = new Potion("Strength Potion", 50, heroisPermitidos, 0, 10);
     Potion megaStrengthPotion = new Potion("Mega Strength Potion", 100, heroisPermitidos, 0, 20);
-    // Criação Consumivel de Combate
+    //Criação Consumivel de Combate
     ConsumivelCombate pedra = new ConsumivelCombate("Pedra", 15, heroisPermitidos, 50);
     ConsumivelCombate superPedra = new ConsumivelCombate("Super Pedra", 30, heroisPermitidos, 100);
     ConsumivelCombate buggyCode = new ConsumivelCombate("Buggy Code", 100, heroisPermitidos, 999);
-    // Criação Armas
+    //Criação Armas
     ArmaPrincipal stick = new ArmaPrincipal("Stick", 0, 10, 20, heroisPermitidos);
     //Armas MAGE
     ArmaPrincipal superStaff = new ArmaPrincipal("Super Staff", 80, 20, 40, heroiMage);
@@ -113,7 +87,6 @@ public class Jogo {
         public Thread musica;
         public Player player;
         public boolean play;
-
         public void play(String filePath) {
             play = true;
             musica = new Thread(() -> {
@@ -124,9 +97,8 @@ public class Jogo {
                     e.printStackTrace();
                 }
             });
-            musica.start();  // Inicia a thread de música
+            musica.start();
         }
-
         public void stopMusic() {
             if (player != null) {
                 play = false;
@@ -140,6 +112,49 @@ public class Jogo {
                 }
             }
         }
+    }
+
+    /**
+     * Metodo random de NPC para batalha
+     * @return
+     */
+    public NPC monstros (){
+        ArrayList<String> monstros = new ArrayList<>();
+        monstros.add("Goblin");
+        monstros.add("Orc");
+        monstros.add("Gargula");
+        monstros.add("Golem");
+        monstros.add("Aranha Gigante");
+        monstros.add("Insectoide");
+        Collections.shuffle(monstros);
+        Random random = new Random();
+        int index = random.nextInt(monstros.size());
+        String nomeRandom = monstros.get(index);
+        int hp = random.nextInt(80, 100);
+        int stg = random.nextInt(25, 35);
+        int gold = random.nextInt(10, 50);
+        NPC randomize = new NPC(nomeRandom,hp,hp,stg,gold);
+        return randomize;
+    }
+
+    /**
+     * Metodo random de NPC para batalha - UP
+     * @return
+     */
+    public NPC monstrosUP (){
+        ArrayList<String> monstros = new ArrayList<>();
+        monstros.add("Troll");
+        monstros.add("Minotauro");
+        monstros.add("Abelha Assassina");
+        Collections.shuffle(monstros);
+        Random random = new Random();
+        int index = random.nextInt(monstros.size());
+        String nomeRandom = monstros.get(index);
+        int hp = random.nextInt(100, 150);
+        int stg = random.nextInt(35, 45);
+        int gold = random.nextInt(30, 80);
+        NPC randomize = new NPC(nomeRandom,hp,hp,stg,gold);
+        return randomize;
     }
 
     /**
@@ -307,6 +322,12 @@ public class Jogo {
                 case 2:
                     System.out.println("\nRetry Sistema de Criação de Herói...");
                     escolha = true;
+                    hero.setForca(hero.getForcaInicial());
+                    hero.setHpAtual(hero.getVidaInicial());
+                    hero.setMaxHp(hero.getVidaInicial());
+                    hero.setGold(20);
+                    hero.setLevel(1);
+                    hero.setArmaPrincipal(stick);
                     hero.inventario.clear();
                     criarPersonagem();
                     intro(hero);
@@ -352,7 +373,6 @@ public class Jogo {
         vendedor.adicionarItem(pedra);
         vendedor.adicionarItem(superPedra);
         vendedor.adicionarItem(buggyCode);
-
 
         System.out.print(ANSI_YELLOW);
         System.out.println("\n                            **********************\n                            * \uD83D\uDCB0 Salim's Shop \uD83D\uDCB0 *\n                            *     1.Comprar      *\n                            *     0.Sair         *\n                            **********************");
@@ -446,10 +466,11 @@ public class Jogo {
 
         musicaIntro.stopMusic();
         musicaJogo.play("RPG/MP3/jogo.mp3");
+
         try {
-            Thread.sleep(00000);
+            Thread.sleep(5000);
             System.out.print(ANSI_GREEN + "\nNuma manhã qualquer, o nosso Herói segue sem destino até ouvir um sussurro:'Olha para cima!'\nDe repente, é atingido por uma batata do céu que se revela mágica\nE lhe pede para a levar ao Monastério, ou o Rei Demónio destruirá o reino.\nAgora, o Herói tem um objetivo, embora pouco claro, e deve enfrentar as forças do mal que tentarão impedi-lo.\n");
-            System.out.println("\nSeguindo pela floresta, encontras uma estrada e és avistado por bandidos possuídos! Prepara-te!\n" + ANSI_RESET);
+            System.out.println("\nSeguindo pela floresta, encontras uma estrada e és avistado por monstros possuídos! Prepara-te!\n" + ANSI_RESET);
         } catch (InterruptedException e) {
             System.out.println();
         }
@@ -461,7 +482,7 @@ public class Jogo {
 
         if (luta1){
             try {
-                Thread.sleep(00000);
+                Thread.sleep(5000);
                 hero.atacar(monstros());
                 if (hero.getHpAtual() <= 0) {
                     musicaJogo.stopMusic();
@@ -474,8 +495,9 @@ public class Jogo {
         }
         else {
             try {
-                Thread.sleep(00000);
-                hero.atacar(monstros());
+                Thread.sleep(5000);
+                System.out.printf("Esse ai parece ser BEM forte!\n");
+                hero.atacar(monstrosUP());
                 if (hero.getHpAtual() <= 0) {
                     musicaJogo.stopMusic();
                     morreu(hero);
@@ -488,8 +510,8 @@ public class Jogo {
 
         System.out.println(ANSI_RESET);
         try {
-            Thread.sleep(0000);
-            System.out.println(ANSI_GREEN + "\n Outro bandido, prepare-se!  \n" + ANSI_RESET);
+            Thread.sleep(5000);
+            System.out.println(ANSI_GREEN + "\n ai vem outro!, prepare-se!  \n" + ANSI_RESET);
         } catch (
                 InterruptedException e) {
             System.out.println();
@@ -503,8 +525,8 @@ public class Jogo {
         }
         System.out.println(ANSI_RESET);
         try {
-            Thread.sleep(0000);
-            System.out.println(ANSI_GREEN + "\n O lider dos bandidos apareceu!  \n" + ANSI_RESET);
+            Thread.sleep(5000);
+            System.out.println(ANSI_GREEN + "\n O lider apareceu!  \n" + ANSI_RESET);
         } catch (
                 InterruptedException e) {
             System.out.println();
@@ -538,7 +560,6 @@ public class Jogo {
         hero.potionUse();
         System.out.print(ANSI_RESET);
 
-
         System.out.println(ANSI_GREEN + "\nQual caminho devo serguir?\n\n1.Montanha da Morte\n2.Labirinto Tempestuoso\n3.Vale Sombrio");
         System.out.print("Opção: ");
         int op = input.nextInt();
@@ -567,6 +588,13 @@ public class Jogo {
 
     public void montanhaMorte(Hero hero) throws FileNotFoundException {
         System.out.println(ANSI_GREEN + "\n\nMontanha da Morte");
+
+        System.out.printf("Um totem, o que ele faz!?");
+        hero.totem();
+        if (hero.getHpAtual() <= 0) {
+            musicaJogo.stopMusic();
+            morreu(hero);
+        }
 
         try {
             Thread.sleep(2000);
@@ -635,6 +663,14 @@ public class Jogo {
 
         //O QUE OCORRE NA SALA
 
+        System.out.printf("Um totem, o que ele faz!?");
+        hero.totem();
+        if (hero.getHpAtual() <= 0) {
+            musicaJogo.stopMusic();
+            morreu(hero);
+        }
+
+
         System.out.println(ANSI_RESET);
         System.out.print(ANSI_RED);
         System.out.println("\nMelhor recuperar o HP antes de continuar...");
@@ -678,12 +714,19 @@ public class Jogo {
         System.out.print(ANSI_RESET);
     }
 
-    public void valeSombrio(Hero hero) {
+    public void valeSombrio(Hero hero) throws FileNotFoundException {
         System.out.println(ANSI_GREEN);
         System.out.println("Vale Sombrio");
 
 
         //O QUE OCORRE NA SALA
+
+        System.out.printf("Um totem, o que ele faz!?");
+        hero.totem();
+        if (hero.getHpAtual() <= 0) {
+            musicaJogo.stopMusic();
+            morreu(hero);
+        }
 
         System.out.println(ANSI_RESET);
         System.out.print(ANSI_RED);

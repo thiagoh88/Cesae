@@ -119,12 +119,12 @@ public abstract class Hero extends Entidade {
             switch (op) {
                 case 1:
                     Random random = new Random();
-                    int sorte = random.nextInt(1, 10);
-                    if (sorte == 2 || sorte == 4 || sorte == 6 || sorte == 8) {
+                    int sorte = random.nextInt(1, 6);
+                    if (sorte == 2 || sorte == 6) {
                         this.gold += 5;
                         System.out.println("Ganhou 5 Gold!");
                         System.out.println(this.getGold() + "Gold");
-                    } else if (sorte == 3 || sorte == 5) {
+                    } else if (sorte == 3) {
                         System.out.println("Morreu!");
                         this.setHpAtual(0);
                         sair = true;
