@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <h1>TASKS</h1>
+    <h1>Olá, aqui vais ver uma lista de Tasks!</h1>
     <table class="table">
         <thead>
           <tr>
@@ -19,7 +19,7 @@
               <td>{{$item->description}}</td>
               <td>{{$item->users_name}}</td>
               <td><a href="{{route('users.view_task',$item->id)}}" class="btn btn-info">Ver/Editar</a></button></td>
-        <td><a href="{{route('users.delete',$item->id)}}" class="btn btn-danger">Delete</a></button></td>
+              <td><a href="{{route('tasks.delete',$item->id)}}" class="btn btn-danger">Delete</a></button></td>
       </tr>
               @endforeach
         </tbody>

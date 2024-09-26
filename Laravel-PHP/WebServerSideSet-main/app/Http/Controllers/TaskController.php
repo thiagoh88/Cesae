@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -73,5 +74,42 @@ class TaskController extends Controller
 
         return $tasks;
             }
+            public function createTasks(Request $request){
+                $request->validate([
+                    'name' => 'required|string|max:50',
+                    'description' => 'required|string|max:100',
+                    'user_id' => 'required|string|max:50'
+                ]);
 
-}
+                    DB::table('tasks')
+                    ->insert([
+                        'name' => $request->name,
+                        'description' => $request->description,
+                        'user_id' => $request->user_id
+                    ]);
+
+                    return redirect()->route('users.all_tasks')->with('message', 'Tasks adicionado com sucesso');
+            }
+
+
+            public function addTask(){
+                $users = User::all();
+                return view('users.add_tasks', compact('users'));
+            }
+            public function deleteTask($id){
+               DB::table('tasks')->where('id', $id)->delete();
+               $tasks = DB::table('tasks')->where('id', $id)->delete();
+
+              return back();
+                   }
+
+                   public function viewTask($id){
+
+                    $tasks = DB::table('tasks')->where('tasks.id', $id)->join('users', 'id', '=', 'tasks.user_id')->select('tasks.*','users.name as users_name')->first();
+
+                    return view('users.view_task',compact('tasks'));
+
+                       }
+
+                }
+

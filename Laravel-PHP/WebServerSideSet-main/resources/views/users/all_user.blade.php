@@ -1,8 +1,13 @@
 @extends('layouts.main')
 @section('content')
 <h1>Olá, aqui vais ver uma lista de users!</h1>
-<li><a href="{{ route('home') }}">Voltar</a></li>
-{{-- <h5>{{$myUsers->name}}</h5> --}}
+@if (session('message'))
+        <div class="alert alert-sucess">{{session('message')}}</div>
+        @endif
+<form action="">
+    <input type="text" placeholder="Search" name="search">
+    <button type="submit" class="btn btn-info" >Procurar</button>
+</form>
 <table class="table">
     <thead>
       <tr>
@@ -25,8 +30,7 @@
       </tr>
         @endforeach
     </th>
-
-
     </tbody>
   </table>
+  <li><a href="{{ route('home') }}">Voltar</a></li>
 @endsection

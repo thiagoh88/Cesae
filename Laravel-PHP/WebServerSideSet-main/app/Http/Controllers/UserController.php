@@ -4,71 +4,83 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function addUser(){
 
-        // DB::table('users')->insert([
-        //     'name'=> 'quim',
-        //     'email'=> 'quim@quim',
-        //     'password'=> '1234'
-        // ]);
 
-        // DB::table('tasks')->where('id',1)->update([
-        //     'description' => 'operações à base de dados'
-        // ]);
 
-        // DB::table('users')->updateOrInsert([
-        //     'email' => 'thiagoh88@gmail.com'],
-        //     [
-        //     'name' => 'thiago',
-        //     'password' => '1234',
-        //     'updated_at' => now(),
-        //     ]);
-
-        return view('users.add_user');
-    }
-    public function allUser(){
-        $users = $this->getUsers();
-        return view('users.all_user',compact('users'));
-    }
-    public function welCome(){
+public function welCome(){
         return view('users.welcome1');
     }
 
-    protected function getUsers(){
-        $users = DB::table('users')->get();
-//$myUsers = DB::table('users')->where('name', 'thiago')->first();
+
+//USERS
+
+public function addUser(){
+        return view('users.add_user');
+    }
+
+public function allUser(){
+        $search = request()->search;
+        $users = $this->getUsers($search);
+        return view('users.all_user',compact('users'));
+    }
+
+protected function getUsers($search){
+        if ($search){
+            $users = User::where('name','like', "%{$search}%")->get();
+        }else{
+            $users = User::all();
+        }
         return $users;
     }
 
-    public function viewUser($id){
+public function createUser(Request $request){
+        $action = '';
+// update
+        if(isset($request->id)){
+            $action = 'actualizado';
+            $request->validate([
+                'name' => 'required|string|max:50',
+            ]);
+            User::where('id',$request->id)->update([
+                'name'=> $request->name,
+                'phone'=> $request->phone,
+                'address'=> $request->address,
 
-$users = DB::table('users')->where('id', $id)->first();
-return view('users.view_user',compact('users'));
+            ]);
+// insert
+        }else{
+           $action = 'adicionado';
+           $request->validate([
+        'name' => 'string|max:50',
+        'password'=> 'min:6'
+          ]);
+
+             User::insert([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password)
+    ]);
+        };
+    return redirect()->route('users.allUser')->with('message', 'Contacto adicionado com sucesso' . $action . 'atualizado com sucesso!');
     }
 
-    public function deleteUser($id){
-        $users = DB::table('tasks')->where('user_id', $id)->delete();
-        $users = DB::table('users')->where('id', $id)->delete();
+public function viewUser($id){
+            $users = DB::table('users')->where('id', $id)->first();
+    return view('users.view_user',compact('users'));
+        }
 
-        return back();
-            }
-
-    public function viewTask($id){
-
-        $tasks = DB::table('tasks')->where('tasks.id', $id)->join('users', 'users.id', '=', 'tasks.user_id')->select('tasks.*','users.name as users_name')->first();
-
-        return view('users.view_task',compact('tasks'));
-
-           }
-
-           public function deleteTask($id){
-             DB::table('tasks')->where('id', $id)->delete();
-
-
+public function deleteUser($id){
+            DB::table('tasks')->where('user_id', $id)->delete();
+            $users = DB::table('users')->where('id', $id)->delete();
             return back();
                 }
+
+
+
 
 }
