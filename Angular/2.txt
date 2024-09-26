@@ -1,0 +1,4 @@
+tsc -w 
+tsc --init
+ng new app (sass/y)
+npm run start
