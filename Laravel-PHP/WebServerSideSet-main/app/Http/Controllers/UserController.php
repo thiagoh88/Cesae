@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
-
+use Maatwebsite\Excel\Facades\Excel;
 class UserController extends Controller
 {
 
@@ -81,6 +81,8 @@ public function deleteUser($id){
                 }
 
 
-
+public function gerenateExcel(){
+    return Excel::download(new ExportUsers, 'users.xlsx');
+}
 
 }

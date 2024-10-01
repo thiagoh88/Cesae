@@ -14,6 +14,8 @@ Route::get('/cursos/{name}', function ($name) {
     return '<h1>Olá Mundo'.$name.'</h1>';
 });
 
+Route::get('/users/export',[UserController::class, 'generateExcel']);
+
 // HOME
 
 Route::get('home', [IndexController::class, 'indexHome'])->name('home');

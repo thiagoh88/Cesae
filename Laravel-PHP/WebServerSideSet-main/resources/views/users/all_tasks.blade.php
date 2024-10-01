@@ -8,6 +8,8 @@
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
             <th scope="col">Responsável</th>
+            <th></th>
+            <th></th>
 
           </tr>
         </thead>
