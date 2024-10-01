@@ -1,4 +1,5 @@
 tsc -w 
 tsc --init
-ng new app (sass/y)
-npm run start
+criar projeto  -  ng new "nome do projeto" (sass/y)
+npm run start  -  rodar o serve
+ng add mdb-angular-ui-kit
