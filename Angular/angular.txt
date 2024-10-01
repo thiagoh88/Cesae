@@ -1,0 +1,356 @@
+
+//let firstName: string = "Thiago";
+//const secondName: string = "Pereira";
+//alert(firstName + " " + secondName);
+//alert(`${firstName}  ${secondName}`);
+//let fullName: string = String(prompt("What is your name?"));
+//alert(`${fullName}`);
+//let number1: number = Number(prompt("please type the 1st number"));
+//let number2: number = Number(prompt("please type the 2nd number"));
+//let total: number = number1 + number2;
+//alert(`Ther sum of ${number1} and ${number2} is ${total}`);
+
+
+ex ----------------------------------------------------------------------
+
+// A
+/*
+let number1: number = Number(prompt("please type the 1st number"));
+let number2: number = Number(prompt("please type the 2nd number"));
+let total: number = number1 * number2;
+alert(`The result is ${total}`);
+*/
+
+// B
+/*
+let number1: number = Number(prompt("please type the 1st number"));
+let number2: number = Number(prompt("please type the 2nd number"));
+let number3: number = Number(prompt("please type the 3rd number"));
+let total: number = (number1 + number2 + number3)/3;
+alert(`The result is ${total}`);
+*/
+
+// C
+/*
+let number1: number = Number(prompt("please type the 1st number"));
+let number2: number = Number(prompt("please type the 2nd number"));
+let total: number = number1 / number2;
+alert(`The result is ${total}`);
+*/
+
+// D
+/*
+let number1: number = Number(prompt("please type the 1st number"));
+let suc: number = number1+1;
+let ant: number = number1-1;
+alert(`The previous number is ${ant} and successor ${suc}`);
+*/
+
+// E
+/*
+let number1: number = Number(prompt("please type the 1st number"));
+let number2: number = Number(prompt("please type the 2nd number"));
+let total: number = (number1 * number2)/2;
+alert(`The result is ${total}`);
+*/
+
+// F
+/*
+let number1: number = Number(prompt("please type the 1st number"));
+let total: number = number1 * 1.23 ;
+alert(`The result plus 23% is ${total}`);
+*/
+
+// G
+/*
+let number1: number = Number(prompt("please type the bill"));
+let number2: number = Number(prompt("please type the amount given"));
+let total: number = ((number1 - number2)*0.1)-(number1 - number2);
+alert(`The result is ${total}`);
+*/
+
+
+if else ----------------------------------------------------------------
+
+let flag: boolean = false;
+let secondFlag: boolean = false;
+let firstNumber: number = 10;
+let total: number = 0;
+
+if (flag && firstNumber === 10) {
+} else if (secondFlag || true) {
+} else {
+}
+
+if (flag) {
+    total = 1;
+} else {
+    total = 2;
+}
+
+total = flag ? 1 : 2;
+
+switch ----------------------------------------------------------------
+
+const secondNumber: number = 3;
+switch (secondNumber) {
+    case 1:
+        alert(1);
+        break;
+        case 2:
+            alert(2);
+            break;
+
+            default:
+                alert('Error')
+        break;
+}
+.tolowercase
+
+
+
+
+// 1.A
+/*
+let n: number = Number(prompt("Insert a number"));
+if (n %2 == 0 ){
+    alert("Par")
+}else {
+    alert("Impar")
+}
+*/
+
+// 1.B
+/*
+let written: number = Number(prompt("Insert the written test score"));
+let oral: number = Number(prompt("Insert the oral test score"));
+let total: number = ((written * 70)+(oral * 30)) / 100;
+if (total >= 10){
+    alert("approved");
+}else{
+    alert("try again next year");
+}
+*/
+
+// 1.C
+/*
+let hours: number = Number(prompt("hours worked?"));
+if (hours > 36) {
+    let wage: number = ((hours - 36) * 10) + 270;
+    alert(`wage is: ${wage}`);
+}else{
+    let wage: number = hours * 7.5;
+    alert(`wage is: ${wage}`);
+}
+*/
+
+// 1.D
+/*
+let stat: number = Number(prompt("0.Single\n1.Married"));
+let age: number = Number(prompt("Insert your age"));
+if (stat == 0) {
+    if (age < 25) {
+        alert("Group 1");
+    } else {
+        alert("Group 2");
+    }
+}else if (stat == 1) {
+    if (age < 34) {
+        alert("Group 3");
+    }else {
+        alert("Group 4");
+    }
+}
+*/
+
+// 1.E
+/*
+let day: number = Number(prompt("Insert a number between 1 and 7"));
+switch (day) {
+    case 1:
+        alert("Sunday");
+        break;
+    case 2:
+        alert("Monday");
+        break;
+    case 3:
+        alert("Tuesday");
+        break;
+    case 4:
+        alert("Wednesday");
+        break;
+    case 5:
+        alert("Thursday");
+        break;
+    case 6:
+        alert("Friday");
+        break;
+    case 7:
+        alert("Saturday");
+        break;
+    default:
+        alert("Invalid Date");
+        break;
+}
+*/
+
+// 1.F
+/*
+let balance: number = Number(prompt("Insert last year balance"));
+if (balance > 0 && balance <= 200 ) {
+    alert("zero");
+}
+if (balance > 201 && balance <= 400) {
+    balance = balance * 0.2 ;
+    alert(balance);
+}
+if (balance > 401 && balance <= 600) {
+    balance = balance * 0.3 ;
+    alert(balance);
+}
+if (balance > 601) {
+    balance = balance * 0.4 ;
+    alert(balance);
+*/
+
+// 1.G
+/*
+let wage: number = Number(prompt("Insert your wage"));
+let position: number = Number(prompt("1.manager\n2.engineer\n3.technician"));
+switch (position) {
+    case 1:
+        wage = wage * 1.25;
+        alert("New wage: " + wage);
+        break;
+    case 2:
+        wage = wage * 1.2;
+        alert("New wage: " + wage);
+        break
+    case 3:
+        wage = wage * 1.15;
+        alert("New wage: " + wage);
+        break;
+        default:
+            alert("erro");
+}
+*/
+
+
+
+
+
+// FOR
+for (let i: number = 0; i < 10; i++) {
+    console.log(i);
+}
+// WHILE
+let k: number = 0;
+while (k < 5) {
+    console.log('j' + k);
+    k++;
+}
+// DO WHILE
+let j: number = 0;
+do {
+    console.log('j' + k);
+    j++
+} while (j < 5)
+
+
+
+
+
+// 1.A
+//let numAlunos: number = Number(prompt("insira a quantidade de alunos"))
+//let soma: number = 0;
+//for (let i: number = 0; i < numAlunos; i++) {
+//    let nota: number = Number(prompt("inserir nota"))
+//    soma += nota;
+//}
+//let media = soma / numAlunos;
+//alert(media);
+
+// 1.B
+//let numAlunos: number = Number(prompt("insira a quantidade de alunos"))
+//let negativas: number = 0;
+//for (let i: number = 0; i < numAlunos; i++) {
+//    let nota: number = Number(prompt("inserir nota"))
+//    if (nota < 0){
+//        negativas++;
+//    }
+//}
+//alert(negativas);
+
+// 1.C
+//let numAlunos: number = Number(prompt("insira a quantidade de alunos"))
+//for (let i: number = 0; i < numAlunos; i++) {
+//    let nota: number = Number(prompt("inserir nota"))
+//    if (nota > 0 && nota < 10){
+//        if (nota %2 ==0){
+//            alert("PAR: "+nota);
+//        }
+//    }
+//}
+
+// 1.D
+//let soma: number = 0;
+//let contador: number = 0;
+//let num: number;
+//do {
+//    num = Number(prompt("Inserir um numero ou 0 para sair"));
+//    if (num !== 0) {
+//        soma += num;
+//        contador++;
+//    }
+//} while (num !== 0);
+//if (contador > 0) {
+//    let media: number = soma / contador;
+//    alert("Soma: " + soma);
+//    alert("Media: " + media);
+//} else {
+//    alert("zero numeros");
+//}
+
+// 1.E
+//let numAlunos: number = Number(prompt("insira a quantidade de alunos"));
+//let maxIdade: number = Number(prompt("insira a idade limite"));
+//let contador: number = 0;
+//for (let i = 0; i < numAlunos; i++) {
+//    let idade: number = Number(prompt("Insira a idade"));
+//    if (idade > maxIdade) {
+//        contador++;
+//    }
+//}
+//let percentagem: number = (contador / numAlunos) * 100;
+//alert(percentagem);
+
+// 1.F
+//let contadorImp: number = 0;
+//let maiorPar: number = 0;
+//while (contadorImp < 5) {
+//    let num: number = Number(prompt("insira um numero"));
+//    if (num % 2 === 0) {
+//        if (maiorPar === 0 || num > maiorPar) {
+//            maiorPar = num;
+//        }
+//    } else {
+//        contadorImp++;
+//    }
+//}
+//if (maiorPar === 0 && contadorImp > 0) {
+//    alert("zero par");
+//} else {
+//    alert("maior par: " + maiorPar);
+//}
+
+// SEQUENCIA FOR
+//let num: number = Number(prompt("insira um numero"));
+//for (let i = 1; i <= num * 2 - 1; i++) {
+//    if (i <= num) {
+//        alert(i);
+//    } else {
+//        alert(num * 2 - i);
+//    }
+//}
+
+
