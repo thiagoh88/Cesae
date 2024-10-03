@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>TP Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,13 +12,13 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://www.creativefabrica.com/wp-content/uploads/2023/04/20/Abstract-Digital-Background-Graphics-67690116-1.jpg'); /* Altere para o caminho da sua imagem */
-            background-size: cover; /* Faz com que a imagem cubra todo o fundo */
-            background-position: center; /* Centraliza a imagem de fundo */
+            background-image: url('https://www.creativefabrica.com/wp-content/uploads/2023/04/20/Abstract-Digital-Background-Graphics-67690116-1.jpg');
+            background-size: cover;
+            background-position: center;
             font-family: 'Roboto', sans-serif;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -75,7 +75,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Login</h1>
+    <h1>TP Project</h1>
     @if ($errors->any())
         <div class="error-message">
             <strong>{{ $errors->first() }}</strong>

@@ -15,7 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://static.vecteezy.com/system/resources/previews/005/593/805/original/futuristic-abstract-technology-background-icon-symbol-circuit-and-illustration-sci-fi-futuristic-hud-lock-dashboard-display-virtual-reality-technology-screen-background-vector.jpg'); /* Substitua pela URL da sua imagem de fundo */
+            background-image: url('https://www.creativefabrica.com/wp-content/uploads/2023/04/20/Abstract-Digital-Background-Graphics-67690116-1.jpg'); 
             background-size: cover;
             background-position: center;
         }

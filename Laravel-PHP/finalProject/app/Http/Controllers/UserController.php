@@ -28,4 +28,29 @@ class UserController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'Usuário criado com sucesso!');
     }
+
+    public function showUsers()
+    {
+        $users = User::all();
+        return view('admin.user.users', compact('users'));
+    }
+
+
+
+
+    public function updateRole(Request $request, $id)
+{
+    $request->validate([
+        'admin' => 'required|in:0,1',
+    ]);
+
+    $user = User::findOrFail($id);
+    $user->admin = $request->admin;
+    $user->save();
+
+    return redirect()->back()->with('success', 'Cargo do usuário atualizado com sucesso.');
+}
+
+
+
 }
