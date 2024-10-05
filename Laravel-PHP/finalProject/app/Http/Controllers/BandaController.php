@@ -14,7 +14,10 @@ class BandaController extends Controller
     }
     public function create()
     {
-        return view('music.createBandas');
+        if (auth()->check() && auth()->user()->admin == 1) {
+            return view('music.createBandas');
+        }
+        return back()->with('error', 'ADMIN ONLY');
     }
     public function store(Request $request)
     {
@@ -23,20 +26,18 @@ class BandaController extends Controller
             'nome' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-
-        $fotoPath = $request->file('foto')->store('finalProject/storage/imagens', 'public');
-
-        Banda::create([
-            'nome' => $request->nome,
-            'foto' => $fotoPath,
-            'numero_albuns' => 0,
-        ]);
+        if ($request->hasFile('foto')) {
+            $filePath = $request->file('foto')->store('imagens', 'public');
+        }
+        $banda = new Banda();
+        $banda->nome = $request->input('nome');
+        $banda->foto = $filePath;
+        $banda->save();
 
         return redirect()->route('music.bandas')->with('success', 'Tá Feito!');
     }
 
-    public function destroy(Banda $banda)
+    public function deleteBandas(Banda $banda)
     {
 
         Storage::disk('public')->delete($banda->foto);

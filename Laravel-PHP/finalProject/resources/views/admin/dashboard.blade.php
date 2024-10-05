@@ -6,7 +6,7 @@
 
         <div class="button-group">
             <form action="{{ route('user.create') }}" method="GET">
-                <button type="submit" class="button">Novo Usuário</button>
+                <button type="submit" class="button">New User</button>
             </form>
 
             <form action="{{ route('user.users') }}" method="GET">
@@ -15,12 +15,12 @@
             </form>
 
             <form action="{{ route('music.bandas') }}" method="GET">
-                <button type="submit" class="button">Tema Indefinido</button>
+                <button type="submit" class="button">Not Defined</button>
             </form>
 
-            <form action="{{ route('music.albums', 1) }}" method="GET">
-                <button type="submit" class="button">Qualquer Assunto</button>
-            </form>
+            <!-- <form action="{{ route('music.albums', 1) }}" method="GET">
+            <button type="submit" class="button">Not Defined Either</button>
+           </form> -->
 
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

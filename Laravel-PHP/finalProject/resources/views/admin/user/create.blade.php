@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
-    <div class="container">
-        <h2>Criar Novo Usuário</h2>
+    <div class="central-container">
+        <h1>Criar Admin/User</h1>
         @if($errors->any())
             <div>
                 @foreach ($errors->all() as $error)
@@ -11,20 +11,21 @@
         @endif
         <form action="{{ route('user.store') }}" method="POST">
             @csrf
-            <input type="text" name="name" placeholder="Nome" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <input type="password" name="password" placeholder="Senha" required>
-            <input type="password" name="password_confirmation" placeholder="Confirme a Senha" required>
-            <label for="role">Tipo de User:</label>
+            <input type="text" name="name" placeholder="NAME" required>
+            <input type="email" name="email" placeholder="EMAIL" required>
+            <input type="password" name="password" placeholder="PASSWORD" required>
+            <input type="password" name="password_confirmation" placeholder="CONFIRM PASSWORD" required>
+            <div></div>
+            <label for="role"></label>
             <select name="admin" id="role" required>
                 <option value="0">User</option>
                 <option value="1">Admin</option>
             </select>
             <div class="button-group">
-            <button type="submit" class="button">Criar Usuário</button>
+            <button type="submit" class="button">Add User</button>
         </form>
         <form action="{{ route('admin.dashboard') }}" method="GET">
-            <button type="submit" class="button back-button">Voltar</button>
+            <button type="submit" class="button back-button">Back</button>
         </form>
     </div>
     </div>

@@ -10,7 +10,10 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('admin.user.create');
+        if (auth()->check() && auth()->user()->admin == 1) {
+            return view('admin.user.create');
+        }
+        return back()->with('error', 'ADMIN ONLY');
     }
     public function store(Request $request)
     {
