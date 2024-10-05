@@ -18,15 +18,17 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'admin' => 'required|boolean'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
+            'admin' => $request->admin,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Usuário criado com sucesso!');
+        return redirect()->route('admin.dashboard')->with('success', 'Está feito!');
     }
 
     public function showUsers()
@@ -34,10 +36,6 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.user.users', compact('users'));
     }
-
-
-
-
     public function updateRole(Request $request, $id)
 {
     $request->validate([
