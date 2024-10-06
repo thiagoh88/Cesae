@@ -21,18 +21,18 @@
             <tbody>
             @foreach($bandas as $banda)
                 <tr>
-                    <td>{{ $banda->nome }}</td>
+                    <td><h4>{{ $banda->nome }}</h4></td>
                     <td><img src="{{ asset('storage/' . $banda->foto) }}" alt="{{ $banda->nome }}" width="100" style="border-radius: 5px;"></td>
                     <td>{{ $banda->numero_albuns }}</td>
                     <td>
-                        <div class="button-container">
+
                             <a href="{{ route('music.albums', $banda) }}" class="button-open">Open</a>
                             <form action="{{ route('music.deleteBandas', $banda) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="button-delete">Delete</button>
                             </form>
-                        </div>
+
                     </td>
                 </tr>
             @endforeach

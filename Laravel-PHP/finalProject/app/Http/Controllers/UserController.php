@@ -52,6 +52,12 @@ class UserController extends Controller
     return redirect()->back()->with('success', 'Cargo do usuário atualizado com sucesso.');
 }
 
+    public function deleteUsers($userId)
+    {
+        $user = User::find($userId);
+            $user->delete();
+        return redirect()->route('user.users')->with('success', 'Está feito!');
 
+    }
 
 }

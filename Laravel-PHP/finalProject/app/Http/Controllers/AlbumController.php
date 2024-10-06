@@ -9,32 +9,38 @@ use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
+
     public function index(Banda $banda) {
         $albuns = $banda->albuns;
         return view('music.albums', compact('banda', 'albuns'));
     }
-    public function createAlbum(Banda $banda)
+    public function createAlbum($bandaId)
     {
         if (auth()->check() && auth()->user()->admin == 1) {
-            return view('music.createAlbums', compact('banda'));
+            return view('music.createAlbums', compact('bandaId'));
         }
         return back()->with('error', 'ADMIN ONLY');
     }
-    public function storeAlbum(Request $request, Banda $banda)
+    public function storeAlbum(Request $request, $bandaId)
     {
-        $validated = $request->validate([
+        $request->validate([
             'nome' => 'required|string|max:255',
-            'imagem' => 'required|image',
+            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'data_lancamento' => 'required|date',
         ]);
-        $path = $request->file('imagem')->store('imagens', 'public');
-        Album::create([
-            'nome' => $validated['nome'],
-            'imagem' => $path,
-            'data_lancamento' => $validated['data_lancamento'],
-            'banda_id' => $banda->id, // Certifique-se de que $banda não é null
-        ]);
-        return redirect()->route('music.albums', $banda)->with('success', 'Album adicionado com sucesso!');
+        $banda = Banda::find($bandaId);
+
+        if (!$banda) {
+            return redirect()->back()->with('error', 'Banda não encontrada');
+        }
+        $album = new Album();
+        $album->nome = $request->input('nome');
+        $album->imagem = $request->file('imagem')->store('imagens');
+        $album->data_lancamento = $request->input('data_lancamento');
+        $album->banda_id = $banda->id;
+        $album->save();
+
+        return redirect()->route('music.banda.show', ['id' => $bandaId])->with('success', 'Álbum adicionado com sucesso!');
     }
     public function deleteAlbum(Album $album)
     {
@@ -45,5 +51,4 @@ class AlbumController extends Controller
 
         return redirect()->back()->with('success', 'Album deletado com sucesso!');
     }
-
 }

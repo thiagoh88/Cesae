@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Storage;
 
 class BandaController extends Controller
 {
+    public function show($id)
+    {
+
+        $banda = Banda::with('albuns')->findOrFail($id);
+        $albuns = $banda->albuns;
+
+        return view('music.albums', compact('banda', 'albuns'));
+    }
     public function index() {
         $bandas = Banda::all();
         return view('music.bandas', compact('bandas'));

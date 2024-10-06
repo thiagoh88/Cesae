@@ -12,4 +12,5 @@ class Album extends Model
     public function banda() {
         return $this->belongsTo(Banda::class);
     }
+
 }

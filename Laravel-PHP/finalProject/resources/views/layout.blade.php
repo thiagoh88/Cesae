@@ -66,7 +66,7 @@
             width: 100%;
         }
         .button-container {
-            display: flex;
+            display: flow;
             flex-direction: row;
             gap: 3px;
 
@@ -81,8 +81,7 @@
     font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 20%;
-    width: 35px;
+    width: 15%;
 
 }
 .button-open:hover{
@@ -98,8 +97,9 @@
     font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    height: 60%;
-    width: 80px;
+    height: 20%;
+    width: 75px;
+
 }
 .button-delete:hover{
     background-color: red;

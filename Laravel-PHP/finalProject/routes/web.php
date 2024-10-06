@@ -10,22 +10,29 @@ use App\Http\Controllers\AlbumController;
 
 // Login
 Route::get('/', function () {return view('auth.login');});
+
 // Dashboard
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
+
 // User
-Route::get('/admin/user/create', [UserController::class, 'create'])->name('user.create')->middleware('auth');
 Route::get('/admin/user/users', [UserController::class, 'showUsers'])->name('user.users')->middleware('auth');
+Route::get('/admin/user/create', [UserController::class, 'create'])->name('user.create')->middleware('auth');
+Route::delete('/admin/{users}', [UserController::class, 'deleteUsers'])->name('user.deleteUsers');
 Route::post('/admin/user/store', [UserController::class, 'store'])->name('user.store')->middleware('auth');
+
 // Bandas
 Route::get('/music/bandas', [BandaController::class, 'index'])->name('music.bandas')->middleware('auth');
 Route::get('/music/createBandas', [BandaController::class, 'create'])->name('music.createBandas')->middleware('auth');
 Route::delete('/music/{banda}', [BandaController::class, 'deleteBandas'])->name('music.deleteBandas');
 Route::post('/music/store', [BandaController::class, 'store'])->name('music.store')->middleware('auth');
+Route::get('/bandas/{id}', [BandaController::class, 'show'])->name('music.banda.show');
+
 // Albums
 Route::get('/music/albums', [AlbumController::class, 'index'])->name('music.albums');
-Route::get('/music/createAlbums', [AlbumController::class, 'createAlbum'])->name('music.createAlbums')->middleware('auth')   ;
-//Route::delete('/music/{album}', [AlbumController::class, 'deleteAlbum'])->name('music.deleteAlbum');
-Route::post('/music/{banda}/storeAlbum', [AlbumController::class, 'storeAlbum'])->name('music.storeAlbum')->middleware('auth');
+Route::get('/bandas/{id}/albums/create', [AlbumController::class, 'createAlbum'])->name('music.createAlbums')->middleware('auth');
+Route::delete('/music/{album}', [AlbumController::class, 'deleteAlbum'])->name('music.deleteAlbum');
+Route::post('/bandas/{id}/store', [AlbumController::class, 'storeAlbum'])->name('music.storeAlbum')->middleware('auth');
+
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------//
