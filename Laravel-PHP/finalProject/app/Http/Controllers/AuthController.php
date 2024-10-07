@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 
@@ -18,5 +19,4 @@ class AuthController extends Controller
     {
         return redirect()->route('admin.dashboard');
     }
-    
 }

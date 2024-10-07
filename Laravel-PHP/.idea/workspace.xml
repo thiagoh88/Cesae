@@ -9,9 +9,6 @@
       <change beforePath="$PROJECT_DIR$/finalProject/app/Http/Controllers/AlbumController.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/app/Http/Controllers/AlbumController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finalProject/app/Http/Controllers/BandaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/app/Http/Controllers/BandaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finalProject/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalProject/app/Models/Album.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/app/Models/Album.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalProject/resources/views/admin/user/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/resources/views/admin/user/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalProject/resources/views/admin/user/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/resources/views/admin/user/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finalProject/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/resources/views/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finalProject/resources/views/music/albums.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/resources/views/music/albums.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finalProject/resources/views/music/bandas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/finalProject/resources/views/music/bandas.blade.php" afterDir="false" />
@@ -159,18 +156,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/thiag/Downloads/WebServerSideSet-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\thiag\Documents\GitHub\Cesae\Laravel-PHP\finalProject\storage\imagens" />
@@ -207,6 +205,7 @@
       <workItem from="1728050539885" duration="175000" />
       <workItem from="1728123378309" duration="26341000" />
       <workItem from="1728199292695" duration="14319000" />
+      <workItem from="1728287611233" duration="4417000" />
     </task>
     <servers />
   </component>

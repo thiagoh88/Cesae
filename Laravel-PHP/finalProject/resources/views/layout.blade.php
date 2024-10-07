@@ -3,19 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>{{ config('TP Project', 'TP Project') }}</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-
     @if(session('error'))
         <div class="alert alert-danger" style="color: white; background-color: rgba(220, 53, 69, 0.85); padding: 15px; border-radius: 5px;">
             {{ session('error') }}
         </div>
     @endif
-
     <style>
         .alert {
             position: fixed;
@@ -57,8 +53,6 @@
             text-align: center;
             font-family: 'Orbitron', sans-serif;
         }
-
-
         .button-group {
             display: flex;
             flex-direction: column;
@@ -69,7 +63,6 @@
             display: flow;
             flex-direction: row;
             gap: 3px;
-
         }
 .button-open{
     font-family: 'Orbitron', sans-serif;
@@ -82,7 +75,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: 15%;
-
 }
 .button-open:hover{
     background-color: #0725ef;
@@ -105,7 +97,6 @@
     background-color: red;
     transform: scale(1.1);
 }
-
         .button {
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
@@ -126,15 +117,27 @@
             transform: scale(1.1);
 
         }
-
         .logout-button {
             background-color: rgba(220, 53, 69, 0.7);
         }
-
         .logout-button:hover {
             background-color: red;
         }
-
+        .back-buttonadd {
+            padding: 15px;
+            background-color: rgba(220, 53, 69, 0.7);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 25%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .back-buttonadd:hover {
+            background-color: red;
+        }
         .back-button {
             padding: 15px;
             background-color: rgba(220, 53, 69, 0.7);
@@ -147,11 +150,9 @@
             max-width: 400px;
             margin: 0 auto;
         }
-
         .back-button:hover {
             background-color: red;
         }
-
         .container {
             background-color: rgba(255, 255, 255, 0.5);
             padding: 30px;
@@ -162,12 +163,10 @@
             text-align: center;
             margin-top: 2rem;
         }
-
         h2 {
             margin-bottom: 20px;
             color: #333;
         }
-
         input[type="text"],
         input[type="email"],
         input[type="password"],
@@ -180,7 +179,6 @@
             border-radius: 5px;
             font-size: 1rem;
         }
-
         input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="password"]:focus,

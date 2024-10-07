@@ -3,29 +3,30 @@
     <div class="central-container">
         <h1>Add</h1>
         @if($errors->any())
-
             <div class="error-message">
                 @foreach ($errors->all() as $error)
                     <div style="color: red;">{{ $error }}</div>
                 @endforeach
             </div>
         @endif
-        <form action="{{ route('music.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('bandas.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
             <div class="form-group">
                 <label for="nome">Name:</label>
                 <input type="text" id="nome" name="nome" required>
             </div>
             <div class="button-group">
-            <div class="form-group">
-                <label for="foto">Image:</label>
-                <input type="file" id="foto" name="foto" accept="imagens/*" required>
+                <div class="form-group">
+                    <label for="foto">Image:</label>
+                    <input type="file" id="foto" name="foto" accept="imagens/*" required>
+                </div>
+                <button type="submit" class="button">Add</button>
             </div>
-            <button type="submit" class="button">Add</button>
         </form>
-        <form action="{{ route('music.bandas') }}" method="GET">
-            <button type="submit" class="button back-button">Back</button>
-        </form>
+    </div>
+    <div class="button-group">
+        <a href="{{ route('bandas.bandas') }}" method="GET">
+            <button type="submit" class="button back-buttonadd">Back</button>
+        </a>
     </div>
 @endsection

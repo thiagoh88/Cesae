@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function create()
+    public function createUser()
     {
         if (auth()->check() && auth()->user()->admin == 1) {
-            return view('admin.user.create');
+            return view('admin.users.create');
         }
         return back()->with('error', 'ADMIN ONLY');
     }
@@ -34,30 +33,19 @@ class UserController extends Controller
         return redirect()->route('admin.dashboard')->with('success', 'Está feito!');
     }
 
-    public function showUsers()
-    {
-        $users = User::all();
-        return view('admin.user.users', compact('users'));
-    }
-    public function updateRole(Request $request, $id)
-{
-    $request->validate([
-        'admin' => 'required|in:0,1',
-    ]);
+    public function viewUser(){
 
-    $user = User::findOrFail($id);
-    $user->admin = $request->admin;
-    $user->save();
-
-    return redirect()->back()->with('success', 'Cargo do usuário atualizado com sucesso.');
-}
-
+            $users = User::all();
+            return view('admin.users.users', compact('users'));
+        }
     public function deleteUsers($userId)
     {
-        $user = User::find($userId);
+        if (auth()->check() && auth()->user()->admin == 1) {
+            $user = User::find($userId);
             $user->delete();
-        return redirect()->route('user.users')->with('success', 'Está feito!');
-
+            return redirect()->route('users.users')->with('success', 'Está feito!');
+        }
+        return back()->with('error', 'ADMIN ONLY');
+    }
     }
 
-}

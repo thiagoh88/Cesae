@@ -1,14 +1,8 @@
 @extends('layout')
-
 @section('content')
     <div class="central-container">
         <h1>Not Defined</h1>
-
-        <form action="{{ url('/bandas') }}" method="GET" class="input-group">
-            <input type="text" name="search" placeholder="Search" required>
-            <input type="submit" class="button-open" value="Go!">
-        </form>
-
+        <h1></h1>
         <table>
             <thead>
             <tr>
@@ -26,28 +20,26 @@
                     <td>{{ $banda->numero_albuns }}</td>
                     <td>
 
-                            <a href="{{ route('music.albums', $banda) }}" class="button-open">Open</a>
-                            <form action="{{ route('music.deleteBandas', $banda) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="button-delete">Delete</button>
-                            </form>
-
+                        <form action="{{ route('bandas.deleteBandas', $banda) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="button-delete">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-
+        <h1></h1>
         <div class="button-group">
-            <form action="{{ route('music.createBandas') }}" method="GET">
+            <a href="{{ route('bandas.createBandas') }}" method="GET">
                 @csrf
                 <button type="submit" class="button">Add</button>
-            </form>
-            <form action="{{ route('admin.dashboard') }}" method="GET">
+            </a>
+            <a href="{{ route('admin.dashboard') }}" method="GET">
                 @csrf
                 <button type="submit" class="button back-button">Back</button>
-            </form>
+            </a>
         </div>
     </div>
 @endsection
