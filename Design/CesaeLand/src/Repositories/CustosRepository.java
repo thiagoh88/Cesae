@@ -29,5 +29,22 @@ public class CustosRepository {
         return listaCustos;
     }
 
+    public Custos getCustoById(int id){
+        for(Custos c : this.getListaCustos()) {
+            if(c.getAtracaoID() == id){
+                return c;
+            }
+        }
 
+        return null;
+    }
+
+    public double getTotalCustosFixos() {
+        double totalCustosFixos = 0;
+        for(Custos c : this.getListaCustos()) {
+            totalCustosFixos = totalCustosFixos + c.getCustosFixos();
+        }
+
+        return totalCustosFixos;
+    }
 }

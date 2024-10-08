@@ -11,7 +11,7 @@ public class VendaRepository {
     private static VendaRepository instance;
     private static ArrayList<Venda> vendas;
 
-    public VendaRepository() {
+    private VendaRepository() {
         vendas = ReadVendaCsv.readCsvFileToVendaArray("Files/Cesaeland_vendas.csv");
     }
 

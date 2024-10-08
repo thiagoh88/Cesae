@@ -24,4 +24,13 @@ public class AtracaoRepository {
     public ArrayList<Atracao> getAtracaoArray(){
         return atracoes;
     }
+
+    public Atracao getAtracaoByID(int id) {
+        for(Atracao a : atracoes) {
+            if(a.getId() == id) {
+                return a;
+            }
+        }
+        return null;
+    }
 }

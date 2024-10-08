@@ -2,6 +2,7 @@ package Repositories;
 
 import Model.User;
 import Tools.CsvUsersReader;
+import Tools.WriteUsersArrayCsv;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,5 +26,14 @@ public class UsersRepository {
     public ArrayList<User> getUsersArray() {
         return usersArray;
     }
+
+    public boolean addUser(User u) {
+        return usersArray.add(u);
+    }
+
+    public boolean saveUsers() {
+        return WriteUsersArrayCsv.writeUserArrayToCsv("Files/Cesaeland_logins.csv", this.usersArray);
+    }
+
 }
 
