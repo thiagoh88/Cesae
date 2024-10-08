@@ -26,8 +26,7 @@ public class ClientView {
 
             switch (opcao) {
                 case 1: // Consultar Atrações Disponíveis
-                    System.out.println("Atrações disponíveis...");
-                    System.out.println("função para imprimir o csv atracoes, porem a duração em min:seg");
+                    consultarAtracao();
                     break;
                 case 2: // Consultar Atrações Favoritas
                     System.out.println("Atrações Favoritas...");
@@ -40,6 +39,9 @@ public class ClientView {
             }
             System.out.println("__________________________________________________");
         } while (opcao != 3);
+    }
 
+    public void consultarAtracao() {
+        System.out.println(clientController.consultarAtracao());
     }
 }

@@ -15,6 +15,25 @@ public class Atracao {
         this.duracaoSegundos = duracaoSegundos;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPrecoAdulto() {
+        return precoAdulto;
+    }
+
+    public double getPrecoCrianca() {
+        return precoCrianca;
+    }
+
+    public int getDuracaoSegundos() {
+        return duracaoSegundos;
+    }
 
     @Override
     public String toString() {

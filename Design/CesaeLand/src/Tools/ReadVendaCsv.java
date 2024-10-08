@@ -12,12 +12,12 @@ public class ReadVendaCsv {
     public static ArrayList<Venda> readCsvFileToVendaArray(String filePath) {
         ArrayList<Venda> vendas = new ArrayList<>();
 
-        try {
+        try{
             Scanner readFile = new Scanner(new File(filePath));
 
             readFile.nextLine();
 
-            while (readFile.hasNextLine()) {
+            while(readFile.hasNextLine()) {
                 String linha = readFile.nextLine();
                 String[] linhaArray = linha.split(";");
 
@@ -25,11 +25,10 @@ public class ReadVendaCsv {
                 int atracaoId = Integer.parseInt(linhaArray[0]);
                 String data = linhaArray[1];
                 String tipoCliente = linhaArray[2];
-                double valor = Double.parseDouble(linhaArray[3]);
-                double total = Double.parseDouble(linhaArray[4]);
+
                 Venda v = new Venda(atracaoId, data, tipoCliente);
 
-                vendas.add(v);
+               vendas.add(v);
 
             }
         } catch (FileNotFoundException e) {
