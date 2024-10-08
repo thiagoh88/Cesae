@@ -4,13 +4,12 @@ import Model.Atracao;
 import Tools.ReadAtracaoCsv;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AtracaoRepository {
     private static AtracaoRepository instance;
     private static ArrayList<Atracao> atracoes;
 
-    public AtracaoRepository() {
+    private AtracaoRepository() {
         atracoes = ReadAtracaoCsv.readCsvFileToAtracaoArray("Files/Cesaeland_atracoes.csv");
     }
 
@@ -34,6 +33,4 @@ public class AtracaoRepository {
         }
         return null;
     }
-    public List<Atracao> getAtracoes() {
-        return atracoes;
-}}
+}

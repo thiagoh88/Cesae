@@ -45,14 +45,21 @@ class BandasController extends Controller
     }
     public function store(Request $request)
     {
-       $request->validate([
-            'name'=> 'string|max:50|required',
-       ]);
+        $request->validate([
+            'name' => 'string|max:50|required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required', // Validação da imagem
+        ]);
 
-       DB::table('tasks')->insert([
-        'name' => $request->nome,
-       ]);
-
-       return redirect()->route('tasks.all')->with('message', 'dicionada com sucesso');
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('imagens', $imageName, 'public');
+            DB::table('tasks')->insert([
+                'name' => $request->nome,
+                'image' => $foto,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        return redirect()->back()->with('success', 'Tarefa criada com sucesso!');
     }
 }
