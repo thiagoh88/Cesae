@@ -47,4 +47,12 @@ public class CustosRepository {
 
         return totalCustosFixos;
     }
+
+    public double getTotalCustoFixoMes() {
+        double custoFixoTotal = 0;
+        for(Custos c : listaCustos) {
+            custoFixoTotal = custoFixoTotal + c.getCustosFixos();
+        }
+        return custoFixoTotal;
+    }
 }

@@ -87,8 +87,8 @@ public class AdminView {
     }
 
     public void atracaoMaisProcurada() {
-        int[][] atracaoMaisProcurada = adminController.getAtracaoMaisProcurada();
-        System.out.println("ATRACAO MAIS PROCURADA: " + adminController.getAtracaoID(atracaoMaisProcurada[0][0]).getNome() + " BILHETES VENDIDOS: " + atracaoMaisProcurada[0][1]);
+        Atracao atracaoMaisProcurada = adminController.getAtracaoMaisProcurada();
+        System.out.println("ATRACAO MAIS PROCURADA: " +  atracaoMaisProcurada.getNome() + " BILHETES VENDIDOS: " + adminController.getBilhetesVendidosAtracaoID(atracaoMaisProcurada.getId()));
     }
 
     public void atracaoMaisProcuradaAdultos(){
@@ -147,5 +147,16 @@ public class AdminView {
 
     public void sair() {
         adminController.saveUsers();
+    }
+
+    public static class AtracaoView {
+
+        public void AtracaoComMelhorPreco(Atracao atracao) {
+            if (atracao != null) {
+                System.out.println("\nA atração com o melhor custo por segundo: "+ atracao.getNome());
+            } else {
+                System.out.println("Nenhuma atração encontrada.");
+            }
+        }
     }
 }
