@@ -26,7 +26,7 @@ Route::delete('/bandas/{bandas}/', [BandasController::class, 'deleteBandas'])->n
 
 // ALBUMS
 //Route::get('/albums/all_albums', [AlbumsController::class, 'allAlbums'])->name('albums.all');
-//Route::get('/albums/view/{id}', [AlbumsController::class, 'viewAlbums'])->name('albums.view');
+Route::get('/albums/view/{id}', [AlbumsController::class, 'viewAlbums'])->name('albums.view');
 //Route::get('/albums/delete/{id}', [AlbumsController::class, 'deleteAlbums'])->name('albums.delete');
 //Route::get('/albums/show-form', [AlbumsController::class, 'showForm'])->name('albums.form');
 //Route::post('/albums/store', [AlbumsController::class, 'store'])->name('albums.store');
