@@ -18,6 +18,12 @@ class BandasController extends Controller
     }
     public function viewBandas(){
         $bandas = Bandas::all();
+        foreach ($bandas as $banda) {
+            $numeroAlbuns = Albums::where('banda_id', $banda->id)->count();
+            $banda->numero_albuns = $numeroAlbuns;
+            $banda->save();
+        }
+        $bandas = Bandas::all();
         return view('bandas.bandas', compact('bandas'));
     }
     public function store(Request $request)

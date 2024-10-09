@@ -27,4 +27,3 @@ Route::get('/bandas/{bandaId}/albums', [AlbumsController::class, 'viewAlbums'])-
 Route::get('/bandas/{bandaId}/albums/create', [AlbumsController::class, 'createAlbums'])->name('albums.createAlbums')->middleware('auth');
 Route::post('/bandas/{bandaId}/albums', [AlbumsController::class, 'store'])->name('albums.store');
 Route::delete('/bandas/{bandaId}/albums/{albumId}', [AlbumsController::class, 'deleteAlbums'])->name('albums.deleteAlbums')->middleware('auth');
-

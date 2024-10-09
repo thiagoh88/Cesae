@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($albums as $album)
+                        @foreach($albums as $album)
                     <tr>
                         <td>{{ $album->nome }}</td>
                         <td><img src="{{ asset('storage/' . $album->imagem) }}" alt="{{ $album->nome }}" width="100" style="border-radius: 5px;"></td>

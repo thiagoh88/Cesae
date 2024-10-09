@@ -25,8 +25,6 @@
                             @method('DELETE')
                             <button type="submit" class="button-delete">Delete</button>
                         </form>
-
-
                     </td>
                 </tr>
             @endforeach
