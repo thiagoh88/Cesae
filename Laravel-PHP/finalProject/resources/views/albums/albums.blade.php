@@ -7,6 +7,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Image</th>
+                    <th>Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -14,16 +15,12 @@
                 @foreach($albums as $album)
                     <tr>
                         <td>{{ $album->nome }}</td>
-                        <td>
-                            <img src="{{ asset('storage/' . $album->imagem) }}" alt="{{ $album->nome }}" width="100" style="border-radius: 5px;">
-                        </td>
-                        <td>
-                            <form action="{{ route('albums.deleteAlbums', ['bandaId' => $banda->id, 'albumId' => $album->id]) }}" method="POST" style="display:inline;">
+                        <td><img src="{{ asset('storage/' . $album->imagem) }}" alt="{{ $album->nome }}" width="100" style="border-radius: 5px;"></td>
+                        <td>{{ $album->data_lancamento }}</td>
+                        <td><form action="{{ route('albums.deleteAlbums', ['bandaId' => $banda->id, 'albumId' => $album->id]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="button-delete">Delete</button>
-                            </form>
-                        </td>
+                                <button type="submit" class="button-delete">Delete</button></form></td>
                     </tr>
                 @endforeach
             </tbody>

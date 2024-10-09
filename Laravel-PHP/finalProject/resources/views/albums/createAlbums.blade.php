@@ -8,6 +8,10 @@
                 <label for="nome">Name</label>
                 <input type="text" name="nome" id="nome" required>
             </div>
+            <div class="form-group">
+                <label for="data_lancamento">Data</label>
+                <input type="text" name="data_lancamento" id="data_lancamento" required>
+            </div>
             <div class="button-group">
                 <div class="form-group">
                 <label for="imagem">Image</label>

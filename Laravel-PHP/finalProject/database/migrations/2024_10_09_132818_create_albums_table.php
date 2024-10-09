@@ -11,7 +11,8 @@ class CreateAlbumsTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('imagem')->nullable();
-            $table->foreignId('banda_id')->constrained()->onDelete('cascade'); 
+            $table->string('data_lancamento')->nullable();
+            $table->foreignId('banda_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
