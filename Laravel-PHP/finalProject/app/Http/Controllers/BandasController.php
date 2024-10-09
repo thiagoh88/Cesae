@@ -46,13 +46,13 @@ class BandasController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'name'=> 'string|max:50|required',
+            'nome'=> 'string|max:50|required',
        ]);
 
-       DB::table('tasks')->insert([
-        'name' => $request->nome,
+       DB::table('bandas')->insert([
+        'nome' => $request->nome,
        ]);
 
-       return redirect()->route('tasks.all')->with('message', 'dicionada com sucesso');
+       return redirect()->route('bandas.bandas')->with('message', 'dicionada com sucesso');
     }
 }

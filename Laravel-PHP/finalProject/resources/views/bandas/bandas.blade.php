@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="central-container">
-        <h1>Not Defined</h1>
+        <h1>Bandas</h1>
         <h1></h1>
         <table>
             <thead>
