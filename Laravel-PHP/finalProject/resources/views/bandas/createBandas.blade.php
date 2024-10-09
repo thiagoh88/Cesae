@@ -18,7 +18,7 @@
             <div class="button-group">
                 <div class="form-group">
                     <label for="foto">Image:</label>
-                    <input type="file" id="foto" name="foto" accept="imagens/*" required>
+                    <input type="file" id="foto" name="foto" accept="image/*" required>
                 </div>
                 <button type="submit" class="button">Add</button>
             </div>

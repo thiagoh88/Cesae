@@ -13,21 +13,22 @@
             </thead>
             <tbody>
                 @foreach($bandas as $banda)
-                    <tr>
-                        <td><h4>{{ $banda->nome }}</h4></td>
-                        <td><img src="{{ asset('storage/' . $banda->foto) }}" alt="{{ $banda->nome }}" width="100" style="border-radius: 5px;"></td>
-                        <td>{{ $banda->numero_albuns }}</td>
-                        <td>
-                            <a href="{{ route('albums.view', $banda) }}" class="button">View Albums</a>
-                            <form action="{{ route('bandas.deleteBandas', $banda) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="button-delete">Delete</button>
-                            </form>
+                <tr>
+                    <td><h4>{{ $banda->nome }}</h4></td>
+                    <td><img src="{{ asset('storage/' . $banda->foto) }}" alt="{{ $banda->nome }}" width="100" style="border-radius: 5px;">
+                    </td>
+                    <td>{{ $banda->numero_albuns }}</td>
+                    <td>
+                        <form action="{{ route('bandas.deleteBandas', $banda) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="button-delete">Delete</button>
+                        </form>
+                        <a href="{{ route('albums.albums', ['bandaId' => $banda->id]) }}" class="button">View Albums</a>
 
-                        </td>
-                    </tr>
-                @endforeach
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
         <div class="button-group">

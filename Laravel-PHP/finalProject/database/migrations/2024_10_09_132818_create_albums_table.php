@@ -1,16 +1,10 @@
 <?php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Albums extends Model
+class CreateAlbumsTable extends Migration
 {
-    protected $fillable = ['nome', 'imagem', 'data_lancamento', 'banda_id'];
-
-    public function banda() {
-        return $this->belongsTo(Bandas::class);
-    }
     public function up()
     {
         Schema::create('albums', function (Blueprint $table) {
