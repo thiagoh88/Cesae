@@ -2,13 +2,6 @@
 @section('content')
     <div class="central-container">
         <h1>Add</h1>
-        @if($errors->any())
-            <div class="error-message">
-                @foreach ($errors->all() as $error)
-                    <div style="color: red;">{{ $error }}</div>
-                @endforeach
-            </div>
-        @endif
         <form action="{{ route('bandas.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">

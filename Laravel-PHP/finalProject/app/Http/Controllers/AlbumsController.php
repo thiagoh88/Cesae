@@ -5,46 +5,72 @@ namespace App\Http\Controllers;
 use App\Models\Albums;
 use App\Models\Bandas;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AlbumsController extends Controller
 {
-    public function createAlbums()
-{
-    $Albums = Albums::all();
-    $banda = Banda::findOrFail($bandaId);
-    return view('albums.createAlbums', compact('banda'));
-}
     public function viewAlbums($bandaId)
-{
-    $albums = Albums::where('banda_id', $bandaId)->get();
-    return view('albums.albums', compact('albums'));
-}
-    public function deleteAlbums($id){
-        DB::table('Albums')->where('id', $id)->delete();
-
-        return back();
-    }
-    public function store(Request $request)
-{
-    $request->validate([
-        'nome' => 'required|string|max:255',
-        'imagem' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'banda_id' => 'required|exists:bandas,id',
-    ]);
-
-    $album = new Albums();
-    $album->nome = $request->nome;
-
-    if ($request->hasFile('imagem')) {
-        $path = $request->file('imagem')->store('albums', 'public');
-        $album->imagem = $path;
+    {
+        $banda = Bandas::findOrFail($bandaId);
+        $albums = Albums::where('banda_id', $bandaId)->get();
+        return view('albums.albums', compact('banda', 'albums'));
     }
 
-    $album->banda_id = $request->banda_id;
-    $album->save();
+    public function createAlbums($bandaId)
+    {
 
-    return redirect()->route('albums.albums')->with('success', 'Álbum criado com sucesso!');
-}
+        $banda = Bandas::findOrFail($bandaId);
+        return view('albums.createAlbums', compact('banda'));
+    }
 
+    public function store(Request $request, $bandaId)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $album = new Albums();
+        $album->nome = $request->nome;
+        $album->banda_id = $bandaId;
+
+        if ($request->hasFile('imagem')) {
+            $album->imagem = $request->file('imagem')->store('imagens', 'public');
+
+        }
+
+        $album->save();
+
+        return redirect()->route('albums.albums', ['bandaId' => $bandaId])->with('success', 'Álbum adicionado com sucesso!');
+    }
+    public function edit($bandaId, $albumId)
+    {
+        $banda = Bandas::findOrFail($bandaId);
+        $album = Albums::findOrFail($albumId);
+        return view('albums.editAlbums', compact('banda', 'album'));
+    }
+    public function update(Request $request, $bandaId, $albumId)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $album = Albums::findOrFail($albumId);
+        $album->nome = $request->nome;
+
+        if ($request->hasFile('imagem')) {
+            $album->imagem = $request->file('imagem')->store('imagens', 'public');
+        }
+
+        $album->save();
+
+        return redirect()->route('albums.view', ['bandaId' => $bandaId])->with('success', 'Álbum atualizado com sucesso!');
+    }
+    public function deleteAlbums($bandaId, $albumId)
+    {
+        $album = Albums::findOrFail($albumId);
+        $album->delete();
+
+        return redirect()->route('albums.view', ['bandaId' => $bandaId])->with('success', 'Álbum deletado com sucesso!');
+    }
 }
