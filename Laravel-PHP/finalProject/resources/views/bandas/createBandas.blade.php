@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="central-container">
-        <h1>Add</h1>
+        <h1>Add Banda</h1>
         <form action="{{ route('bandas.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
@@ -11,7 +11,7 @@
             <div class="button-group">
                 <div class="form-group">
                     <label for="foto">Image:</label>
-                    <input type="file" id="foto" name="foto" accept="image/*" required>
+                    <input type="file" id="foto" name="foto" required>
                 </div>
                 <button type="submit" class="button">Add</button>
             </div>

@@ -19,7 +19,7 @@
                     </td>
                     <td>{{ $banda->numero_albuns }}</td>
                     <td>
-                        <a href="{{ route('albums.albums', ['bandaId' => $banda->id]) }}" class="button">View Albums</a>
+                        <a href="{{ route('albums.albums', ['bandaId' => $banda->id]) }}"><button type="button" class="button-album">Album</button></a>
                         <form action="{{ route('bandas.deleteBandas', $banda) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

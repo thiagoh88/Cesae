@@ -26,7 +26,7 @@ Route::delete('/bandas/{bandas}/', [BandasController::class, 'deleteBandas'])->n
 Route::get('/bandas/{bandaId}/albums', [AlbumsController::class, 'viewAlbums'])->name('albums.albums');
 Route::get('/bandas/{bandaId}/albums/create', [AlbumsController::class, 'createAlbums'])->name('albums.createAlbums')->middleware('auth');
 Route::post('/bandas/{bandaId}/albums', [AlbumsController::class, 'store'])->name('albums.store');
-Route::delete('/bandas/{bandaId}/albums/{albumId}', [AlbumsController::class, 'deleteAlbums'])->name('Albums.deleteAlbums')->middleware('auth');
+Route::delete('/bandas/{bandaId}/albums/{albumId}', [AlbumsController::class, 'deleteAlbums'])->name('albums.deleteAlbums')->middleware('auth');
 
 
 //Route::get('/bandas/{bandaId}/albums/create', [AlbumsController::class, 'create'])->name('albums.create');

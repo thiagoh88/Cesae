@@ -20,29 +20,30 @@ class BandasController extends Controller
         $bandas = Bandas::all();
         return view('bandas.bandas', compact('bandas'));
     }
-
-    public function deleteBandas($id){
-        DB::table('bandas')->where('id', $id)->delete();
-        return back();
-    }
     public function store(Request $request)
     {
         $request->validate([
             'nome' => 'required|string|max:255',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        $banda = new Bandas();
-        $banda->nome = $request->nome;
-
-
+        $data = [
+            'nome' => $request->nome,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
         if ($request->hasFile('foto')) {
-            $path = $request->file('foto')->store('imagens', 'public');
-            $banda->foto = $path;
+            $data['foto'] = $request->file('foto')->store('imagens', 'public');
         }
+        Bandas::insert($data);
 
-        $banda->save();
-
-        return redirect()->route('bandas.bandas')->with('success', 'Banda criada com sucesso!');
+        return redirect()->route('bandas.bandas')->with('success');
     }
-  }
+    public function deleteBandas($id){
+
+        if (auth()->check() && auth()->user()->admin == 1) {
+            DB::table('bandas')->where('id', $id)->delete();
+            return back();
+        }
+        return back()->with('error', 'ADMIN ONLY');
+    }
+}

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class Albums extends Model
 {
@@ -17,7 +19,7 @@ class Albums extends Model
             $table->id();
             $table->string('nome');
             $table->string('imagem')->nullable();
-            $table->foreignId('banda_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('banda_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

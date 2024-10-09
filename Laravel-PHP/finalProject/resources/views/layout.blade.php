@@ -82,7 +82,7 @@
 }
 .button-delete{
     font-family: 'Orbitron', sans-serif;
-    padding: 15px;
+    padding: 10px;
     background-color: rgba(220, 53, 69, 0.7);
     border: none;
     border-radius: 8px;
@@ -97,6 +97,27 @@
     background-color: red;
     transform: scale(1.1);
 }
+
+.button-album{
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    padding: 10px;
+    background-color: rgba(4, 106, 230, 0.7);
+    color: #050505;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 43%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.button-album:hover{
+    background-color: #0725ef;
+    transform: scale(1.1);
+}
+
         .button {
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;

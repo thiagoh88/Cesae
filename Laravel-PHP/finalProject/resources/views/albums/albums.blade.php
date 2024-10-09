@@ -5,9 +5,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Nome do Álbum</th>
-                    <th>Imagem</th>
-                    <th>Ações</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                             <form action="{{ route('albums.deleteAlbums', ['bandaId' => $banda->id, 'albumId' => $album->id]) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="button-delete">Deletar</button>
+                                <button type="submit" class="button-delete">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -29,8 +29,8 @@
             </tbody>
         </table>
         <div class="button-group">
-            <a href="{{ route('albums.createAlbums', ['bandaId' => $banda->id]) }}" class="button">Adicionar Álbum</a>
-            <a href="{{ route('bandas.bandas') }}" class="button back-button">Voltar</a>
+           <a href="{{ route('albums.createAlbums', ['bandaId' => $banda->id]) }}"><button type="button" class="button">Add Álbum</button></a>
+            <a href="{{ route('bandas.bandas') }}"><button type="button" class="button back-button"c>Back</button></a>
         </div>
     </div>
 @endsection
