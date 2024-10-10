@@ -17,6 +17,7 @@ class BandasController extends Controller
         return back()->with('error', 'ADMIN ONLY');
     }
     public function viewBandas(){
+
         $bandas = Bandas::all();
         foreach ($bandas as $banda) {
             $numeroAlbuns = Albums::where('banda_id', $banda->id)->count();

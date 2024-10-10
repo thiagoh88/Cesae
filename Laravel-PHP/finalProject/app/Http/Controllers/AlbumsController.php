@@ -13,14 +13,14 @@ class AlbumsController extends Controller
     public function createAlbums($bandaId)
     {
         if (auth()->check() && auth()->user()->admin == 1) {
-            $banda = Bandas::findOrFail($bandaId);
+            $banda = Bandas::find($bandaId);
             return view('albums.createAlbums', compact('banda'));
         }
         return back()->with('error', 'ADMIN ONLY');
     }
     public function viewAlbums($bandaId)
     {
-        $banda = Bandas::findOrFail($bandaId);
+        $banda = Bandas::find($bandaId);
         $albums = Albums::where('banda_id', $bandaId)->get();
         return view('albums.albums', compact('banda', 'albums'));
     }

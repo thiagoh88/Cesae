@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 // Login
 Route::get('/', function () {return view('auth.login');});
+
 // Dashboard
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -23,7 +24,7 @@ Route::post('/bandas/store', [BandasController::class, 'store'])->name('bandas.s
 Route::delete('/bandas/{bandas}/', [BandasController::class, 'deleteBandas'])->name('bandas.deleteBandas')->middleware('auth');
 
 // ALBUMS
-Route::get('/bandas/{bandaId}/albums', [AlbumsController::class, 'viewAlbums'])->name('albums.albums');
-Route::get('/bandas/{bandaId}/albums/create', [AlbumsController::class, 'createAlbums'])->name('albums.createAlbums')->middleware('auth');
-Route::post('/bandas/{bandaId}/albums', [AlbumsController::class, 'store'])->name('albums.store');
+Route::get('/bandas/albums/{bandaId}', [AlbumsController::class, 'viewAlbums'])->name('albums.albums');
+Route::get('/bandas/albums/create/{bandaId}', [AlbumsController::class, 'createAlbums'])->name('albums.createAlbums')->middleware('auth');
+Route::post('/bandas/albums/{bandaId}', [AlbumsController::class, 'store'])->name('albums.store');
 Route::delete('/bandas/{bandaId}/albums/{albumId}', [AlbumsController::class, 'deleteAlbums'])->name('albums.deleteAlbums')->middleware('auth');

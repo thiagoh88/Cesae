@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -13,6 +14,11 @@ class UserController extends Controller
             return view('admin.users.create');
         }
         return back()->with('error', 'ADMIN ONLY');
+    }
+    public function viewUser(){
+
+        $users = User::all();
+        return view('admin.users.users', compact('users'));
     }
     public function store(Request $request)
     {
@@ -30,20 +36,15 @@ class UserController extends Controller
             'admin' => $request->admin,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Está feito!');
+        return redirect()->route('admin.dashboard')->with('success');
     }
 
-    public function viewUser(){
 
-            $users = User::all();
-            return view('admin.users.users', compact('users'));
-        }
     public function deleteUsers($userId)
     {
         if (auth()->check() && auth()->user()->admin == 1) {
-            $user = User::find($userId);
-            $user->delete();
-            return redirect()->route('users.users')->with('success', 'Está feito!');
+            DB::table('users')->where('id', '=', $userId)->delete();
+            return back();
         }
         return back()->with('error', 'ADMIN ONLY');
     }
