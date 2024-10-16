@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc032b0-9e92-4b5a-a56d-22d8d77b22d5" name="Changes" comment="" />
+    <list default="true" id="efc032b0-9e92-4b5a-a56d-22d8d77b22d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/migrations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/app/src/main/java/com/example/a3activityex/SecondActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/app/src/main/java/com/example/a3activityex/ThirdActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/app/src/main/res/layout/activity_second.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/3activityEX/app/src/main/res/layout/activity_third.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/java/com/example/aula0410/MainActivity2.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/java/com/example/aula0410/MainActivity3.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/res/layout/activity_main3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/Converter/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/Converter/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/aula0410/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/aula0410/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/aula0410/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/aula0410/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/java/com/example/aula0410/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/java/com/example/aula0410/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Android/aula0410/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Angular/Audi/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Angular/Audi/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Angular/Audi/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Angular/Audi/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Angular/Audi/src/app/master-page/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Angular/Audi/src/app/master-page/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Angular/Audi/src/app/master-page/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Angular/Audi/src/app/master-page/header/header.component.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +120,7 @@
       <workItem from="1728419184735" duration="43000" />
       <workItem from="1728419257387" duration="16000" />
       <workItem from="1728419331855" duration="6000" />
+      <workItem from="1728842003294" duration="3000" />
     </task>
     <servers />
   </component>
