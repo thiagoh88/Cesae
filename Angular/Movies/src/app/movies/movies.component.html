@@ -1,0 +1,9 @@
+  <div class="movies-container">
+    <div class="movie-card" *ngFor="let movie of movies">
+      <img [src]="movie.poster" alt="{{ movie.title }} poster">
+      <h2>{{ movie.title }} ({{ movie.year }})</h2>
+      <p>{{ movie.description }}</p>
+    </div>
+  </div>
+
+

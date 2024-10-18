@@ -1,0 +1,23 @@
+
+.movies-container {
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 200px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.movie-card {
+  background-color:white;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+.movie-card img {
+  width: 350px;
+  height: 400px;
+  border-radius: 10px;
+}
